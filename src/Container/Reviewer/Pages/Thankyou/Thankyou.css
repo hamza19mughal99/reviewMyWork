@@ -1,0 +1,27 @@
+.thankyou_main{
+    background-image: url('/public/images/thankyou_bg.png');
+    background-size: cover;
+    height: 88vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.thankyou_main h1{
+    color: #fff;
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.thankyou_main .give_payment{
+    background-color: #fff;
+    width: fit-content;
+    margin: auto;
+    padding: 12px 30px;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-top: 20px;
+    font-size: 20px;
+}

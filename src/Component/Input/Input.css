@@ -1,0 +1,16 @@
+.input_field{
+    background-color: transparent;
+    padding: 8px 10px;
+    border: 1px solid #0000003d;
+}
+
+.input_field:focus{
+    box-shadow: none !important;
+}
+
+.input_main .form-label{
+    font-family: 'Open Sans', sans-serif;
+    text-transform: capitalize;
+    margin-bottom: 3px;
+    font-weight: 600;
+}

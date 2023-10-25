@@ -1,0 +1,60 @@
+.file_submit_main {
+  padding: 50px 0;
+  background-color: #eff0f0a1;
+}
+
+.file_submit_main h1 {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.file_submit_main h6 {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 500px;
+  color: #000;
+  font-size: 18px;
+}
+
+.file_submit_main p {
+  text-align: center;
+  color: #000;
+  font-weight: 500;
+}
+
+.form-check-input {
+  padding: 0 !important;
+}
+
+.form-check-label {
+  font-weight: 500;
+}
+
+.loginModal {
+  padding: 30px;
+  text-align: center;
+}
+
+.loginModal h5 {
+  font-weight: 400;
+  font-size: 23px;
+  color: #000;
+}
+
+.loginModal h5 span {
+  font-weight: 700;
+}
+
+.close_div {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  font-size: 25px;
+}
+
+.close_div svg {
+  cursor: pointer;
+}

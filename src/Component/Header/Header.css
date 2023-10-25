@@ -1,0 +1,46 @@
+.header_main{
+    background-color: #fff;
+    border-bottom: 3px solid grey;
+    padding: 18px 0;
+}
+
+.header_main .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header_main .container .main_logo{
+    width: 200px;
+    cursor: pointer;
+}
+
+.header_main .container p{
+    margin-bottom: 0;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.white .dropdown-toggle{
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.black .dropdown-toggle{
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #000;
+    font-weight: 600;
+}
+
+.white .dropdown-toggle:hover, .black .dropdown-toggle:hover{
+    background-color: transparent;
+}

@@ -1,0 +1,102 @@
+.user_layout {
+    background-color: #EDF2F7 !important;
+}
+
+.layout_content_section {
+    display: flex;
+}
+
+.layout_content_sidebar_section {
+    width: 330px;
+    background-color: #000;
+}
+
+.layout_content_section .layout_content {
+    width: 100%;
+    background-color: #fff;
+    min-height: 90vh;
+}
+
+.user_sidebar .nav_list {
+    padding: 0;
+    background-color: transparent !important;
+    list-style-type: none;
+}
+
+.user_sidebar .nav_list li{
+    margin-bottom: 20px;
+}
+
+.user_sidebar .nav_list li a {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.user_sidebar{
+    padding: 40px 0 0 35px;
+}
+
+.user_sidebar .nav_list .nav_active a span{
+    position: relative;
+    font-weight: 700;
+}
+
+.user_sidebar .nav_list .nav_active a span::before {
+    content: '';
+    position: absolute;
+    right: -25px;
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    border-radius: 100px;
+    top: 8px;
+}
+
+.user_sidebar .nav_list li a img {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    object-fit: contain;
+}
+
+.user_sidebar .nav_list li a span {
+    font-size: 17px;
+}
+
+@media (max-width: 767px) {
+    .layout_content_section .layout_content{
+        padding: 10px;
+    }
+
+    .navbar-toggler{
+        background-color: #fff;
+    }
+
+    .user_header .navbar{
+        padding: 5px 5px !important;
+    }
+
+    .user_sidebar {
+        padding: 40px 0 0 5px;
+    }
+
+    .user_sidebar .nav_list li a span {
+        font-size: 15px;
+    }
+
+    .user_sidebar .nav_list .nav_active a span::before{
+        top: 5px;
+    }
+
+    .user_sidebar h6{
+        font-size: 16px;
+    }
+
+    .layout_content_sidebar_section {
+        min-width: 170px !important;
+    }
+}

@@ -1,0 +1,94 @@
+.banner_main {
+    background-image: url("/public/images/banner.png");
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner_main h1 {
+    color: #fff;
+    text-align: center;
+}
+
+.banner_main h1 span {
+    font-weight: 800;
+}
+
+.review_btn {
+    margin: 50px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.review_btn button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    padding: 10px 30px 17px 30px;
+    background-image: url('/public/images/black_btn_bg.png');
+    background-size: 100% 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 22px;
+    text-transform: capitalize;
+}
+
+.review_btn button img {
+    width: 15px;
+}
+
+.box_main {
+    background-color: #000;
+    border-radius: 20px;
+    height: 100%;
+    border: 1px solid #000;
+}
+
+.box_main p {
+    color: #fff;
+    padding: 20px 25px;
+    text-align: center;
+    font-weight: 300;
+    margin-bottom: 0;
+}
+
+.box_main img {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.footer_banner{
+    background-image: url('/public/images/footer_bg.png');
+    background-size: cover;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer_banner button {
+    background-color: transparent;
+    border: none;
+    color: #000;
+    padding: 15px 35px 22px 35px;
+    background-image: url('/public/images/white_btn_bg.png');
+    background-size: 100% 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 22px;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+.footer_banner button img {
+    width: 15px;
+}

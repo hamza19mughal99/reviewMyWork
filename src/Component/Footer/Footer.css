@@ -1,0 +1,10 @@
+.footer_main{
+    background-color: #0A0A0A;
+    color: #fff;
+    padding: 8px 0;
+    text-align: center;
+}
+
+.footer_main p{
+    margin-bottom: 0;
+}

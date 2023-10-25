@@ -1,0 +1,57 @@
+.css-hyum1k-MuiToolbar-root {
+    background-color: #fff;
+}
+
+.MuiTableCell-footer {
+    display: none !important;
+}
+
+.tss-gm6zfk-MUIDataTableHeadCell-fixedHeader {
+    background: #002746d9 !important;
+    color: white !important;
+    font-size: 16px !important;
+}
+
+.MuiTablePagination-selectLabel.css-pdct74-MuiTablePagination-selectLabel,
+.MuiTablePagination-displayedRows.css-levciy-MuiTablePagination-displayedRows {
+    margin-bottom: 3px !important;
+}
+
+.MuiTablePagination-selectLabel.css-1chpzqh,
+.MuiTablePagination-displayedRows.css-1chpzqh {
+    margin: 0 !important;
+}
+
+.MuiPaper-root {
+    border-radius: 10px !important;
+    border: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+}
+
+table {
+    border-collapse: separate !important;
+    border-spacing: 0 15px !important;
+}
+
+.css-nfmglb-MuiTableCell-root {
+    border-bottom: none !important;
+    background-color: white !important;
+    box-shadow: 0px 3px 10px 0px rgba(119, 119, 119, 0.1) !important;
+    padding: 5px 16px !important;
+}
+
+.MuiTableCell-body{
+    font-size: 16px !important;
+}
+
+table>tbody>tr {
+    border-radius: 3px;
+    box-shadow: 0px 3px 10px 0px rgba(119, 119, 119, 0.1);
+}
+
+table>tbody>tr>td {
+    background-color: white;
+    border-right: 0px !important;
+    margin: 20px 0 !important;
+}

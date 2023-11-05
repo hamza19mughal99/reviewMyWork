@@ -3,6 +3,7 @@ import './FileSubmit.css';
 import { Container, Modal } from 'react-bootstrap';
 import BlackButton from '../../../../Component/Button/BlackButton';
 import { useNavigate } from 'react-router-dom';
+import { errorNotify } from '../../../../Util/Toast';
 
 const FileSubmit = () => {
   const navigate = useNavigate();
@@ -17,11 +18,17 @@ const FileSubmit = () => {
       return
     }
 
-    navigate('/artist/form-submit')
+    if (userFound?.user?.paymentStatus) {
+      navigate('/artist/form-submit')
+    }
+    else {
+      errorNotify("Please complete your payment first")
+      navigate('/artist/payment')
+    }
   }
 
   const pageHandler = () => {
-    localStorage.setItem("isSubmission", JSON.stringify(true))
+    // localStorage.setItem("isSubmission", JSON.stringify(true))
     navigate("/auth?name=artist")
   }
 

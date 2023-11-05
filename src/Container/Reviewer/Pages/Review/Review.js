@@ -31,9 +31,9 @@ const Review = () => {
   const { loading: postLoading, giveReviewData } = useSelector((state) => state.reviewCreate)
 
   useEffect(() => {
-    if(giveReviewData){
+    if (giveReviewData) {
       successNotify(giveReviewData?.message)
-      dispatch({type: "GIVE_REVIEW_RESET"})
+      dispatch({ type: "GIVE_REVIEW_RESET" })
       navigate('/reviewer/thankyou')
     }
   }, [giveReviewData])
@@ -75,7 +75,7 @@ const Review = () => {
     }
 
     dispatch(GiveReview(data))
-    
+
   }
 
   return (
@@ -85,9 +85,20 @@ const Review = () => {
 
         {
           loading ? <Loader /> : <>
-            <div className='react_player'>
-              <ReactPlayer url={`${cloudUrl}${reviewWork?.mpFile?.filename}`} controls={true} />
-            </div>
+
+            {
+              reviewWork?.fileType === "url" ?
+                <div className='d-flex justify-content-center align-items-center'>
+                  <a href={reviewWork?.fileUrl} target='_blank' className='live_video'>
+                    Click Here to Watch Live Video URL/Link
+                    <img src='/images/btn_arrow_img.png' alt='' style={{ width: "35px" }} />
+                  </a>
+                </div> :
+                <div className='react_player'>
+                  <ReactPlayer url={`${cloudUrl}${reviewWork?.mpFile?.filename}`} controls={true} />
+                </div>
+            }
+
             <h5>{reviewWork?.fileName}</h5>
 
             <Form onSubmit={reviewHandler}>

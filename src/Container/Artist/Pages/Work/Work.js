@@ -21,6 +21,10 @@ const Work = () => {
     dispatch(ArtistGetWork(userFound.user._id))
   }, [])
 
+  const downloadPdf = (id) => {
+    navigate(`/artist/review/detail/${id}`)
+  }
+
   const dashboardCols = [
     {
       name: "_id",
@@ -45,13 +49,13 @@ const Work = () => {
       }
     },
     {
-      name: "isReviewed", label: 'Review',
+      name: "isReviewed", label: 'Review Details',
       options: {
         customBodyRender: (value, tableMeta) => {
           return (
             <div style={{ display: "flex", alignItems: "center", gap: '10px' }}>
               {value ?
-                <BlackButton> PDF
+                <BlackButton onClick={() => downloadPdf(tableMeta?.rowData[0])}> View
                   <img src='/images/btn_arrow_img.png' alt='' /> </BlackButton>
                 :
                 <p style={{ color: "red" }}>Not Reviewed Yet!</p>

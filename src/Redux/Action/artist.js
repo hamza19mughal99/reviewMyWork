@@ -51,3 +51,49 @@ export const ArtistGetWork = (id) => async (dispatch) => {
         });
     }
 };
+
+export const SubsPayment = (d) => async (dispatch) => {
+    try {
+        dispatch({
+            type: "SUBSCRIPTION_REQUEST",
+        });
+
+        const { data } = await axios.post("payment/succesfull", d);
+
+        dispatch({
+            type: "SUBSCRIPTION_SUCCESS",
+            payload: data,
+            success: true,
+        });
+    }
+    catch (e) {
+        dispatch({
+            type: "SUBSCRIPTION_FAILED",
+            payload: e?.response?.data,
+            success: false,
+        });
+    }
+};
+
+export const OneTimePayment = (d) => async (dispatch) => {
+    try {
+        dispatch({
+            type: "ONE_TIME_REQUEST",
+        });
+
+        const { data } = await axios.post("onetime/payment/succesfull", d);
+
+        dispatch({
+            type: "ONE_TIME_SUCCESS",
+            payload: data,
+            success: true,
+        });
+    }
+    catch (e) {
+        dispatch({
+            type: "ONE_TIME_FAILED",
+            payload: e?.response?.data,
+            success: false,
+        });
+    }
+};

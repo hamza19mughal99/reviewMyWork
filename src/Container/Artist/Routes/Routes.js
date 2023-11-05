@@ -2,6 +2,7 @@
 import SubmitForm from "../Pages/FileSubmit/SubmitForm/SubmitForm";
 import Payment from "../Pages/PaymentPage/Payment";
 import Profile from "../Pages/Profile/Profile";
+import ReviewDetail from "../Pages/Work/ReviewDetail";
 import Work from "../Pages/Work/Work";
 
 const artistRoute = [
@@ -20,6 +21,10 @@ const artistRoute = [
     {
         component: <SubmitForm />,
         path: "/artist/form-submit"
+    },
+    {
+        component: <ReviewDetail />,
+        path: "/artist/review/detail/:id"
     },
     {
         component: <Payment />,

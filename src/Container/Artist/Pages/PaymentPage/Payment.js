@@ -24,8 +24,7 @@ const Payment = () => {
               <span>$59/month</span>
               <b>unlimted Reviews</b>
 
-
-              <form action="http://localhost:4000/api/create-checkout-session" method="POST">
+              <form action="https://rmw-backend.azurewebsites.net/api/subscription/payment/monthly" method="POST">
                 <div className='buy_btn'>
                   <BlackButton type={"submit"}>
                     Buy
@@ -40,12 +39,14 @@ const Payment = () => {
               <h5>One Time Payment</h5>
               <span>$159/month</span>
 
-              <div className='buy_btn'>
-                <BlackButton type={"button"}>
-                  Buy
-                  <img src='/images/btn_arrow_img.png' alt='' />
-                </BlackButton>
-              </div>
+              <form action="https://rmw-backend.azurewebsites.net/api/subscription/payment/onetime" method="POST">
+                <div className='buy_btn'>
+                  <BlackButton type={"submit"}>
+                    Buy
+                    <img src='/images/btn_arrow_img.png' alt='' />
+                  </BlackButton>
+                </div>
+              </form>
             </div>
           </Col>
         </Row>

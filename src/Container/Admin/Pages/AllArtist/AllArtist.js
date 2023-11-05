@@ -27,22 +27,22 @@ const AllArtist = () => {
     { name: 'fullName', label: "Full Name" },
     { name: "email", label: "Email" },
     { name: "profession", label: "Profession" },
-    // {
-    //   name: "isActive", label: 'is Active',
-    //   options: {
-    //     customBodyRender: (value) => {
-    //       return (
-    //         <>
-    //           {
-    //             value ?
-    //               <div className='yes_div'>Yes</div> :
-    //               <div className='no_div'>No</div>
-    //           }
-    //         </>
-    //       );
-    //     },
-    //   },
-    // },
+    {
+      name: "paymentType", label: 'Payment Type',
+      options: {
+        customBodyRender: (value) => {
+          return (
+            <>
+              {
+                value ?
+                  <div className='yes_div'>{value}</div> :
+                  <div className='no_div'>Not Yet</div>
+              }
+            </>
+          );
+        },
+      },
+    },
     {
       name: "Action", label: 'Action',
       options: {

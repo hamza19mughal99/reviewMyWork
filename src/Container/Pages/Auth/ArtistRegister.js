@@ -29,7 +29,7 @@ const ArtistRegister = () => {
     useEffect(() => {
         if (loginUser) {
             if (loginUser.user.role === 'artist') {
-                navigate("/artist/work")
+                navigate("/artist/form-submit")
             }
             else if (loginUser.user.role === 'reviewer') {
                 navigate("/reviewer/work")

@@ -34,7 +34,7 @@ const Header = () => {
             {
                 pathname === "/" ?
                     <div className='header_main'>
-                        <Container>
+                        <Container fluid>
                             <img src='/images/main_logo.png' alt='' onClick={() => navigate("/")} className='main_logo' />
                             {
                                 userFound ?
@@ -46,6 +46,7 @@ const Header = () => {
                                         <Dropdown.Menu>
                                             <Dropdown.Item onClick={() => profileHandler('profile')}>Profile</Dropdown.Item>
                                             {userFound?.user?.role !== 'admin' && <Dropdown.Item onClick={() => profileHandler('work')}>Work</Dropdown.Item>}
+                                            {/* {userFound?.user?.role === 'reviewer' && <Dropdown.Item onClick={() => navigate('/reviewer/card-details')}>Card Details</Dropdown.Item>} */}
                                             <Dropdown.Item onClick={() => profileHandler('logout')}>Logout</Dropdown.Item>
                                         </Dropdown.Menu>
                                     </Dropdown> :
@@ -57,7 +58,7 @@ const Header = () => {
                         </Container>
                     </div> :
                     <div className='header_main' style={{ backgroundColor: "#000" }}>
-                        <Container>
+                        <Container fluid>
                             <img src='/images/white_logo.png' alt='' onClick={() => navigate("/")} className='main_logo' />
                             {
                                 userFound ?
@@ -69,6 +70,7 @@ const Header = () => {
                                         <Dropdown.Menu>
                                             <Dropdown.Item onClick={() => profileHandler('profile')}>Profile</Dropdown.Item>
                                             {userFound?.user?.role !== 'admin' && <Dropdown.Item onClick={() => profileHandler('work')}>Work</Dropdown.Item>}
+                                            {/* {userFound?.user?.role === 'reviewer' && <Dropdown.Item onClick={() => navigate('/reviewer/card-details')}>Card Details</Dropdown.Item>} */}
                                             <Dropdown.Item onClick={() => profileHandler('logout')}>Logout</Dropdown.Item>
                                         </Dropdown.Menu>
                                     </Dropdown> : null

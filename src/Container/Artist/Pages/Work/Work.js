@@ -38,11 +38,24 @@ const Work = () => {
       name: "score", label: 'Submission Score',
       options: {
         customBodyRender: (value, tableMeta) => {
+          console.log(tableMeta?.rowData)
           return (
             <div>
               {
-                tableMeta?.rowData[4] ? value : 0
+                tableMeta?.rowData[5] ? value : 0
               }
+            </div>
+          );
+        },
+      }
+    },
+    {
+      name: "status", label: 'status',
+      options: {
+        customBodyRender: (value, tableMeta) => {
+          return (
+            <div>
+              {value === 'approved' ? <span style={{ color: "green" }}> {value} </span> : <span style={{ color: "yellow" }}>{value}</span>}
             </div>
           );
         },
@@ -73,9 +86,12 @@ const Work = () => {
       fileName: a?.fileName,
       createdAt: moment(a?.createdAt).format('LL'),
       score: a?.score,
-      isReviewed: a?.isReviewed
+      isReviewed: a?.isReviewed,
+      status: a.workStatus
     }
   })
+
+  console.log(artistGetWorkData?.data)
 
   return (
     <div className='reviewer_work_page'>

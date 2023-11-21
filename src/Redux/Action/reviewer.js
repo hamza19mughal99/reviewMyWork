@@ -68,3 +68,26 @@ export const ReviewGetWork = (id) => async (dispatch) => {
         });
     }
 };
+
+export const ReviewGetAllWork = () => async (dispatch) => {
+    try {
+        dispatch({
+            type: "GET_ALL_WORK_REQUEST",
+        });
+
+        const { data } = await axios.get(`get-work`);
+
+        dispatch({
+            type: "GET_ALL_WORK_SUCCESS",
+            payload: data,
+            success: true,
+        });
+    }
+    catch (e) {
+        dispatch({
+            type: "GET_ALL_WORK_FAILED",
+            payload: e.response.data.message,
+            success: false,
+        });
+    }
+};

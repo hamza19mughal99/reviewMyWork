@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Form, Row } from 'react-bootstrap';
+import { Col, Container, Form, Modal, Row } from 'react-bootstrap';
 import BlackButton from '../../../../../Component/Button/BlackButton';
 import Input from '../../../../../Component/Input/Input';
 import { errorNotify, successNotify } from '../../../../../Util/Toast';
@@ -15,6 +15,7 @@ const SubmitForm = () => {
     const searchParams = new URLSearchParams(location.search);
     const isSuccess = searchParams.get('success');
     const isMonthly = searchParams.get('payment');
+    const [showModal, setShowModal] = useState(false)
 
     let userFound = JSON.parse(localStorage.getItem('user'))
     // const isSubmission = JSON.parse(localStorage.getItem('isSubmission'))
@@ -66,18 +67,18 @@ const SubmitForm = () => {
         }
     }, [subPayData, oneTimeData])
 
-    // useEffect(() => {
-    //     if (isSubmission) {
-    //         localStorage.removeItem("isSubmission");
-    //     }
-    // }, [])
-
     useEffect(() => {
         if (artistWorkData) {
-            successNotify("Created Successfully!!")
-            dispatch({ type: "ARTIST_WORK_RESET" })
-
-            navigate('/artist/work')
+            if (artistWorkData?.status === 1) {
+                successNotify("Created Successfully!!")
+                dispatch({ type: "ARTIST_WORK_RESET" })
+                navigate('/artist/work')
+            }
+            else {
+                successNotify("Created Successfully!!")
+                dispatch({ type: "ARTIST_WORK_RESET" })
+                setShowModal(true)
+            }
         }
         else if (postError) {
             errorNotify(postError)
@@ -128,8 +129,26 @@ const SubmitForm = () => {
         }
     }
 
+    const modal = <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+        </Modal.Header>
+        <Modal.Body className='loginModal'>
+            <h5>Your Work has been Created!!</h5>
+            <p>Right Now the status of work is <span>Pending</span> and it is <span>hide</span> to
+                Reviewer. For Review your work you need to do <span>Payment</span>.</p>
+
+            <div className='d-flex justify-content-center mt-5'>
+                <BlackButton onClick={() => navigate('/artist/payment')}>
+                    Payment Now
+                    <img src='/images/btn_arrow_img.png' alt='' />
+                </BlackButton>
+            </div>
+        </Modal.Body>
+    </Modal>
+
     return (
         <div style={{ backgroundColor: "#eff0f0a1", height: "81vh" }}>
+            {modal}
             <Container fluid>
                 {
                     loading || oneLoading ? <div className='my-5'> <Loader /> </div> :

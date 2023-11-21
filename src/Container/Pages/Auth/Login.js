@@ -24,17 +24,7 @@ const Login = () => {
     useEffect(() => {
         if (userFound) {
             if (userFound?.user?.role === 'artist') {
-                // if (!isSubmission) {
-                if (userFound?.user?.paymentStatus) {
-                    navigate('/artist/form-submit')
-                }
-                else {
-                    navigate('/artist/payment')
-                }
-                // }
-                // else {
-                //     navigate('/artist/work')
-                // }
+                navigate('/artist/form-submit')
             }
             else if (userFound?.user?.role === 'reviewer') {
                 navigate('/reviewer/work')
@@ -56,22 +46,11 @@ const Login = () => {
             })
 
             if (getLoginData?.user?.role === 'artist') {
-                // if (isSubmission) {
-                if (userFound?.user?.paymentStatus) {
-                    navigate('/artist/form-submit')
-                }
-                else {
-                    navigate('/artist/payment')
-                }
-                // }
-                // else {
-                //     navigate('/artist/work')
-                // }
+                navigate('/artist/form-submit')
             }
             else if (getLoginData?.user?.role === 'reviewer') {
                 navigate('/reviewer/work')
             }
-
         }
         if (error) {
             errorNotify(error)

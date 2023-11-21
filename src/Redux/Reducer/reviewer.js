@@ -24,6 +24,32 @@ export const ReviewerGetAllWorkReducer = (state = {}, action) => {
     }
 }
 
+export const GetAllWorkReducer = (state = {}, action) => {
+    switch (action.type) {
+        case "GET_ALL_WORK_REQUEST":
+            return {
+                loading: true,
+                error: false
+            }
+        case "GET_ALL_WORK_SUCCESS":
+            return {
+                ...state,
+                loading: false,
+                GetAllWorkData: action.payload,
+                error: false
+            }
+        case "GET_ALL_WORK_FAILED":
+            return {
+                ...state,
+                loading: false,
+                GetAllWorkData: null,
+                error: action.payload
+            }
+        default:
+            return state
+    }
+}
+
 export const GiveReviewReducer = (state = {}, action) => {
     switch (action.type) {
         case "GIVE_REVIEW_REQUEST":

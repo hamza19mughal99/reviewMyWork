@@ -5,10 +5,6 @@ import BlackButton from '../../../../Component/Button/BlackButton';
 
 const Payment = () => {
 
-  const monthlyBuyHandler = () => {
-    window.location.href = 'https://buy.stripe.com/test_00g5mL4h11Q5fYY8ww'
-  }
-
   return (
     <div className='payment_main'>
       <Container>
@@ -24,7 +20,9 @@ const Payment = () => {
               <span>$59/month</span>
               <b>unlimted Reviews</b>
 
-              <form action="https://rmw-backend.azurewebsites.net/api/subscription/payment/monthly" method="POST">
+              {/* http://localhost:4000/ */}
+              {/* https://rmw-backend.azurewebsites.net/ */}
+              <form action="http://localhost:4000/api/subscription/payment/monthly" method="POST">
                 <div className='buy_btn'>
                   <BlackButton type={"submit"}>
                     Buy
@@ -39,6 +37,8 @@ const Payment = () => {
               <h5>One Time Payment</h5>
               <span>$159/month</span>
 
+              {/* http://localhost:4000/ */}
+              {/* https://rmw-backend.azurewebsites.net/ */}
               <form action="https://rmw-backend.azurewebsites.net/api/subscription/payment/onetime" method="POST">
                 <div className='buy_btn'>
                   <BlackButton type={"submit"}>

@@ -1,3 +1,4 @@
+import CardDetails from "../Pages/CardDetails/CardDetails";
 import Profile from "../Pages/Profile/Profile";
 import Review from "../Pages/Review/Review";
 import Thankyou from "../Pages/Thankyou/Thankyou";
@@ -20,6 +21,10 @@ const reviewerRoute = [
         component: <Thankyou />,
         path: "/reviewer/thankyou"
     },
+    // {
+    //     component: <CardDetails />,
+    //     path: "/reviewer/card-details"
+    // },
 ]
 
 export default reviewerRoute;

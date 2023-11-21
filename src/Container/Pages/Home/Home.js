@@ -7,16 +7,16 @@ const Home = () => {
     const navigate = useNavigate();
     const loginUser = JSON.parse(localStorage.getItem("user"));
 
-    // const reviewHandler = () => {
-    //     if (loginUser) {
-    //         if (loginUser.user.role === 'artist') {
-    //             navigate("/artist/submission")
-    //         }
-    //     }
-    //     else {
-    //         navigate("/auth?name=artist")
-    //     }
-    // }
+    const artistHandler = () => {
+        if (loginUser) {
+            if (loginUser.user.role === 'artist') {
+                navigate("/artist/form-submit")
+            }
+        }
+        else {
+            navigate("/auth?name=artist")
+        }
+    }
 
     const reviewerHandler = () => {
         if (loginUser) {
@@ -39,7 +39,7 @@ const Home = () => {
             </div>
 
             <div className='review_btn'>
-                <button onClick={() => navigate('/artist/submission')}>
+                <button onClick={artistHandler}>
                     Review my work <img src='/images/btn_arrow.png' alt='' />
                 </button>
             </div>

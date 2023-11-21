@@ -39,9 +39,20 @@
 }
 
 .loginModal h5 {
-  font-weight: 400;
+  font-weight: 700;
   font-size: 23px;
+  color: green;
+  text-transform: uppercase;
+}
+
+.loginModal p{
+  font-size: 18px;
+  font-weight: 400;
   color: #000;
+}
+
+.loginModal p span{
+  font-weight: 700;
 }
 
 .loginModal h5 span {

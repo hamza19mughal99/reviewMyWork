@@ -1,0 +1,55 @@
+.dashboard_box{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 40px 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.dashboard_box h2{
+    font-size: 27px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+.dashboard_box h4{
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.dashboard_box svg{
+    font-size: 85px;
+    box-shadow: rgba(0, 0, 0, 0.15) 2px 5px 11px 2px;
+    padding: 15px;
+    border-radius: 10px;
+    color: #090987ab;
+}
+
+.dashboard_box.make_green{
+    box-shadow: rgb(76 175 80 / 48%) 0px 3px 8px;
+}
+
+.dashboard_box.make_green h2, .dashboard_box.make_green h4, .dashboard_box.make_green svg{
+    color: #518951;
+}
+
+.dashboard_box.make_red{
+    box-shadow: #fb3f30a6 0px 3px 8px;
+}
+
+.dashboard_box.make_red h2, .dashboard_box.make_red h4, .dashboard_box.make_red svg{
+    color: #ff5a5a;
+}
+
+.dashboard_box.make_blue{
+    box-shadow: #002746d9 0px 3px 8px;
+}
+
+.dashboard_box.make_blue h2, .dashboard_box.make_blue h4, .dashboard_box.make_blue svg{
+    color: #002746d9;
+}

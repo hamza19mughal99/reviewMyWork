@@ -35,7 +35,7 @@ const ArtistRegister = () => {
                 navigate("/reviewer/work")
             }
             else if (loginUser.user.role === 'admin') {
-                navigate("/admin/profile")
+                navigate("/admin/dashboard")
             }
         }
     }, [loginUser])
@@ -148,6 +148,8 @@ const ArtistRegister = () => {
                                 <Input type="textarea" rows={3} label="In a few words tell us about yourself"
                                     name='about' value={register.about} onChange={inputHandler}
                                 />
+
+                                <h6 onClick={() => navigate('/login')}>Already have an account? login now</h6>
 
                                 <BlackButton>
                                     {

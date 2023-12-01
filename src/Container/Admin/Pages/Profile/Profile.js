@@ -105,15 +105,15 @@ const Profile = () => {
   return (
     <div style={{ backgroundColor: "#eff0f0a1" }}>
       <Container fluid>
-        <Row className='justify-content-center'>
+        <Row className='justify-content-center py-4'>
           <Col md={8} className='p-0'>
-            <div className='signup_form'>
+            <div className='signup_form profile_main'>
               <h1 className='text-center'>Edit Profile</h1>
 
               <Form onSubmit={submitHandler}>
                 <Row>
                   <Col md={6}>
-                    <Input type="text" label="Full Name" name='fullName' value={register.fullName} onChange={inputHandler} />
+                    <Input type="text" label="Full Name" name='fullName' placeholder="Enter Full Name" value={register.fullName} onChange={inputHandler} />
                   </Col>
                   <Col md={6}>
                     <Input disable={true} type="email" label="Email Address" name='email' value={register.email} onChange={inputHandler} />
@@ -135,19 +135,19 @@ const Profile = () => {
           </Col>
 
           <Col md={8} className='p-0'>
-            <div className='signup_form' style={{ paddingTop: "0px" }}>
+            <div className='signup_form profile_main'>
               <h1 className='text-center'>Edit Password</h1>
 
               <Form onSubmit={passwordChangeHandler}>
                 <Row>
                   <Col md={12}>
-                    <Input type="password" label="Old Password" name="oldPassword" value={changePassword.oldPassword} onChange={passwordHandler} />
+                    <Input type="password" placeholder='Enter Old Password' label="Old Password" name="oldPassword" value={changePassword.oldPassword} onChange={passwordHandler} />
                   </Col>
                   <Col md={6}>
-                    <Input type="password" label="New Password" name="newPassword" value={changePassword.newPassword} onChange={passwordHandler} />
+                    <Input type="password" placeholder='Enter New Password' label="New Password" name="newPassword" value={changePassword.newPassword} onChange={passwordHandler} />
                   </Col>
                   <Col md={6}>
-                    <Input type="password" label="Confirm Password" name="confirmPassword" value={changePassword.confirmPassword} onChange={passwordHandler} />
+                    <Input type="password" placeholder='Enter Confirm Password' label="Confirm Password" name="confirmPassword" value={changePassword.confirmPassword} onChange={passwordHandler} />
                   </Col>
                 </Row>
 

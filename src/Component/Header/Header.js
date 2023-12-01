@@ -16,7 +16,7 @@ const Header = () => {
         if (p === 'profile') {
             if (userFound?.user?.role === 'artist') navigate('/artist/profile')
             else if (userFound?.user?.role === 'reviewer') navigate('/reviewer/profile')
-            else if (userFound?.user?.role === 'admin') navigate('/admin/profile')
+            else if (userFound?.user?.role === 'admin') navigate('/admin/dashboard')
         }
         else if (p === 'work') {
             if (userFound?.user?.role === 'artist') navigate('/artist/work')
@@ -44,7 +44,9 @@ const Header = () => {
                                         </Dropdown.Toggle>
 
                                         <Dropdown.Menu>
-                                            <Dropdown.Item onClick={() => profileHandler('profile')}>Profile</Dropdown.Item>
+                                            <Dropdown.Item onClick={() => profileHandler('profile')}>
+                                                { userFound?.user?.role === 'admin' ? 'Dashboard' : 'Profile' }
+                                            </Dropdown.Item>
                                             {userFound?.user?.role !== 'admin' && <Dropdown.Item onClick={() => profileHandler('work')}>Work</Dropdown.Item>}
                                             {/* {userFound?.user?.role === 'reviewer' && <Dropdown.Item onClick={() => navigate('/reviewer/card-details')}>Card Details</Dropdown.Item>} */}
                                             <Dropdown.Item onClick={() => profileHandler('logout')}>Logout</Dropdown.Item>
@@ -68,7 +70,9 @@ const Header = () => {
                                         </Dropdown.Toggle>
 
                                         <Dropdown.Menu>
-                                            <Dropdown.Item onClick={() => profileHandler('profile')}>Profile</Dropdown.Item>
+                                            <Dropdown.Item onClick={() => profileHandler('profile')}>
+                                            { userFound?.user?.role === 'admin' ? 'Dashboard' : 'Profile' }
+                                            </Dropdown.Item>
                                             {userFound?.user?.role !== 'admin' && <Dropdown.Item onClick={() => profileHandler('work')}>Work</Dropdown.Item>}
                                             {/* {userFound?.user?.role === 'reviewer' && <Dropdown.Item onClick={() => navigate('/reviewer/card-details')}>Card Details</Dropdown.Item>} */}
                                             <Dropdown.Item onClick={() => profileHandler('logout')}>Logout</Dropdown.Item>

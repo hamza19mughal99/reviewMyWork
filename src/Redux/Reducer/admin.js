@@ -82,3 +82,29 @@ export const UserUpdatedReducer = (state = {}, action) => {
             return state
     }
 }
+
+export const DashboardGetReducer = (state = {}, action) => {
+    switch (action.type) {
+        case "DASHBOARD_GET_REQUEST":
+            return {
+                loading: true,
+                error: false
+            }
+        case "DASHBOARD_GET_SUCCESS":
+            return {
+                ...state,
+                loading: false,
+                getDashData: action.payload,
+                error: false
+            }
+        case "DASHBOARD_GET_FAILED":
+            return {
+                ...state,
+                loading: false,
+                getDashData: null,
+                error: action.payload
+            }
+        default:
+            return state
+    }
+}

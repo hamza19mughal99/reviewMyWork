@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Auth.css';
-import { Col, Container, Form, Row } from 'react-bootstrap';
+import { Col, Container, Form, Row, Spinner } from 'react-bootstrap';
 import BlackButton from '../../../Component/Button/BlackButton';
 import Input from '../../../Component/Input/Input';
 import { useDispatch, useSelector } from 'react-redux';
@@ -30,7 +30,7 @@ const Login = () => {
                 navigate('/reviewer/work')
             }
             else if (userFound?.user?.role === 'admin') {
-                navigate('/admin/profile')
+                navigate('/admin/dashboard')
             }
         }
     }, [userFound])
@@ -86,7 +86,7 @@ const Login = () => {
                 <Row className='align-items-center'>
                     <Col md={6} className='p-0'>
                         <div className='signup_left'>
-                            <img src='/images/login_left.png' alt='' style={{ height: "87vh", objectFit: "cover" }} />
+                            <img src='/images/login_left.png' alt='' style={{ height: "88vh", objectFit: "cover" }} />
                         </div>
                     </Col>
 
@@ -95,19 +95,24 @@ const Login = () => {
                             <h1>Log In</h1>
 
                             <Form onSubmit={submitHandler}>
-                                <Input label="Email Address" type="email" name='email' value={login.email} onChange={inputHandler} />
-                                <Input label="Password" type="password" name="password" value={login.password} onChange={inputHandler} />
+                                <Input label="Email Address" type="email" name='email'
+                                    placeholder="Enter email Address" value={login.email} onChange={inputHandler} />
+                                <Input label="Password" type="password" name="password"
+                                    placeholder="Enter Password" value={login.password} onChange={inputHandler} />
+                                <h6>Forgot Password?</h6>
 
-                                <div>
-                                    <BlackButton type="submit">
-                                        {
-                                            loading ? 'Loading...' : <>
-                                                Login
-                                                <img src='/images/btn_arrow_img.png' alt='' />
-                                            </>
-                                        }
-                                    </BlackButton>
-                                </div>
+                                <Row>
+                                    <Col md={4}>
+                                        <BlackButton type="submit">
+                                            {
+                                                loading ? 'Loading...' : <>
+                                                    Login
+                                                    <img src='/images/btn_arrow_img.png' alt='' />
+                                                </>
+                                            }
+                                        </BlackButton>
+                                    </Col>
+                                </Row>
                             </Form>
                         </div>
                     </Col>

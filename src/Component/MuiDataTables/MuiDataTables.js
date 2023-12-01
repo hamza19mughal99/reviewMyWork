@@ -2,7 +2,7 @@ import React from "react";
 import MUIDataTable from "mui-datatables";
 import "./MuiDataTables.css";
 
-const MuiDataTable = ({ data, columns, title, setPage, page, rowsPerPage = 5, setRowsPerPage, count, setText, text }) => {
+const MuiDataTable = ({ data, columns, title, page, rowsPerPage = 5, count, text }) => {
     const option = {
         filter: false,
         filterType: "checkbox",

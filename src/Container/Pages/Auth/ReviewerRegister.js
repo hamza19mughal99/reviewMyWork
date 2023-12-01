@@ -38,7 +38,7 @@ const ReviewerRegister = () => {
                 navigate("/reviewer/work")
             }
             else if (loginUser.user.role === 'admin') {
-                navigate("/admin/profile")
+                navigate("/admin/dashboard")
             }
         }
     }, [loginUser])
@@ -117,7 +117,7 @@ const ReviewerRegister = () => {
                 <div>
                     <h5 style={{ fontSize: "25px", fontWeight: "700", color: "green" }}>Registered Successfully!!</h5>
                     <p style={{ fontSize: "18px", fontWeight: "600", marginBottom: "0" }}>you will be reviewed by Admin. Once Admin approved you account
-                     you will get email and then you can access your account</p>
+                        you will get email and then you can access your account</p>
 
                     <div className='d-flex justify-content-center mt-4'>
                         <WhiteButton onClick={backHandler}>
@@ -166,6 +166,8 @@ const ReviewerRegister = () => {
                                 <Input type="textarea" rows={3} label="In a few words tell us about yourself"
                                     name='about' value={register.about} onChange={inputHandler}
                                 />
+
+                                <h6 onClick={() => navigate('/login')}>Already have an account? login now</h6>
 
                                 <BlackButton>
                                     {

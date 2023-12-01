@@ -1,10 +1,14 @@
 .footer_main{
-    background-color: #0A0A0A;
+    background-color: #fff;
     color: #fff;
-    padding: 8px 0;
+    padding: 10px 0;
     text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .footer_main p{
     margin-bottom: 0;
+    color: #000;
+    font-weight: 600;
+    font-size: 17px;
 }

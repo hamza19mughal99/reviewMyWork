@@ -3,14 +3,15 @@ import ArtistDetail from "../Pages/AllArtist/ArtistDetail";
 import AllReviewer from "../Pages/AllReviewer/AllReviewer";
 import ReviewerDetail from "../Pages/AllReviewer/ReviewerDetail";
 import Dashboad from "../Pages/Dashboard/Dashboad";
+import Payment from "../Pages/Payment/Payment";
 import Profile from "../Pages/Profile/Profile";
 import ReviewedWork from "../Pages/ReviewedWork/ReviewedWork";
 
 export const adminRoute = [
-    // {
-    //     component: <Dashboad />,
-    //     path: "/admin/dashboard"
-    // },
+    {
+        component: <Dashboad />,
+        path: "/admin/dashboard"
+    },
     {
         component: <Profile />,
         path: "/admin/profile"
@@ -31,18 +32,22 @@ export const adminRoute = [
         component: <ReviewerDetail />,
         path: "/admin/reviewer/:id"
     },
-    // {
-    //     component: <ReviewedWork />,
-    //     path: "/admin/reviewed-work"
-    // }
+    {
+        component: <ReviewedWork />,
+        path: "/admin/reviewed-work"
+    },
+    {
+        component: <Payment />,
+        path: "/admin/payment"
+    }
 ]
 
 export const adminSideBarItems = [
-    // {
-    //     path: "/admin/dashboard",
-    //     icon: "/images/create_page.png",
-    //     title: "Dashboard",
-    // },
+    {
+        path: "/admin/dashboard",
+        icon: "/images/create_page.png",
+        title: "Dashboard",
+    },
     {
         path: "/admin/profile",
         icon: "/images/create_page.png",
@@ -58,9 +63,9 @@ export const adminSideBarItems = [
         icon: "/images/files_icon.png",
         title: "All Reviewers",
     },
-    // {
-    //     path: "/admin/reviewed-work",
-    //     icon: "/images/files_icon.png",
-    //     title: "Reviewed Work",
-    // },
+    {
+        path: "/admin/reviewed-work",
+        icon: "/images/files_icon.png",
+        title: "Reviewed Work",
+    }
 ];

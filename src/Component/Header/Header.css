@@ -1,6 +1,6 @@
 .header_main{
     background-color: #fff;
-    border-bottom: 3px solid grey;
+    /* border-bottom: 3px solid grey; */
     padding: 18px 0;
 }
 
@@ -39,7 +39,7 @@
     align-items: center;
     gap: 5px;
     color: #000;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .white .dropdown-toggle:hover, .black .dropdown-toggle:hover{

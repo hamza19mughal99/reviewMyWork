@@ -10,6 +10,7 @@
     background: #002746d9 !important;
     color: white !important;
     font-size: 16px !important;
+    border-right: 1px solid lightgrey;
 }
 
 .MuiTablePagination-selectLabel.css-pdct74-MuiTablePagination-selectLabel,
@@ -20,18 +21,6 @@
 .MuiTablePagination-selectLabel.css-1chpzqh,
 .MuiTablePagination-displayedRows.css-1chpzqh {
     margin: 0 !important;
-}
-
-.MuiPaper-root {
-    border-radius: 10px !important;
-    border: none !important;
-    box-shadow: none !important;
-    background-color: transparent !important;
-}
-
-table {
-    border-collapse: separate !important;
-    border-spacing: 0 15px !important;
 }
 
 .css-nfmglb-MuiTableCell-root {
@@ -51,7 +40,10 @@ table>tbody>tr {
 }
 
 table>tbody>tr>td {
-    background-color: white;
-    border-right: 0px !important;
-    margin: 20px 0 !important;
+    border-right: 1px solid #0000001f;
+    vertical-align: middle;
+}
+
+table>tbody>tr>td:last-child{
+    border-right: none;
 }

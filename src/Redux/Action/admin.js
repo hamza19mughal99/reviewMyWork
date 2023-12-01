@@ -71,3 +71,27 @@ export const UserUpdate = (d) => async (dispatch) => {
         });
     }
 };
+
+export const DashboardGetData = () => async (dispatch) => {
+    try {
+        dispatch({
+            type: "DASHBOARD_GET_REQUEST",
+        });
+
+        const { data } = await axios.get("/dashboard/get");
+
+        dispatch({
+            type: "DASHBOARD_GET_SUCCESS",
+            payload: data,
+            success: true,
+        });
+    }
+
+    catch (e) {
+        dispatch({
+            type: "DASHBOARD_GET_FAILED",
+            payload: e.response.data.message,
+            success: false,
+        });
+    }
+};

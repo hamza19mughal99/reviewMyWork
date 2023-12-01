@@ -13,7 +13,7 @@
 
 .layout_content_section .layout_content {
     width: 100%;
-    background-color: #fff;
+    background-color: rgba(239, 240, 240, 0.63);
     min-height: 90vh;
 }
 
@@ -21,10 +21,21 @@
     padding: 0;
     background-color: transparent !important;
     list-style-type: none;
+    margin-bottom: 0;
 }
 
 .user_sidebar .nav_list li{
-    margin-bottom: 20px;
+    margin-bottom: 0px;
+    padding: 10px 5px 10px 15px;
+}
+
+.user_sidebar .nav_list li.nav_active{
+    background-color: #fff;
+    color: #002746d9;
+}
+
+.user_sidebar .nav_list li.nav_active a{
+    color: #002746d9;
 }
 
 .user_sidebar .nav_list li a {
@@ -37,7 +48,7 @@
 }
 
 .user_sidebar{
-    padding: 40px 0 0 35px;
+    padding: 40px 0 0 0px;
 }
 
 .user_sidebar .nav_list .nav_active a span{
@@ -65,6 +76,15 @@
 
 .user_sidebar .nav_list li a span {
     font-size: 17px;
+}
+
+.signup_form.profile_main {
+    background-color: #fff;
+    padding: 50px 80px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    height: auto;
 }
 
 @media (max-width: 767px) {

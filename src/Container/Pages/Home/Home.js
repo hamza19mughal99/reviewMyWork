@@ -32,7 +32,7 @@ const Home = () => {
     return (
         <div className='home_main'>
             <div className='banner_main'>
-                <h1><span>Get your</span> <br /> work reviewed by a highly trained, <br />
+                <h1><span>Get your work reviewed</span> <br /> by a highly trained, <br />
                     more importantly working <br />
                     <span>professional</span>
                 </h1>
@@ -44,7 +44,7 @@ const Home = () => {
                 </button>
             </div>
 
-            <Container className='mb-5'>
+            <Container className='home_boxes'>
                 <Row>
                     <Col md={4}>
                         <div className='box_main'>
@@ -56,7 +56,7 @@ const Home = () => {
                         </div>
                     </Col>
                     <Col md={4}>
-                        <div className='box_main' style={{ backgroundColor: "#fff" }}>
+                        <div className='box_main second_box'>
                             <img src='/images/box2.png' alt='' />
                             <p style={{ color: "#000", fontWeight: "500" }}>Our reviewers are the best of the bunch. Beyond their previous experience,
                                 they've been selected for their knowledge ofthe movies, music and
@@ -73,6 +73,7 @@ const Home = () => {
                     </Col>
                 </Row>
             </Container>
+
             <div className='footer_banner'>
                 <button onClick={reviewerHandler}>
                     Become a Reviewer <img src='/images/btn_arrow_black.png' alt='' /> </button>

@@ -1,7 +1,8 @@
 .banner_main {
-    background-image: url("/public/images/banner.png");
+    /* background-image: url('/public/images/main_banner_bg.jpg'); */
+    background-image: url('/public/images/bottom_bg.jpg');
     background-size: cover;
-    height: 100vh;
+    height: 88vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,30 +43,56 @@
 }
 
 .box_main {
-    background-color: #000;
-    border-radius: 20px;
+    background-color: #fff;
+    border-radius: 15px;
     height: 100%;
-    border: 1px solid #000;
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; */
+    box-shadow: rgb(80 80 102 / 27%) 0px -1px 8px 5px, rgba(0, 0, 0, 0.2) 2px 5px 2px -5px;
+    padding: 10px;
+    position: relative;
+    width: 100%;
+    top: 50px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+
+.box_main:hover{
+    transform: scale(1.1);
+}
+
+.box_main.second_box{
+    height: fit-content;
+    top: 0;
 }
 
 .box_main p {
-    color: #fff;
-    padding: 20px 25px;
-    text-align: center;
-    font-weight: 300;
+    font-weight: 500;
     margin-bottom: 0;
+    position: relative;
+    top: -20px;
+    padding: 0 10px;
+    font-size: 17px;
 }
 
-.box_main img {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    height: 250px;
+.box_main img  {
+    height: 200px;
     width: 100%;
     object-fit: cover;
+    border-radius: 25px;
+    top: -40px;
+    position: relative;
+    padding: 6px;
+    transition: all 0.3s ease;
 }
 
-.footer_banner{
-    background-image: url('/public/images/footer_bg.png');
+.box_main:hover img{
+    transform: rotate(2deg);
+}
+
+.footer_banner {
+    /* background-image: url('/public/images/footer_bg.png'); */
+    background-image: url('/public/images/main_banner_bg.jpg');
+    /* background-image: url('/public/images/bottom_bg.jpg'); */
     background-size: cover;
     height: 250px;
     display: flex;
@@ -91,4 +118,9 @@
 
 .footer_banner button img {
     width: 15px;
+}
+
+.home_boxes {
+    margin-top: 80px;
+    margin-bottom: 130px;
 }

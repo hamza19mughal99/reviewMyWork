@@ -19,7 +19,7 @@ const Auth = () => {
                 navigate("/reviewer/work")
             }
             else if (loginUser.user.role === 'admin') {
-                navigate("/admin/profile")
+                navigate("/admin/dashboard")
             }
         }
     }, [loginUser])

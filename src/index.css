@@ -6,12 +6,12 @@ body {
   box-sizing: border-box;
 }
 
-h1{
+h1, h2, h3, h4, h5, h6{
   font-family: 'Raleway', sans-serif;
 }
 
-p{
-  font-family: 'Open Sans', sans-serif;
+p, span, b, strong, ul, li, ol, li, .btn, .MuiTableCell-root{
+  font-family: 'Open Sans', sans-serif !important;
 }
 
 img{
@@ -19,19 +19,23 @@ img{
 }
 
 .no_div{
-  background-color: #ff6b6b;
-  color: #fff;
-  padding: 3px 20px;
+  background-color: #ffd0d0;
+  color: #e25454;
+  padding: 5px 25px;
+  width: -moz-fit-content;
   width: fit-content;
   border-radius: 25px;
   font-size: 14px;
+  font-weight: 600;
 }
 
 .yes_div{
-  background-color: #53b053;
-  color: #fff;
-  padding: 3px 20px;
+  background-color: #bff4bf;
+  color: #2f8d2f;
+  padding: 5px 25px;
+  width: -moz-fit-content;
   width: fit-content;
   border-radius: 25px;
   font-size: 14px;
+  font-weight: 600;
 }

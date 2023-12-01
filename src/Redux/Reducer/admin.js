@@ -108,3 +108,29 @@ export const DashboardGetReducer = (state = {}, action) => {
             return state
     }
 }
+
+export const AllPaymentGetDataReducer = (state = {}, action) => {
+    switch (action.type) {
+        case "ALL_PAYMENT_GET_REQUEST":
+            return {
+                loading: true,
+                error: false
+            }
+        case "ALL_PAYMENT_GET_SUCCESS":
+            return {
+                ...state,
+                loading: false,
+                getPaymentData: action.payload,
+                error: false
+            }
+        case "ALL_PAYMENT_GET_FAILED":
+            return {
+                ...state,
+                loading: false,
+                getPaymentData: null,
+                error: action.payload
+            }
+        default:
+            return state
+    }
+}

@@ -64,6 +64,11 @@ export const adminSideBarItems = [
         title: "All Reviewers",
     },
     {
+        path: "/admin/payment",
+        icon: "/images/files_icon.png",
+        title: "All Payments",
+    },
+    {
         path: "/admin/reviewed-work",
         icon: "/images/files_icon.png",
         title: "Reviewed Work",

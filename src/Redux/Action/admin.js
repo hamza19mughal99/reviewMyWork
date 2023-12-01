@@ -95,3 +95,27 @@ export const DashboardGetData = () => async (dispatch) => {
         });
     }
 };
+
+export const AllPaymentGetData = () => async (dispatch) => {
+    try {
+        dispatch({
+            type: "ALL_PAYMENT_GET_REQUEST",
+        });
+
+        const { data } = await axios.get("/all-payment/get");
+
+        dispatch({
+            type: "ALL_PAYMENT_GET_SUCCESS",
+            payload: data,
+            success: true,
+        });
+    }
+
+    catch (e) {
+        dispatch({
+            type: "ALL_PAYMENT_GET_FAILED",
+            payload: e.response.data.message,
+            success: false,
+        });
+    }
+};

@@ -1,0 +1,45 @@
+.payment_given{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    padding: 35px 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-radius: 10px;
+}
+
+.payment_given h4{
+    margin-bottom: 0;
+    font-size: 27px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.payment_given h3{
+    margin-bottom: 0;
+    font-size: 30px;
+    font-weight: 600;
+    color: green;
+}
+
+.payment_taken{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    padding: 35px 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-radius: 10px;
+}
+
+.payment_taken h4{
+    margin-bottom: 0;
+    font-size: 27px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.payment_taken h3{
+    margin-bottom: 0;
+    font-size: 30px;
+    font-weight: 600;
+    color: red;
+}

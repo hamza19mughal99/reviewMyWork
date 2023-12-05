@@ -5,6 +5,7 @@
     align-items: center;
     gap: 20px;
     border-radius: 10px;
+    background-color: #fff;
 }
 
 .payment_given h4{
@@ -28,6 +29,7 @@
     align-items: center;
     gap: 20px;
     border-radius: 10px;
+    background-color: #fff;
 }
 
 .payment_taken h4{

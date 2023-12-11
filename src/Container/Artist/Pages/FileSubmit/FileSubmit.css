@@ -69,3 +69,12 @@
 .close_div svg {
   cursor: pointer;
 }
+
+.submit_work p{
+  text-align: center !important;
+  margin: 15px auto !important;
+  max-width: 500px !important;
+  color: #000 !important;
+  font-size: 18px !important;
+  background: transparent !important;
+}

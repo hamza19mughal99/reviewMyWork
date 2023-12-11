@@ -8,6 +8,7 @@ import { errorNotify, successNotify } from '../../../Util/Toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { AuthRegister } from '../../../Redux/Action/auth';
 import { useNavigate } from 'react-router-dom';
+import SpinLoader from '../../../Util/SpinLoader';
 
 const ArtistRegister = () => {
     const dispatch = useDispatch();
@@ -151,14 +152,13 @@ const ArtistRegister = () => {
 
                                 <h6 onClick={() => navigate('/login')}>Already have an account? login now</h6>
 
-                                <BlackButton>
-                                    {
-                                        loading ? 'Loading...' : <>
+                                {
+                                    loading ? <SpinLoader /> :
+                                        <BlackButton>
                                             Submit
                                             <img src='/images/btn_arrow_img.png' alt='' />
-                                        </>
-                                    }
-                                </BlackButton>
+                                        </BlackButton>
+                                }
                             </Form>
                         </div>
                     </Col>

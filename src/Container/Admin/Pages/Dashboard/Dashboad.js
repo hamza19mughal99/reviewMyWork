@@ -19,7 +19,7 @@ const Dashboad = () => {
     return (
         <div>
             {
-                loading ? <Loader /> :
+                loading ? <div className='mt-5'> <Loader /> </div> :
                     <Container>
                         <Row className='m-3'>
                             <Col md={6}>

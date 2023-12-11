@@ -147,15 +147,21 @@ const SubmitForm = () => {
     </Modal>
 
     return (
-        <div style={{ backgroundColor: "#eff0f0a1", height: "81vh" }}>
+        <div style={{ backgroundColor: "#eff0f0a1", minHeight: "81vh" }}>
             {modal}
             <Container fluid>
                 {
                     loading || oneLoading ? <div className='my-5'> <Loader /> </div> :
                         <Row className='justify-content-center'>
                             <Col md={8} className='p-0'>
-                                <div className='signup_form'>
+                                <div className='signup_form submit_work' style={{ height: "auto" }}>
                                     <h1 className='text-center'>Submit Work Form</h1>
+
+                                    <p>(allow 3 working weeks for this) All of our reviewers are
+                                        individuals who are working in the field. We would like to
+                                        give them ample time for a review</p>
+
+
                                     <Form onSubmit={submitHandler}>
                                         <Row>
                                             <Col md={12}>
@@ -205,6 +211,25 @@ const SubmitForm = () => {
                                         </div>
                                     </Form>
                                 </div>
+
+                                <p style={{ textAlign: "center", fontWeight: "500", marginBottom: "50px" }}>
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+                                    euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad
+                                    minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut
+                                    aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in
+                                    vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis
+                                    at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril
+                                    delenit augue duis dolore te feugait nulla facilisi.
+                                    <br />
+                                    <br />
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+                                    euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad
+                                    minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut
+                                    aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in
+                                    vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis
+                                    at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril
+                                    delenit augue duis dolore te feugait nulla facilisi.
+                                </p>
                             </Col>
                         </Row>
                 }

@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { AuthLogin } from '../../../Redux/Action/auth';
 import { errorNotify, successNotify } from '../../../Util/Toast';
+import SpinLoader from '../../../Util/SpinLoader';
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -103,14 +104,13 @@ const Login = () => {
 
                                 <Row>
                                     <Col md={4}>
-                                        <BlackButton type="submit">
-                                            {
-                                                loading ? 'Loading...' : <>
+                                        {
+                                            loading ? <SpinLoader /> :
+                                                <BlackButton type="submit">
                                                     Login
                                                     <img src='/images/btn_arrow_img.png' alt='' />
-                                                </>
-                                            }
-                                        </BlackButton>
+                                                </BlackButton>
+                                        }
                                     </Col>
                                 </Row>
                             </Form>

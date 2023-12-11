@@ -15,7 +15,7 @@ import ArtistLayout from "./Layout/ArtistLayout";
 import ReviewerLayout from "./Layout/ReviewerLayout";
 import AdminLayout from "./Layout/AdminLayout";
 import NotFound from "./Container/Pages/NotFound/NotFound";
-import FileSubmit from "./Container/Artist/Pages/FileSubmit/FileSubmit";
+// import FileSubmit from "./Container/Artist/Pages/FileSubmit/FileSubmit";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -69,7 +69,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/auth" element={<Auth />} />
 
-          <Route path="/artist/submission" element={<FileSubmit />} />
+          {/* <Route path="/artist/submission" element={<FileSubmit />} /> */}
 
           <Route path="*" element={<NotFound />} />
 

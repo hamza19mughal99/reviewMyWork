@@ -99,7 +99,7 @@ const Work = () => {
         <h1>Artist Work Page</h1>
 
         <div className='d-flex justify-content-center my-3'>
-          <WhiteButton onClick={() => navigate('/artist/submission')}> Review My Work
+          <WhiteButton onClick={() => navigate('/artist/form-submit')}> Review My Work
             <img src='/images/btn_arrow_img.png' alt='' /></WhiteButton>
         </div>
         {

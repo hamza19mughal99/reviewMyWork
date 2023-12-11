@@ -9,9 +9,6 @@ const Payment = () => {
     <div className='payment_main'>
       <Container>
         <h1>Payment Page</h1>
-        <h6>(allow 3 working weeks for this) All of our reviewers are
-          individuals who are working in the field. We would like to
-          give them ample time for a thorough review</h6>
 
         <Row className='justify-content-center mb-3'>
           <Col md={4}>
@@ -22,7 +19,7 @@ const Payment = () => {
 
               {/* http://localhost:4000/ */}
               {/* https://rmw-backend.azurewebsites.net/ */}
-              <form action="http://localhost:4000/api/subscription/payment/monthly" method="POST">
+              <form action="https://rmw-backend.azurewebsites.net/api/subscription/payment/monthly" method="POST">
                 <div className='buy_btn'>
                   <BlackButton type={"submit"}>
                     Buy

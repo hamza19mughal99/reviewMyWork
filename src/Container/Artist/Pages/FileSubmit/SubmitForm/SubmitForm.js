@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ArtistWork, OneTimePayment, SubsPayment } from '../../../../../Redux/Action/artist';
 import Loader from '../../../../../Util/Loader';
+import '../FileSubmit.css';
 
 const SubmitForm = () => {
     const dispatch = useDispatch();

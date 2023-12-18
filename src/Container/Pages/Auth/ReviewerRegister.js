@@ -8,8 +8,10 @@ import { errorNotify } from '../../../Util/Toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { AuthRegister } from '../../../Redux/Action/auth';
 import { useNavigate } from 'react-router-dom';
-import { TiTick } from "react-icons/ti"
+import { TiTick } from "react-icons/ti";
+import Select from 'react-select'
 import SpinLoader from '../../../Util/SpinLoader';
+import { ProfessionGet } from '../../../Redux/Action/admin';
 
 const ReviewerRegister = () => {
 
@@ -25,8 +27,10 @@ const ReviewerRegister = () => {
         links: ''
     }]);
     const [modalStatus, setModalStatus] = useState(false)
+    const [profession, setProfession] = useState(null)
 
     const { loading, getRegisterData, error } = useSelector((state) => state.registerData)
+    const { getProfessionData } = useSelector((state) => state.getAllProfessionData)
 
     const loginUser = JSON.parse(localStorage.getItem("user"));
 
@@ -64,6 +68,17 @@ const ReviewerRegister = () => {
         }
     }, [error, getRegisterData])
 
+    useEffect(() => {
+        dispatch(ProfessionGet())
+    }, [])
+
+    const professionOptions = getProfessionData?.ProfessionGet?.map((p) => {
+        return {
+            value: p._id,
+            label: p.professionName
+        }
+    })
+
     const inputHandler = (e) => {
         setRegister({
             ...register,
@@ -77,14 +92,14 @@ const ReviewerRegister = () => {
         let emptyPreviousWork = previousWork.some((v) => v.links.length === 0)
 
         if (register.fullName.length === 0 || register.email.length === 0 || register.password.length === 0
-            || register.about.length === 0 || emptyPreviousWork) {
+            || register.about.length === 0 || !profession || emptyPreviousWork) {
             errorNotify("Please filled up all fields")
             return
         }
 
         let data = {
             ...register,
-            profession: '',
+            profession: profession.value,
             previousWork,
             role: "reviewer"
         }
@@ -163,6 +178,12 @@ const ReviewerRegister = () => {
                                     ))}
                                     <p onClick={handleAddMore}>+ Add More</p>
                                 </Form.Group>
+
+                                <div className="mb-3">
+                                    <Form.Label>Select Profession</Form.Label>
+                                    <Select options={professionOptions} placeholder="select profession"
+                                        className='profession_bg' onChange={(v) => setProfession(v)} />
+                                </div>
 
                                 <Input type="textarea" rows={3} label="In a few words tell us about yourself"
                                     name='about' value={register.about} onChange={inputHandler}

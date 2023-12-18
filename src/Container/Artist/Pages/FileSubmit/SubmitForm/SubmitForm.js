@@ -16,9 +16,11 @@ const SubmitForm = () => {
     const searchParams = new URLSearchParams(location.search);
     const isSuccess = searchParams.get('success');
     const isMonthly = searchParams.get('payment');
+    const planId = searchParams.get('planId');
     const [showModal, setShowModal] = useState(false)
 
     let userFound = JSON.parse(localStorage.getItem('user'))
+    console.log(userFound)
     // const isSubmission = JSON.parse(localStorage.getItem('isSubmission'))
 
     const [workForm, setWorkForm] = useState({
@@ -27,6 +29,7 @@ const SubmitForm = () => {
     })
     const [fileType, setFileType] = useState('mp4')
     const [fileSelect, setFileSelect] = useState(null)
+    const [fileDetailed, setFileDetailed] = useState('')
 
     const { loading: postLoading, artistWorkData, error: postError } = useSelector((state) => state.postArtistWork)
     const { loading, subPayData } = useSelector((state) => state.postSubscription)
@@ -34,12 +37,12 @@ const SubmitForm = () => {
 
     useEffect(() => {
         if (!userFound.user.paymentStatus && isSuccess && isMonthly === 'monthly') {
-            let data = { artistId: userFound?.user?._id }
+            let data = { artistId: userFound?.user?._id, planId: planId }
             dispatch(SubsPayment(data))
         }
 
         else if (!userFound.user.paymentStatus && isSuccess && isMonthly === 'onetime') {
-            let data = { artistId: userFound?.user?._id }
+            let data = { artistId: userFound?.user?._id, planId: planId }
             dispatch(OneTimePayment(data))
         }
     }, [])
@@ -107,6 +110,7 @@ const SubmitForm = () => {
             artistData.append("artistId", userFound.user._id)
             artistData.append("fileName", workForm.fileName)
             artistData.append("mpFile", fileSelect)
+            artistData.append("fileDetailed", fileDetailed)
             artistData.append("fileUrl", '')
             artistData.append("fileType", fileType)
 
@@ -122,6 +126,7 @@ const SubmitForm = () => {
             const artistData = new FormData();
             artistData.append("artistId", userFound.user._id)
             artistData.append("fileName", workForm.fileName)
+            artistData.append("fileDetailed", fileDetailed)
             // formData.append("mpFile", '')
             artistData.append("fileUrl", workForm.fileUrl)
             artistData.append("fileType", fileType)
@@ -156,9 +161,12 @@ const SubmitForm = () => {
                         <Row className='justify-content-center'>
                             <Col md={8} className='p-0'>
                                 <div className='signup_form submit_work' style={{ height: "auto" }}>
-                                    <h1 className='text-center'>Submit Work Form</h1>
+                                    <h1 className='text-center'>Submit Work Form ( {userFound?.user?.profession?.professionName} )</h1>
 
-                                    <p>(allow 3 working weeks for this) All of our reviewers are
+                                    <p> {userFound?.user.planType.planName === 'Regular (3 weeks)' ||
+                                        userFound?.user.planType.planName === 'Detailed (3 weeks)' ?
+                                        '(allow 3 working weeks for this)' :
+                                        '(allow 3 working days for this)'}  All of our reviewers are
                                         individuals who are working in the field. We would like to
                                         give them ample time for a review</p>
 
@@ -199,6 +207,14 @@ const SubmitForm = () => {
                                             <Col md={12}>
                                                 <Input type="text" label="Work File Name" name='fileName' value={workForm.fileName} onChange={inputHandler} />
                                             </Col>
+
+                                            {
+                                                (userFound?.user.planType.planName == 'Detailed (3 weeks)' ||
+                                                    userFound?.user.planType.planName == 'Detailed Express (72 hrs)') &&
+                                                <Col md={12}>
+                                                    <Input type="textarea" rows={3} label="Work File Detailed" value={fileDetailed} onChange={(e) => setFileDetailed(e.target.value)} />
+                                                </Col>
+                                            }
                                         </Row>
                                         <div className='d-flex justify-content-end'>
                                             <BlackButton>

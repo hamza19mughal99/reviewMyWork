@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AuthRegister } from '../../../Redux/Action/auth';
 import { useNavigate } from 'react-router-dom';
 import SpinLoader from '../../../Util/SpinLoader';
+import { PlanGet, ProfessionGet } from '../../../Redux/Action/admin';
 
 const ArtistRegister = () => {
     const dispatch = useDispatch();
@@ -20,11 +21,15 @@ const ArtistRegister = () => {
         about: ""
     })
     const [profession, setProfession] = useState(null)
+    const [plan, setPlan] = useState(null)
     const [previousWork, setPreviousWork] = useState([{
         links: ''
     }]);
 
     const { loading, getRegisterData, error } = useSelector((state) => state.registerData)
+    const { getProfessionData } = useSelector((state) => state.getAllProfessionData)
+    const { getPlanData } = useSelector((state) => state.getAllPlanData)
+
     const loginUser = JSON.parse(localStorage.getItem("user"));
 
     useEffect(() => {
@@ -63,11 +68,24 @@ const ArtistRegister = () => {
         }
     }, [error, getRegisterData])
 
-    const options = [
-        { value: 'Singer', label: 'Singer' },
-        { value: 'Musician', label: 'Musician' },
-        { value: 'Dancer', label: 'Dancer' }
-    ]
+    useEffect(() => {
+        dispatch(ProfessionGet())
+        dispatch(PlanGet())
+    }, [])
+
+    const professionOptions = getProfessionData?.ProfessionGet?.map((p) => {
+        return {
+            value: p._id,
+            label: p.professionName
+        }
+    })
+
+    const planOptions = getPlanData?.PlanGet?.map((p) => {
+        return {
+            value: p._id,
+            label: `${p.planName} - ${p.amount}$`
+        }
+    })
 
     const inputHandler = (e) => {
         setRegister({
@@ -82,7 +100,7 @@ const ArtistRegister = () => {
         let emptyPreviousWork = previousWork.some((v) => v.links.length === 0)
 
         if (register.fullName.length === 0 || register.email.length === 0 || register.password.length === 0
-            || register.about.length === 0 || !profession || emptyPreviousWork) {
+            || register.about.length === 0 || !profession || !plan || emptyPreviousWork) {
             errorNotify("Please filled up all fields")
             return
         }
@@ -90,6 +108,7 @@ const ArtistRegister = () => {
         let data = {
             ...register,
             profession: profession.value,
+            planType: plan.value,
             previousWork,
             role: "artist",
             isActive: true
@@ -142,8 +161,14 @@ const ArtistRegister = () => {
 
                                 <div className="mb-3">
                                     <Form.Label>Select Profession</Form.Label>
-                                    <Select options={options} placeholder="select profession"
+                                    <Select options={professionOptions} placeholder="select profession"
                                         className='profession_bg' onChange={(v) => setProfession(v)} />
+                                </div>
+
+                                <div className="mb-3">
+                                    <Form.Label>Select Plan</Form.Label>
+                                    <Select options={planOptions} placeholder="select Plan"
+                                        className='profession_bg' onChange={(v) => setPlan(v)} />
                                 </div>
 
                                 <Input type="textarea" rows={3} label="In a few words tell us about yourself"

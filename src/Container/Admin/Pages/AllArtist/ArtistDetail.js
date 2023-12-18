@@ -70,7 +70,7 @@ const ArtistDetail = () => {
                     ))}
                   </Form.Group>
 
-                  <Input disable={true} type="text" label="Profession" name="password" value={getUserData?.profession} />
+                  <Input disable={true} type="text" label="Profession" value={getUserData?.profession?.professionName} />
                   <Input type="textarea" rows={3} label="In a few words tell us about yourself"
                     name='about' value={getUserData?.about} disable={true}
                   />

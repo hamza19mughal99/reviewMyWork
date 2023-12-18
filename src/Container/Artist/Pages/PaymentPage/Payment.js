@@ -5,20 +5,19 @@ import BlackButton from '../../../../Component/Button/BlackButton';
 
 const Payment = () => {
 
+  let userFound = JSON.parse(localStorage.getItem('user'))
+
   return (
     <div className='payment_main'>
       <Container>
         <h1>Payment Page</h1>
 
         <Row className='justify-content-center mb-3'>
-          <Col md={4}>
+          {/* <Col md={4}>
             <div className='package_main'>
               <h5>Subscription</h5>
               <span>$59/month</span>
               <b>unlimted Reviews</b>
-
-              {/* http://localhost:4000/ */}
-              {/* https://rmw-backend.azurewebsites.net/ */}
               <form action="https://rmw-backend.azurewebsites.net/api/subscription/payment/monthly" method="POST">
                 <div className='buy_btn'>
                   <BlackButton type={"submit"}>
@@ -28,15 +27,15 @@ const Payment = () => {
                 </div>
               </form>
             </div>
-          </Col>
-          <Col md={4}>
+          </Col> */}
+          <Col md={5}>
             <div className='package_main'>
-              <h5>One Time Payment</h5>
-              <span>$159/month</span>
+              <h5>{userFound?.user?.planType.planName}</h5>
+              <span>{userFound?.user?.planType.amount}$</span>
 
               {/* http://localhost:4000/ */}
               {/* https://rmw-backend.azurewebsites.net/ */}
-              <form action="https://rmw-backend.azurewebsites.net/api/subscription/payment/onetime" method="POST">
+              <form action={`https://rmw-backend.azurewebsites.net/api/subscription/payment/onetime?planId=${userFound?.user?.planType?._id}`} method="POST">
                 <div className='buy_btn'>
                   <BlackButton type={"submit"}>
                     Buy

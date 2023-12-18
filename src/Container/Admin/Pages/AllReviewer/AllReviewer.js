@@ -27,6 +27,20 @@ const AllReviewer = () => {
     { name: 'fullName', label: "Full Name" },
     { name: "email", label: "Email" },
     {
+      name: "profession", label: 'Profession',
+      options: {
+        customBodyRender: (value) => {
+          return (
+            <>
+              {
+                value && <div className='yes_div'>{value?.professionName}</div>
+              }
+            </>
+          );
+        },
+      },
+    },
+    {
       name: "isActive", label: 'is Approve',
       options: {
         customBodyRender: (value) => {

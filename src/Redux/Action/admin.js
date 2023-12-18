@@ -119,3 +119,51 @@ export const AllPaymentGetData = () => async (dispatch) => {
         });
     }
 };
+
+export const ProfessionGet = () => async (dispatch) => {
+    try {
+        dispatch({
+            type: "PROFESSION_GET_REQUEST",
+        });
+
+        const { data } = await axios.get("profession-get");
+
+        dispatch({
+            type: "PROFESSION_GET_SUCCESS",
+            payload: data,
+            success: true,
+        });
+    }
+
+    catch (e) {
+        dispatch({
+            type: "PROFESSION_GET_FAILED",
+            payload: e.response.data.message,
+            success: false,
+        });
+    }
+};
+
+export const PlanGet = () => async (dispatch) => {
+    try {
+        dispatch({
+            type: "PLAN_GET_REQUEST",
+        });
+
+        const { data } = await axios.get("plan-get");
+
+        dispatch({
+            type: "PLAN_GET_SUCCESS",
+            payload: data,
+            success: true,
+        });
+    }
+
+    catch (e) {
+        dispatch({
+            type: "PLAN_GET_FAILED",
+            payload: e.response.data.message,
+            success: false,
+        });
+    }
+};

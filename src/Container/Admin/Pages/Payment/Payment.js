@@ -14,6 +14,8 @@ const Payment = () => {
 
   const { loading, getPaymentData } = useSelector((state) => state.getAllPaymentData)
 
+  console.log(getPaymentData)
+
   useEffect(() => {
     dispatch(AllPaymentGetData())
   }, [])
@@ -27,7 +29,22 @@ const Payment = () => {
     },
     { name: 'userEmail', label: "Artist Email" },
     { name: "paymentAmount", label: "Amount" },
-    { name: "paymentType", label: "Payment Type" },
+    {
+      name: "planType", label: 'Plan Type',
+      options: {
+        customBodyRender: (value) => {
+          return (
+            <>
+              {
+                value ?
+                  <div className='yes_div'>{value}</div> :
+                  <div className='no_div'>Not Yet</div>
+              }
+            </>
+          );
+        },
+      },
+    },
     {
       name: "amountType", label: 'Amount Type',
       options: {
@@ -51,7 +68,7 @@ const Payment = () => {
       userEmail: p?.user?.email,
       paymentAmount: p?.paymentAmount,
       amountType: p?.amountType,
-      paymentType: p?.paymentType
+      planType: p?.user?.planType?.planName
     }
   })
 

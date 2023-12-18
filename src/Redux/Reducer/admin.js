@@ -134,3 +134,55 @@ export const AllPaymentGetDataReducer = (state = {}, action) => {
             return state
     }
 }
+
+export const ProfessionGetReducer = (state = {}, action) => {
+    switch (action.type) {
+        case "PROFESSION_GET_REQUEST":
+            return {
+                loading: true,
+                error: false
+            }
+        case "PROFESSION_GET_SUCCESS":
+            return {
+                ...state,
+                loading: false,
+                getProfessionData: action.payload,
+                error: false
+            }
+        case "PROFESSION_GET_FAILED":
+            return {
+                ...state,
+                loading: false,
+                getProfessionData: null,
+                error: action.payload
+            }
+        default:
+            return state
+    }
+}
+
+export const PlanGetReducer = (state = {}, action) => {
+    switch (action.type) {
+        case "PLAN_GET_REQUEST":
+            return {
+                loading: true,
+                error: false
+            }
+        case "PLAN_GET_SUCCESS":
+            return {
+                ...state,
+                loading: false,
+                getPlanData: action.payload,
+                error: false
+            }
+        case "PLAN_GET_FAILED":
+            return {
+                ...state,
+                loading: false,
+                getPlanData: null,
+                error: action.payload
+            }
+        default:
+            return state
+    }
+}

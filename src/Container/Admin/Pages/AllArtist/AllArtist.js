@@ -26,16 +26,29 @@ const AllArtist = () => {
     },
     { name: 'fullName', label: "Full Name" },
     { name: "email", label: "Email" },
-    { name: "profession", label: "Profession" },
     {
-      name: "paymentType", label: 'Payment Type',
+      name: "profession", label: 'profession',
+      options: {
+        customBodyRender: (value) => {
+          return (
+            <>
+              {
+                value && <div className='yes_div'>{value?.professionName}</div>
+              }
+            </>
+          );
+        },
+      },
+    },
+    {
+      name: "planType", label: 'Plan Type',
       options: {
         customBodyRender: (value) => {
           return (
             <>
               {
                 value ?
-                  <div className='yes_div'>{value}</div> :
+                  <div className='yes_div'>{value?.planName}</div> :
                   <div className='no_div'>Not Yet</div>
               }
             </>

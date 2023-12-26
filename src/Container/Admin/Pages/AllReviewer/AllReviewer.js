@@ -62,7 +62,7 @@ const AllReviewer = () => {
         customBodyRender: (_value, tableMeta) => {
           return (
             <div style={{ display: "flex", alignItems: "center", gap: '10px' }}>
-              <BlackButton style={{ fontSize: "15px", padding: "6px 25px", borderRadius: "100px" }} onClick={() => navigate(`/admin/reviewer/${tableMeta.rowData[0]}`)}> Detail
+              <BlackButton style={{ fontSize: "15px", padding: "6px 25px", borderRadius: "100px" }} onClick={() => navigate(`/admin/all-reviewers/reviewer/${tableMeta.rowData[0]}`)}> Detail
               </BlackButton>
             </div>
           );

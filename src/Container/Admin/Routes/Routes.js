@@ -22,7 +22,7 @@ export const adminRoute = [
     },
     {
         component: <ArtistDetail />,
-        path: "/admin/artist/:id"
+        path: "/admin/all-artist/artist/:id"
     },
     {
         component: <AllReviewer />,
@@ -30,7 +30,7 @@ export const adminRoute = [
     },
     {
         component: <ReviewerDetail />,
-        path: "/admin/reviewer/:id"
+        path: "/admin/all-reviewers/reviewer/:id"
     },
     {
         component: <ReviewedWork />,

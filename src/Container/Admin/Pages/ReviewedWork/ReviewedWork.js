@@ -67,8 +67,6 @@ const ReviewedWork = () => {
         },
     ];
 
-    console.log(GetAllWorkData)
-
     const getAllWork = GetAllWorkData && GetAllWorkData?.data?.map((w) => {
         return {
             _id: w?._id,
@@ -79,8 +77,6 @@ const ReviewedWork = () => {
             isPaymentGiven: w?.isPaymentGiven
         }
     })
-
-    // console.log(GetAllWorkData?.data)
 
     return (
         <div className='reviewer_work_page'>

@@ -5,6 +5,7 @@ import Input from '../../../../Component/Input/Input';
 import { errorNotify, successNotify } from '../../../../Util/Toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { EditPassword, EditProfile } from '../../../../Redux/Action/auth';
+import SpinLoader from '../../../../Util/SpinLoader';
 
 const Profile = () => {
 
@@ -121,14 +122,13 @@ const Profile = () => {
                 </Row>
 
                 <div className='d-flex justify-content-end'>
-                  <BlackButton>
-                    {
-                      loading ? 'Loading...' : <>
+                  {
+                    loading ? <SpinLoader /> :
+                      <BlackButton>
                         Save Changes
                         <img src='/images/btn_arrow_img.png' alt='' />
-                      </>
-                    }
-                  </BlackButton>
+                      </BlackButton>
+                  }
                 </div>
               </Form>
             </div>
@@ -152,14 +152,13 @@ const Profile = () => {
                 </Row>
 
                 <div className='d-flex justify-content-end'>
-                  <BlackButton>
-                    {
-                      passwordLoading ? 'Loading...' : <>
+                  {
+                    passwordLoading ? <SpinLoader /> :
+                      <BlackButton>
                         Change Password
                         <img src='/images/btn_arrow_img.png' alt='' />
-                      </>
-                    }
-                  </BlackButton>
+                      </BlackButton>
+                  }
                 </div>
               </Form>
             </div>

@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArtistGet, UserUpdate } from '../../../../Redux/Action/admin';
 import Loader from '../../../../Util/Loader';
+import SpinLoader from '../../../../Util/SpinLoader';
 
 const ArtistDetail = () => {
   const dispatch = useDispatch();
@@ -54,6 +55,14 @@ const ArtistDetail = () => {
             getLoading ? <Loader /> :
               <Col md={12} className='p-0'>
                 <div className='signup_form'>
+
+                  <div className='d-flex justify-content-end'>
+                    <BlackButton onClick={() => navigate(-1)}>
+                      Back
+                      <img src='/images/btn_arrow_img.png' alt='' />
+                    </BlackButton>
+                  </div>
+
                   <h1 className='text-center'>Artist Detail</h1>
 
                   <Input disable={true} type="text" label="Full Name" name='fullName' value={getUserData.fullName} />
@@ -76,14 +85,13 @@ const ArtistDetail = () => {
                   />
                   {
                     !getUserData?.isActive && <div className='d-flex justify-content-end'>
-                      <BlackButton onClick={activeHandler}>
-                        {
-                          loading ? 'Loading...' : <>
+                      {
+                        loading ? <SpinLoader /> :
+                          <BlackButton onClick={activeHandler}>
                             Approve
                             <img src='/images/btn_arrow_img.png' alt='' />
-                          </>
-                        }
-                      </BlackButton>
+                          </BlackButton>
+                      }
                     </div>
                   }
                 </div>

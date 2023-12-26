@@ -38,7 +38,6 @@ const Work = () => {
       name: "score", label: 'Submission Score',
       options: {
         customBodyRender: (value, tableMeta) => {
-          console.log(tableMeta?.rowData)
           return (
             <div>
               {
@@ -90,8 +89,6 @@ const Work = () => {
       status: a.workStatus
     }
   })
-
-  console.log(artistGetWorkData?.data)
 
   return (
     <div className='reviewer_work_page'>

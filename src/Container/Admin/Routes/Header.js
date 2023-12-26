@@ -1,15 +1,12 @@
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./Header.css";
-import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Header = ({ sideBarItems, children }) => {
     const { pathname } = useLocation();
-    const navigate = useNavigate()
 
     const classes = (path) => {
-        if (path === pathname) return "nav_active";
+        if (path.split('/')[2] === pathname.split('/')[2]) return "nav_active";
         return "";
     };
 

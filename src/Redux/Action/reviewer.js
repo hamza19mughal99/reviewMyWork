@@ -1,12 +1,12 @@
 import axios from "axios";
 
-export const ReviewerGetAllWork = () => async (dispatch) => {
+export const ReviewerGetAllWork = (getProfession) => async (dispatch) => {
     try {
         dispatch({
             type: "REVIEWER_GET_ALL_WORK_REQUEST",
         });
 
-        const { data } = await axios.get(`not-reviewed-work`);
+        const { data } = await axios.get(`not-reviewed-work?profession=${getProfession}`);
 
         dispatch({
             type: "REVIEWER_GET_ALL_WORK_SUCCESS",

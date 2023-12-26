@@ -69,8 +69,6 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/auth" element={<Auth />} />
 
-          {/* <Route path="/artist/submission" element={<FileSubmit />} /> */}
-
           <Route path="*" element={<NotFound />} />
 
           {artistRoutes}

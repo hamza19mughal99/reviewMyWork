@@ -10,6 +10,7 @@ import { GiveReview, ReviewerGetAllWork } from '../../../../Redux/Action/reviewe
 import Loader from '../../../../Util/Loader';
 import { cloudUrl } from '../../../../Util/Helper';
 import { errorNotify, successNotify } from '../../../../Util/Toast';
+import SpinLoader from '../../../../Util/SpinLoader';
 
 const Review = () => {
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ const Review = () => {
   }, [giveReviewData])
 
   useEffect(() => {
-    dispatch(ReviewerGetAllWork())
+    dispatch(ReviewerGetAllWork(userFound?.user?.profession?.professionName))
   }, [])
 
   useEffect(() => {
@@ -159,14 +160,13 @@ const Review = () => {
                 />
               </div>
               <div className='d-flex justify-content-center'>
-                <BlackButton type="submit">
-                  {
-                    postLoading ? 'Loading...' : <>
+                {
+                  postLoading ? <SpinLoader /> :
+                    <BlackButton type="submit">
                       Submit Review
                       <img src='/images/btn_arrow_img.png' alt='' />
-                    </>
-                  }
-                </BlackButton>
+                    </BlackButton>
+                }
               </div>
             </Form>
           </>

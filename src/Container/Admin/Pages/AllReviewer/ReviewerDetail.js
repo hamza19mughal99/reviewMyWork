@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ReviewerGet, UserUpdate } from '../../../../Redux/Action/admin';
 import Loader from '../../../../Util/Loader';
+import SpinLoader from '../../../../Util/SpinLoader';
 
 const ReviewerDetail = () => {
   const dispatch = useDispatch();
@@ -54,6 +55,14 @@ const ReviewerDetail = () => {
             getLoading ? <Loader /> :
               <Col md={12} className='p-0'>
                 <div className='signup_form'>
+
+                  <div className='d-flex justify-content-end'>
+                    <BlackButton onClick={() => navigate(-1)}>
+                      Back
+                      <img src='/images/btn_arrow_img.png' alt='' />
+                    </BlackButton>
+                  </div>
+
                   <h1 className='text-center'>Reviewer Detail</h1>
 
                   <Input disable={true} type="text" label="Full Name" name='fullName' value={getUserData.fullName} />
@@ -70,20 +79,19 @@ const ReviewerDetail = () => {
                     ))}
                   </Form.Group>
                   <Input disable={true} type="text" label="Profession" name="password" value={getUserData?.profession?.professionName} />
-                  
+
                   <Input type="textarea" rows={3} label="In a few words tell us about yourself"
                     name='about' value={getUserData?.about} disable={true}
                   />
                   {
                     !getUserData?.isActive && <div className='d-flex justify-content-end'>
-                      <BlackButton onClick={activeHandler}>
-                        {
-                          loading ? 'Loading...' : <>
+                      {
+                        loading ? <SpinLoader /> :
+                          <BlackButton onClick={activeHandler}>
                             Approve
                             <img src='/images/btn_arrow_img.png' alt='' />
-                          </>
-                        }
-                      </BlackButton>
+                          </BlackButton>
+                      }
                     </div>
                   }
                 </div>

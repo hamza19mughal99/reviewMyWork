@@ -14,8 +14,6 @@ const Payment = () => {
 
   const { loading, getPaymentData } = useSelector((state) => state.getAllPaymentData)
 
-  console.log(getPaymentData)
-
   useEffect(() => {
     dispatch(AllPaymentGetData())
   }, [])

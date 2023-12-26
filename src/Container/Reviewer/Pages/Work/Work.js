@@ -19,7 +19,7 @@ const Work = () => {
   const userFound = JSON.parse(localStorage.getItem('user'))
 
   useEffect(() => {
-    dispatch(ReviewerGetAllWork())
+    dispatch(ReviewerGetAllWork(userFound?.user?.profession?.professionName))
     dispatch(ReviewGetWork(userFound?.user?._id))
   }, [])
 

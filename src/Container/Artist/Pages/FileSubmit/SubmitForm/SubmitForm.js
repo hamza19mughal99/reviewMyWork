@@ -8,6 +8,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { ArtistWork, OneTimePayment, SubsPayment } from '../../../../../Redux/Action/artist';
 import Loader from '../../../../../Util/Loader';
 import '../FileSubmit.css';
+import SpinLoader from '../../../../../Util/SpinLoader';
 
 const SubmitForm = () => {
     const dispatch = useDispatch();
@@ -20,7 +21,6 @@ const SubmitForm = () => {
     const [showModal, setShowModal] = useState(false)
 
     let userFound = JSON.parse(localStorage.getItem('user'))
-    console.log(userFound)
     // const isSubmission = JSON.parse(localStorage.getItem('isSubmission'))
 
     const [workForm, setWorkForm] = useState({
@@ -109,6 +109,7 @@ const SubmitForm = () => {
             const artistData = new FormData();
             artistData.append("artistId", userFound.user._id)
             artistData.append("fileName", workForm.fileName)
+            artistData.append("profession", userFound?.user?.profession?.professionName)
             artistData.append("mpFile", fileSelect)
             artistData.append("fileDetailed", fileDetailed)
             artistData.append("fileUrl", '')
@@ -126,6 +127,7 @@ const SubmitForm = () => {
             const artistData = new FormData();
             artistData.append("artistId", userFound.user._id)
             artistData.append("fileName", workForm.fileName)
+            artistData.append("profession", userFound?.user?.profession?.professionName)
             artistData.append("fileDetailed", fileDetailed)
             // formData.append("mpFile", '')
             artistData.append("fileUrl", workForm.fileUrl)
@@ -217,14 +219,13 @@ const SubmitForm = () => {
                                             }
                                         </Row>
                                         <div className='d-flex justify-content-end'>
-                                            <BlackButton>
-                                                {
-                                                    postLoading ? 'Loading...' : <>
+                                            {
+                                                postLoading ? <SpinLoader /> :
+                                                    <BlackButton>
                                                         Create
                                                         <img src='/images/btn_arrow_img.png' alt='' />
-                                                    </>
-                                                }
-                                            </BlackButton>
+                                                    </BlackButton>
+                                            }
                                         </div>
                                     </Form>
                                 </div>

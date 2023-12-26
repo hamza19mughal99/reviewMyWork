@@ -100,7 +100,7 @@ const Login = () => {
                                     placeholder="Enter email Address" value={login.email} onChange={inputHandler} />
                                 <Input label="Password" type="password" name="password"
                                     placeholder="Enter Password" value={login.password} onChange={inputHandler} />
-                                <h6>Forgot Password?</h6>
+                                {/* <h6>Forgot Password?</h6> */}
 
                                 <Row>
                                     <Col md={4}>

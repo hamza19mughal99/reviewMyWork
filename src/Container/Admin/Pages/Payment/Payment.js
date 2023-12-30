@@ -1,15 +1,12 @@
+import React, { useEffect } from 'react';
 import { Container } from '@mui/material';
-import React, { useEffect } from 'react'
 import MuiDataTable from '../../../../Component/MuiDataTables/MuiDataTables';
-import BlackButton from '../../../../Component/Button/BlackButton';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { AllPaymentGetData } from '../../../../Redux/Action/admin';
 import Loader from '../../../../Util/Loader';
 import './Payment.css';
 
 const Payment = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { loading, getPaymentData } = useSelector((state) => state.getAllPaymentData)
@@ -25,6 +22,7 @@ const Payment = () => {
         display: false,
       },
     },
+    { name: 'fullName', label: "Full Name" },
     { name: 'userEmail', label: "Artist Email" },
     { name: "paymentAmount", label: "Amount" },
     {
@@ -64,6 +62,7 @@ const Payment = () => {
   const paymentDataArray = getPaymentData?.allPayment?.payment.map((p) => {
     return {
       userEmail: p?.user?.email,
+      fullName: p?.user?.fullName,
       paymentAmount: p?.paymentAmount,
       amountType: p?.amountType,
       planType: p?.user?.planType?.planName
@@ -82,7 +81,7 @@ const Payment = () => {
                 <h3>$ {getPaymentData?.allPayment?.earning}</h3>
               </div>
               <div className='payment_taken'>
-                <h4>Spend:</h4>
+                <h4>Spent:</h4>
                 <h3>$ {getPaymentData?.allPayment?.spend}</h3>
               </div>
             </div>

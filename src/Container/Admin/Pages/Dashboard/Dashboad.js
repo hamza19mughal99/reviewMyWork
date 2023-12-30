@@ -34,7 +34,7 @@ const Dashboad = () => {
                             <Col md={6}>
                                 <div className='dashboard_box make_red'>
                                     <div>
-                                        <h2>Total Spend</h2>
+                                        <h2>Total Spent</h2>
                                         <h4>$ {getDashData?.dashboard?.spend}</h4>
                                     </div>
                                     <div> <FaDollarSign /> </div>

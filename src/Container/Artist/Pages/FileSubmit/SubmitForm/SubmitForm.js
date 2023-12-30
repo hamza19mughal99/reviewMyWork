@@ -36,12 +36,12 @@ const SubmitForm = () => {
     const { loading: oneLoading, oneTimeData } = useSelector((state) => state.postOneTimePayment)
 
     useEffect(() => {
-        if (!userFound.user.paymentStatus && isSuccess && isMonthly === 'monthly') {
-            let data = { artistId: userFound?.user?._id, planId: planId }
-            dispatch(SubsPayment(data))
-        }
+        // if (!userFound.user.paymentStatus && isSuccess && isMonthly === 'monthly') {
+        //     let data = { artistId: userFound?.user?._id, planId: planId }
+        //     dispatch(SubsPayment(data))
+        // }
 
-        else if (!userFound.user.paymentStatus && isSuccess && isMonthly === 'onetime') {
+        if (!userFound.user.paymentStatus && isSuccess && isMonthly === 'onetime') {
             let data = { artistId: userFound?.user?._id, planId: planId }
             dispatch(OneTimePayment(data))
         }
@@ -165,10 +165,13 @@ const SubmitForm = () => {
                                 <div className='signup_form submit_work' style={{ height: "auto" }}>
                                     <h1 className='text-center'>Submit Work Form ( {userFound?.user?.profession?.professionName} )</h1>
 
-                                    <p> {userFound?.user.planType.planName === 'Regular (3 weeks)' ||
+                                    <p>
+                                        {/* {userFound?.user.planType.planName === 'Regular (3 weeks)' ||
                                         userFound?.user.planType.planName === 'Detailed (3 weeks)' ?
                                         '(allow 3 working weeks for this)' :
-                                        '(allow 3 working days for this)'}  All of our reviewers are
+                                        '(allow 3 working days for this)'}   */}
+
+                                        All of our reviewers are
                                         individuals who are working in the field. We would like to
                                         give them ample time for a review</p>
 
@@ -210,13 +213,13 @@ const SubmitForm = () => {
                                                 <Input type="text" label="Work File Name" name='fileName' value={workForm.fileName} onChange={inputHandler} />
                                             </Col>
 
-                                            {
+                                            {/* {
                                                 (userFound?.user.planType.planName == 'Detailed (3 weeks)' ||
                                                     userFound?.user.planType.planName == 'Detailed Express (72 hrs)') &&
                                                 <Col md={12}>
                                                     <Input type="textarea" rows={3} label="Work File Detailed" value={fileDetailed} onChange={(e) => setFileDetailed(e.target.value)} />
                                                 </Col>
-                                            }
+                                            } */}
                                         </Row>
                                         <div className='d-flex justify-content-end'>
                                             {

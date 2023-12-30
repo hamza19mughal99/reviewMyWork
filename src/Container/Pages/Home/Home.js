@@ -36,11 +36,8 @@ const Home = () => {
                     more importantly working <br />
                     <span>professional</span>
                 </h1>
-            </div>
-
-            <div className='review_btn'>
-                <button onClick={artistHandler}>
-                    Review my work <img src='/images/btn_arrow.png' alt='' />
+                <button onClick={artistHandler} className='home_banner_btn'>
+                    Review my work <img src='/images/btn_arrow_black.png' alt='' />
                 </button>
             </div>
 

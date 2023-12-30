@@ -34,6 +34,14 @@
     font-size: 16px !important;
 }
 
+.tss-bd2lw8-MUIDataTableHeadCell-sortActive{
+    color: #fff !important;
+}
+
+.css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root.Mui-active .MuiTableSortLabel-icon{
+    color: #fff !important;
+}
+
 table>tbody>tr {
     border-radius: 3px;
     box-shadow: 0px 3px 10px 0px rgba(119, 119, 119, 0.1);

@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .banner_main h1 {
@@ -42,6 +43,28 @@
     width: 15px;
 }
 
+.home_banner_btn {
+    background-color: transparent;
+    border: none;
+    color: #000;
+    padding: 12px 30px 20px 30px;
+    background-size: 100% 100%;
+    background-image: url('/public/images/white_btn_bg.png');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+.home_banner_btn img {
+    width: 15px;
+}
+
+
 .box_main {
     background-color: #fff;
     border-radius: 15px;
@@ -56,11 +79,11 @@
     transition: all 0.5s ease-in-out;
 }
 
-.box_main:hover{
+.box_main:hover {
     transform: scale(1.1);
 }
 
-.box_main.second_box{
+.box_main.second_box {
     height: fit-content;
     top: 0;
 }
@@ -74,7 +97,7 @@
     font-size: 17px;
 }
 
-.box_main img  {
+.box_main img {
     height: 200px;
     width: 100%;
     object-fit: cover;
@@ -85,7 +108,7 @@
     transition: all 0.3s ease;
 }
 
-.box_main:hover img{
+.box_main:hover img {
     transform: rotate(2deg);
 }
 

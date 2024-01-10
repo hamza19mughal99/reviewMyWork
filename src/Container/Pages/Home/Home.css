@@ -1,12 +1,15 @@
 .banner_main {
     /* background-image: url('/public/images/main_banner_bg.jpg'); */
-    background-image: url('/public/images/bottom_bg.jpg');
+    /* background-image: url('/public/images/bottom_bg.jpg'); */
     background-size: cover;
     height: 88vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    background-color: #191919;
+    background-image: linear-gradient(147deg, #302e34 0%, #000000 74%);
 }
 
 .banner_main h1 {
@@ -121,6 +124,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    background-color: #302e34;
+    background-image: linear-gradient(320deg, #191919 0%, #000000 74%);
 }
 
 .footer_banner button {

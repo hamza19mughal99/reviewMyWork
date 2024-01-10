@@ -132,8 +132,9 @@ const ReviewerRegister = () => {
                 <TiTick style={{ fontSize: "60px", color: "green" }} />
                 <div>
                     <h5 style={{ fontSize: "25px", fontWeight: "700", color: "green" }}>Registered Successfully!!</h5>
-                    <p style={{ fontSize: "18px", fontWeight: "600", marginBottom: "0" }}>you will be reviewed by Admin. Once Admin approved you account
-                        you will get email and then you can access your account</p>
+                    <p style={{ fontSize: "18px", fontWeight: "600", marginBottom: "0" }}>
+                        Thank you for submitting to become part of our review team.  An admin from our team will review your request and will be in contact shortly.
+                    </p>
 
                     <div className='d-flex justify-content-center mt-4'>
                         <WhiteButton onClick={backHandler}>
@@ -153,7 +154,7 @@ const ReviewerRegister = () => {
                 <Row>
                     <Col md={6} className='p-0'>
                         <div className='signup_left'>
-                            <img src='/images/artist_signup.png' alt='' />
+                            {/* <img src='/images/artist_signup.png' alt='' /> */}
                         </div>
                     </Col>
 

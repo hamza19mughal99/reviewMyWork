@@ -1,46 +1,47 @@
-.signup_left img{
+.signup_left img {
     height: 100%;
     width: 100%;
 }
 
-.signup_form{
+.signup_form {
     /* background-color: #eff0f0a1; */
     padding: 50px 80px;
     height: 100%;
 }
 
-.signup_form h1{
+.signup_form h1 {
     font-size: 40px;
     font-weight: 700;
     margin-bottom: 20px;
 }
 
-.signup_form .form-label{
+.signup_form .form-label {
     font-family: 'Open Sans', sans-serif;
     text-transform: capitalize;
     margin-bottom: 3px;
     font-weight: 600;
 }
 
-.signup_form .form-label span{
+.signup_form .form-label span {
     color: #bc1e2d;
     font-size: 13px;
     font-weight: 600;
 }
 
-.signup_form input, .signup_form textarea{
+.signup_form input,
+.signup_form textarea {
     background-color: transparent;
     padding: 8px 10px;
     border: 1px solid #0000003d;
 }
 
-.profession_bg .css-13cymwt-control{
+.profession_bg .css-13cymwt-control {
     background-color: transparent !important;
     padding: 2px 0px !important;
     border: 1px solid #0000003d !important;
 }
 
-.signup_form p{
+.signup_form p {
     text-align: end;
     background-color: #000;
     width: fit-content;
@@ -52,11 +53,14 @@
     cursor: pointer;
 }
 
-/* .signup_left{
-    background-color: #eff0f0a1;
-} */
+.signup_left {
+    background-color: #191919;
+    background-image: linear-gradient(147deg, #302e34 0%, #000000 74%);
+    min-height: 87vh;
+    height: 100%;
+}
 
-.google_btn button{
+.google_btn button {
     width: 100%;
     display: flex !important;
     justify-content: center !important;
@@ -65,7 +69,7 @@
     margin-top: 20px !important;
 }
 
-.signup_form h6{
+.signup_form h6 {
     text-align: end;
     font-size: 15px;
     font-weight: 600;

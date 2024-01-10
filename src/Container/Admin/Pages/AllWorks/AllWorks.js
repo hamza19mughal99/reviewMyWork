@@ -4,20 +4,19 @@ import MuiDataTable from '../../../../Component/MuiDataTables/MuiDataTables';
 import BlackButton from '../../../../Component/Button/BlackButton';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { ArtistGet } from '../../../../Redux/Action/admin';
+import { ReviewerGet } from '../../../../Redux/Action/admin';
 import Loader from '../../../../Util/Loader';
-import { Form } from 'react-bootstrap';
 import Select from 'react-select';
-import './AllArtist.css';
+import { Form } from 'react-bootstrap';
 
-const AllArtist = () => {
+const AllWorks = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { loading, getArtistData } = useSelector((state) => state.artistGetData)
+  const { loading, getReviewerData } = useSelector((state) => state.reviewerData)
 
   useEffect(() => {
-    dispatch(ArtistGet())
+    dispatch(ReviewerGet())
   }, [])
 
   const dashboardCols = [
@@ -30,7 +29,7 @@ const AllArtist = () => {
     { name: 'fullName', label: "Full Name" },
     { name: "email", label: "Email" },
     {
-      name: "profession", label: 'profession',
+      name: "profession", label: 'Profession',
       options: {
         customBodyRender: (value) => {
           return (
@@ -44,15 +43,15 @@ const AllArtist = () => {
       },
     },
     {
-      name: "planType", label: 'Plan Type',
+      name: "isActive", label: 'is Approve',
       options: {
         customBodyRender: (value) => {
           return (
             <>
               {
                 value ?
-                  <div className='yes_div'>{value?.planName}</div> :
-                  <div className='no_div'>Not Yet</div>
+                  <div className='yes_div'>Yes</div> :
+                  <div className='no_div'>No</div>
               }
             </>
           );
@@ -65,7 +64,7 @@ const AllArtist = () => {
         customBodyRender: (_value, tableMeta) => {
           return (
             <div style={{ display: "flex", alignItems: "center", gap: '10px' }}>
-              <BlackButton style={{ fontSize: "15px", padding: "6px 25px", borderRadius: "100px" }} onClick={() => navigate(`/admin/all-artist/artist/${tableMeta.rowData[0]}`)}> Detail
+              <BlackButton style={{ fontSize: "15px", padding: "6px 25px", borderRadius: "100px" }} onClick={() => navigate(`/admin/all-reviewers/reviewer/${tableMeta.rowData[0]}`)}> Detail
               </BlackButton>
             </div>
           );
@@ -81,7 +80,7 @@ const AllArtist = () => {
   return (
     <div className='reviewer_work_page'>
       <Container>
-        <h1>All Artist</h1>
+        <h1>All Works</h1>
 
         <div className='filteration mt-4'>
           <div>
@@ -101,12 +100,13 @@ const AllArtist = () => {
             <button>Filter</button>
           </div>
         </div>
+
         {
           loading ? <Loader /> :
-            <MuiDataTable data={getArtistData?.users} columns={dashboardCols} />
+            <MuiDataTable data={getReviewerData?.users} columns={dashboardCols} />
         }
       </Container>
     </div>
   )
 }
-export default AllArtist
+export default AllWorks

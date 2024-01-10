@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReviewerGet } from '../../../../Redux/Action/admin';
 import Loader from '../../../../Util/Loader';
+import { Form } from 'react-bootstrap';
+import Select from 'react-select';
 
 const AllReviewer = () => {
   const navigate = useNavigate();
@@ -71,10 +73,39 @@ const AllReviewer = () => {
     },
   ];
 
+  const options = [{ value: "Artist", label: "Artist" },
+  { value: "Writer", label: "Writer" },
+  { value: "Composer", label: "Composer" }]
+
   return (
     <div className='reviewer_work_page'>
       <Container>
         <h1>All Reviewers</h1>
+
+        <div className='filteration mt-4'>
+          <div>
+            <Form.Label>Start Date</Form.Label>
+            <Form.Control type="date" />
+          </div>
+          <div>
+            <Form.Label>End Date</Form.Label>
+            <Form.Control type="date" />
+          </div>
+          <div>
+            <Form.Label>Profession</Form.Label>
+            <Select options={options} placeholder="select profession"
+              className='profession_bg' />
+          </div>
+          <div>
+            <Form.Label>isApprove</Form.Label>
+            <Select options={[{value: "Yes", label: "Yes"},{value: "No", label: "No"}]} placeholder="select Approve"
+              className='profession_bg' />
+          </div>
+          <div>
+            <button>Filter</button>
+          </div>
+        </div>
+
         {
           loading ? <Loader /> :
             <MuiDataTable data={getReviewerData?.users} columns={dashboardCols} />

@@ -53,7 +53,7 @@ const Home = () => {
                         </div>
                     </Col>
                     <Col md={4}>
-                        <div className='box_main second_box'>
+                        <div className='box_main'>
                             <img src='/images/box2.png' alt='' />
                             <p style={{ color: "#000", fontWeight: "500" }}>Our reviewers are the best of the bunch. Beyond their previous experience,
                                 they've been selected for their knowledge ofthe movies, music and

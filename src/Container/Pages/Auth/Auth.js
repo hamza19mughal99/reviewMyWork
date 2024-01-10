@@ -40,7 +40,7 @@ const Auth = () => {
                 <Row className='align-items-center'>
                     <Col md={6} className='p-0'>
                         <div className='signup_left'>
-                            <img src='/images/login_left.png' alt='' style={{ height: "87vh", objectFit: "cover" }} />
+                            {/* <img src='/images/login_left.png' alt='' style={{ height: "87vh", objectFit: "cover" }} /> */}
                         </div>
                     </Col>
 

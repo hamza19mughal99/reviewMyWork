@@ -1,0 +1,30 @@
+.filteration{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.filteration .profession_bg{
+    background-color: #fff;
+}
+
+.filteration .profession_bg .css-13cymwt-control{
+    padding: 0 !important;
+    border: none !important;
+}
+
+.filteration .form-label{
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.filteration button{
+    background-color: #000;
+    color: #fff;
+    padding: 8px 40px;
+    border: none;
+    font-weight: 500;
+    border-radius: 5px;
+}

@@ -142,8 +142,9 @@ const SubmitForm = () => {
         </Modal.Header>
         <Modal.Body className='loginModal'>
             <h5>Your Work has been Created!!</h5>
-            <p>Right Now the status of work is <span>Pending</span> and it is <span>hide</span> to
-                Reviewer. For Review your work you need to do <span>Payment</span>.</p>
+            <p>Thank you for submitting your work. The status of work is <span>Pending</span>
+                Once you done your <span>payment</span>. One of our team members will review your work
+                and assign it for review.</p>
 
             <div className='d-flex justify-content-center mt-5'>
                 <BlackButton onClick={() => navigate('/artist/payment')}>

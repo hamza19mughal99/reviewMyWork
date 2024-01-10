@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../../../../Util/Loader';
 import { ReviewGetAllWork } from '../../../../Redux/Action/reviewer';
 import axios from 'axios';
+import { Form } from 'react-bootstrap';
+import Select from 'react-select';
 
 const ReviewedWork = () => {
     const navigate = useNavigate();
@@ -81,8 +83,19 @@ const ReviewedWork = () => {
     return (
         <div className='reviewer_work_page'>
             <Container>
-                <h1>Reviewed Work</h1>
+                <h1>Reviewer Payment</h1>
                 <p className='text-center'>List of Reviewer who reviewed the Artist work</p>
+
+                <div className='filteration mt-4'>
+                    <div>
+                        <Form.Label>Payment</Form.Label>
+                        <Select options={[{ value: "Yes", label: "Yes" }, { value: "No", label: "No" }]} placeholder="select Payment"
+                            className='profession_bg' />
+                    </div>
+                    <div>
+                        <button>Filter</button>
+                    </div>
+                </div>
                 {
                     loading ? <Loader /> :
                         <MuiDataTable data={getAllWork} columns={dashboardCols} />

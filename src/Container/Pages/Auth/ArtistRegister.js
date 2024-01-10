@@ -122,7 +122,7 @@ const ArtistRegister = () => {
                 <Row>
                     <Col md={6} className='p-0'>
                         <div className='signup_left'>
-                            <img src='/images/artist_signup.png' alt='' />
+                            {/* <img src='/images/artist_signup.png' alt='' /> */}
                         </div>
                     </Col>
 

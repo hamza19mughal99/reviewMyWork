@@ -61,17 +61,29 @@ const Work = () => {
       }
     },
     {
-      name: "isReviewed", label: 'Review Details',
+      name: "isReviewed", label: 'isReviewed',
       options: {
         customBodyRender: (value, tableMeta) => {
           return (
             <div style={{ display: "flex", alignItems: "center", gap: '10px' }}>
               {value ?
-                <BlackButton onClick={() => downloadPdf(tableMeta?.rowData[0])}> View
-                  <img src='/images/btn_arrow_img.png' alt='' /> </BlackButton>
+                <p style={{ color: "green", marginBottom: "0" }}>Yes</p>
                 :
-                <p style={{ color: "red" }}>Not Reviewed Yet!</p>
+                <p style={{ color: "red", marginBottom: "0" }}>No</p>
               }
+            </div>
+          );
+        },
+      },
+    },
+    {
+      name: "View", label: 'View',
+      options: {
+        customBodyRender: (value, tableMeta) => {
+          return (
+            <div style={{ display: "flex", alignItems: "center", gap: '10px' }}>
+              <BlackButton onClick={() => downloadPdf(tableMeta?.rowData[0])}>
+                <img src='/images/btn_arrow_img.png' alt='' /> </BlackButton>
             </div>
           );
         },

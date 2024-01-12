@@ -27,7 +27,7 @@ const SubmitForm = () => {
         fileName: '',
         fileUrl: ''
     })
-    const [fileType, setFileType] = useState('mp4')
+    const [fileType, setFileType] = useState('fileLink')
     const [fileSelect, setFileSelect] = useState(null)
     const [fileDetailed, setFileDetailed] = useState('')
 
@@ -100,7 +100,7 @@ const SubmitForm = () => {
     const submitHandler = (e) => {
         e.preventDefault();
 
-        if (fileType === 'mp4') {
+        if (fileType === 'fileLink') {
             if (workForm.fileName.length === 0 || !fileSelect) {
                 errorNotify("Please filled up fields")
                 return
@@ -155,6 +155,30 @@ const SubmitForm = () => {
         </Modal.Body>
     </Modal>
 
+    const handleFileSelect = (e) => {
+        const file = e.target.files[0];
+
+        if (file) {
+            const allowedTypes = ['application/pdf', 'audio/mpeg', 'image/png', 'text/plain', 'video/mp4'];
+            const maxSizeInBytes = 5 * 1024 * 1024;
+
+            if (allowedTypes.includes(file.type) && file.size <= maxSizeInBytes) {
+                setFileSelect(file);
+            }
+            else {
+                let errorMessage = 'Invalid file. ';
+                if (!allowedTypes.includes(file.type)) {
+                    errorMessage += 'Please select a PDF, MP3, MP4, PNG, or TXT file. ';
+                }
+                if (file.size > maxSizeInBytes) {
+                    errorMessage += 'File size should be within 5MB.';
+                }
+                errorNotify(errorMessage);
+                e.target.value = null;
+            }
+        }
+    };
+
     return (
         <div style={{ backgroundColor: "#eff0f0a1", minHeight: "81vh" }}>
             {modal}
@@ -166,16 +190,9 @@ const SubmitForm = () => {
                                 <div className='signup_form submit_work' style={{ height: "auto" }}>
                                     <h1 className='text-center'>Submit Work Form ( {userFound?.user?.profession?.professionName} )</h1>
 
-                                    <p>
-                                        {/* {userFound?.user.planType.planName === 'Regular (3 weeks)' ||
-                                        userFound?.user.planType.planName === 'Detailed (3 weeks)' ?
-                                        '(allow 3 working weeks for this)' :
-                                        '(allow 3 working days for this)'}   */}
-
-                                        All of our reviewers are
+                                    <p> All of our reviewers are
                                         individuals who are working in the field. We would like to
                                         give them ample time for a review</p>
-
 
                                     <Form onSubmit={submitHandler}>
                                         <Row>
@@ -183,10 +200,10 @@ const SubmitForm = () => {
                                                 <div className="mb-3">
                                                     <Form.Check
                                                         inline
-                                                        label="mp4 File"
+                                                        label="Upload File"
                                                         name="fileType"
-                                                        checked={fileType === 'mp4'}
-                                                        value="mp4"
+                                                        checked={fileType === 'fileLink'}
+                                                        value="fileLink"
                                                         type="radio"
                                                         onChange={(e) => setFileType(e.target.value)}
                                                     />
@@ -202,25 +219,19 @@ const SubmitForm = () => {
                                                 </div>
                                             </Col>
                                             {
-                                                fileType === 'mp4' ?
+                                                fileType === 'fileLink' ?
                                                     <Col md={12}>
-                                                        <Input type="file" label="Work File (should be mp4)" onChange={(e) => setFileSelect(e.target.files[0])} />
+                                                        <Input type="file" label="Upload File (PDF, MP3, MP4, PNG, or TXT)"
+                                                            accept=".pdf, .mp3, .mp4, .png, .txt" onChange={handleFileSelect} />
                                                     </Col> :
                                                     <Col md={12}>
-                                                        <Input type="text" label="Work File Url (Live link should be working perfectly)" name='fileUrl' value={workForm.fileUrl} onChange={inputHandler} />
+                                                        <Input type="text" label="Work File Url (Live link should be working perfectly)" name='fileUrl'
+                                                            value={workForm.fileUrl} onChange={inputHandler} />
                                                     </Col>
                                             }
                                             <Col md={12}>
                                                 <Input type="text" label="Work File Name" name='fileName' value={workForm.fileName} onChange={inputHandler} />
                                             </Col>
-
-                                            {/* {
-                                                (userFound?.user.planType.planName == 'Detailed (3 weeks)' ||
-                                                    userFound?.user.planType.planName == 'Detailed Express (72 hrs)') &&
-                                                <Col md={12}>
-                                                    <Input type="textarea" rows={3} label="Work File Detailed" value={fileDetailed} onChange={(e) => setFileDetailed(e.target.value)} />
-                                                </Col>
-                                            } */}
                                         </Row>
                                         <div className='d-flex justify-content-end'>
                                             {
@@ -233,25 +244,6 @@ const SubmitForm = () => {
                                         </div>
                                     </Form>
                                 </div>
-
-                                <p style={{ textAlign: "center", fontWeight: "500", marginBottom: "50px" }}>
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                                    euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad
-                                    minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut
-                                    aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in
-                                    vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis
-                                    at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril
-                                    delenit augue duis dolore te feugait nulla facilisi.
-                                    <br />
-                                    <br />
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                                    euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad
-                                    minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut
-                                    aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in
-                                    vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis
-                                    at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril
-                                    delenit augue duis dolore te feugait nulla facilisi.
-                                </p>
                             </Col>
                         </Row>
                 }

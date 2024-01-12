@@ -1,4 +1,5 @@
 // import FileSubmit from "../Pages/FileSubmit/FileSubmit";
+import FormDetail from "../Pages/FileSubmit/SubmitForm/FormDetail";
 import SubmitForm from "../Pages/FileSubmit/SubmitForm/SubmitForm";
 import Payment from "../Pages/PaymentPage/Payment";
 import Profile from "../Pages/Profile/Profile";
@@ -21,6 +22,10 @@ const artistRoute = [
     {
         component: <SubmitForm />,
         path: "/artist/form-submit"
+    },
+    {
+        component: <FormDetail />,
+        path: "/artist/form-detail/:id"
     },
     {
         component: <ReviewDetail />,

@@ -94,10 +94,17 @@ const Review = () => {
                     Click Here to Watch Live Video URL/Link
                     <img src='/images/btn_arrow_img.png' alt='' style={{ width: "35px" }} />
                   </a>
-                </div> :
-                <div className='react_player'>
-                  <ReactPlayer url={`${cloudUrl}${reviewWork?.mpFile?.filename}`} controls={true} />
                 </div>
+                :
+                <div className='d-flex justify-content-center align-items-center'>
+                  <a href={`${cloudUrl}${reviewWork?.mpFile?.filename}`} target='_blank' className='live_video'>
+                    Click Here to Open File
+                    <img src='/images/btn_arrow_img.png' alt='' style={{ width: "35px" }} />
+                  </a>
+                </div>
+              // <div className='react_player'>
+              //   <ReactPlayer url={`${cloudUrl}${reviewWork?.mpFile?.filename}`} controls={true} />
+              // </div>
             }
 
             <h5>{reviewWork?.fileName}</h5>

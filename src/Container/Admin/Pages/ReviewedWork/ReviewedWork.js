@@ -1,5 +1,5 @@
 import { Container } from '@mui/material';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import MuiDataTable from '../../../../Component/MuiDataTables/MuiDataTables';
 import BlackButton from '../../../../Component/Button/BlackButton';
 import { useNavigate } from 'react-router-dom';
@@ -14,11 +14,18 @@ const ReviewedWork = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    const [isApprove, setIsApprove] = useState('');
+    const [filter, setFilter] = useState([])
+
     const { loading, GetAllWorkData } = useSelector((state) => state.getAllWork)
 
     useEffect(() => {
         dispatch(ReviewGetAllWork())
     }, [])
+
+    useEffect(() => {
+        setFilter(GetAllWorkData?.data)
+    }, [GetAllWorkData])
 
     const workId = (id) => {
         const data = {
@@ -47,9 +54,14 @@ const ReviewedWork = () => {
             options: {
                 customBodyRender: (value, tableMeta) => {
                     return (
-                        <div className='text-center'>
-                            {value ? 'Yes' : 'No'}
-                        </div>
+                        <>
+                            {
+                                value ?
+                                    <div className='yes_div m-auto'>Yes</div> :
+                                    <div className='no_div m-auto'>No</div>
+                            }
+                        </>
+
                     );
                 },
             },
@@ -69,7 +81,7 @@ const ReviewedWork = () => {
         },
     ];
 
-    const getAllWork = GetAllWorkData && GetAllWorkData?.data?.map((w) => {
+    const getAllWork = GetAllWorkData && filter?.map((w) => {
         return {
             _id: w?._id,
             fileName: w?.fileName,
@@ -80,6 +92,19 @@ const ReviewedWork = () => {
         }
     })
 
+    const handleFilter = () => {
+        const filteredData = GetAllWorkData?.data?.filter((user) => {
+
+            const isApproveMatch =
+                !isApprove || user.isPaymentGiven === isApprove.value;
+
+            return isApproveMatch;
+        });
+
+        setFilter(filteredData)
+
+    };
+
     return (
         <div className='reviewer_work_page'>
             <Container>
@@ -89,11 +114,15 @@ const ReviewedWork = () => {
                 <div className='filteration mt-4'>
                     <div>
                         <Form.Label>Payment</Form.Label>
-                        <Select options={[{ value: "Yes", label: "Yes" }, { value: "No", label: "No" }]} placeholder="select Payment"
-                            className='profession_bg' />
+                        <Select options={[{ value: true, label: "Yes" }, { value: false, label: "No" }]}
+                            placeholder="select Payment"
+                            className='profession_bg'
+                            value={isApprove}
+                            onChange={(selectedOption) => setIsApprove(selectedOption)}
+                        />
                     </div>
                     <div>
-                        <button>Filter</button>
+                        <button onClick={handleFilter}>Filter</button>
                     </div>
                 </div>
                 {

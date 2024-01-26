@@ -25,6 +25,10 @@ const AllReviewer = () => {
     dispatch(ReviewerGet())
   }, [])
 
+  const resetHandler = () => {
+    dispatch(ReviewerGet())
+  }
+
   useEffect(() => {
     setFilter(getReviewerData?.users)
   }, [getReviewerData])
@@ -108,8 +112,6 @@ const AllReviewer = () => {
   { value: "Writer", label: "Writer" },
   { value: "Composer", label: "Composer" }]
 
-  console.log(filter)
-
   return (
     <div className='reviewer_work_page'>
       <Container>
@@ -153,6 +155,7 @@ const AllReviewer = () => {
           </div>
           <div>
             <button onClick={handleFilter}>Filter</button>
+            <button onClick={resetHandler} className='mx-2'>Reset</button>
           </div>
         </div>
 

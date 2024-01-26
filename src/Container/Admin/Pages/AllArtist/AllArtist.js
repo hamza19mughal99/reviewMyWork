@@ -29,6 +29,10 @@ const AllArtist = () => {
     setFilter(getArtistData?.users)
   }, [getArtistData])
 
+  const resetHandler = () => {
+    dispatch(ArtistGet())
+  }
+
   const dashboardCols = [
     {
       name: "_id",
@@ -139,6 +143,7 @@ const AllArtist = () => {
           </div>
           <div>
             <button onClick={handleFilter}>Filter</button>
+            <button onClick={resetHandler} className='mx-2'>Reset</button>
           </div>
         </div>
         {

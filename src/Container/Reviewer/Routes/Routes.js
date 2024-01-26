@@ -21,10 +21,10 @@ const reviewerRoute = [
         component: <Thankyou />,
         path: "/reviewer/thankyou"
     },
-    // {
-    //     component: <CardDetails />,
-    //     path: "/reviewer/card-details"
-    // },
+    {
+        component: <CardDetails />,
+        path: "/reviewer/card-details"
+    },
 ]
 
 export default reviewerRoute;

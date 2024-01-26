@@ -23,6 +23,10 @@ const ReviewedWork = () => {
         dispatch(ReviewGetAllWork())
     }, [])
 
+    const resetHandler = () => {
+        dispatch(ReviewGetAllWork())
+    }
+
     useEffect(() => {
         setFilter(GetAllWorkData?.data)
     }, [GetAllWorkData])
@@ -123,6 +127,7 @@ const ReviewedWork = () => {
                     </div>
                     <div>
                         <button onClick={handleFilter}>Filter</button>
+                        <button onClick={resetHandler} className='mx-2'>Reset</button>
                     </div>
                 </div>
                 {

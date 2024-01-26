@@ -1,5 +1,5 @@
+import React, { useEffect, useState } from 'react'
 import { Container } from '@mui/material';
-import React, { useEffect } from 'react'
 import MuiDataTable from '../../../../Component/MuiDataTables/MuiDataTables';
 import BlackButton from '../../../../Component/Button/BlackButton';
 import { useNavigate } from 'react-router-dom';
@@ -13,7 +13,20 @@ const AllWorks = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [selectedProfession, setSelectedProfession] = useState('');
+  const [filter, setFilter] = useState([])
+
   const { loading, getReviewerData } = useSelector((state) => state.reviewerData)
+
+  useEffect(() => {
+    setFilter(getReviewerData?.users)
+  }, [getReviewerData])
+
+  const resetHandler = () => {
+    dispatch(ReviewerGet())
+  }
 
   useEffect(() => {
     dispatch(ReviewerGet())
@@ -77,6 +90,24 @@ const AllWorks = () => {
   { value: "Writer", label: "Writer" },
   { value: "Composer", label: "Composer" }]
 
+  const handleFilter = () => {
+    const filteredData = getReviewerData?.users.filter((user) => {
+      const userCreatedAt = new Date(user.createdAt).getTime();
+
+      const isDateInRange =
+        (!startDate || userCreatedAt >= new Date(startDate).getTime()) &&
+        (!endDate || userCreatedAt <= new Date(endDate).getTime());
+
+      const isProfessionMatch =
+        !selectedProfession || user.profession.professionName === selectedProfession.value;
+
+      return isDateInRange && isProfessionMatch;
+    });
+
+    setFilter(filteredData)
+
+  };
+
   return (
     <div className='reviewer_work_page'>
       <Container>
@@ -85,25 +116,39 @@ const AllWorks = () => {
         <div className='filteration mt-4'>
           <div>
             <Form.Label>Start Date</Form.Label>
-            <Form.Control type="date" />
+            <Form.Control
+              type="date"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+            />
           </div>
           <div>
             <Form.Label>End Date</Form.Label>
-            <Form.Control type="date" />
+            <Form.Control
+              type="date"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+            />
           </div>
           <div>
             <Form.Label>Profession</Form.Label>
-            <Select options={options} placeholder="select profession"
-              className='profession_bg' />
+            <Select
+              options={options}
+              placeholder="Select profession"
+              className='profession_bg'
+              value={selectedProfession}
+              onChange={(selectedOption) => setSelectedProfession(selectedOption)}
+            />
           </div>
           <div>
-            <button>Filter</button>
+            <button onClick={handleFilter}>Filter</button>
+            <button onClick={resetHandler} className='mx-2'>Reset</button>
           </div>
         </div>
 
         {
           loading ? <Loader /> :
-            <MuiDataTable data={getReviewerData?.users} columns={dashboardCols} />
+            <MuiDataTable data={filter} columns={dashboardCols} />
         }
       </Container>
     </div>

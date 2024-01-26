@@ -48,7 +48,7 @@ const Header = () => {
                                                 { userFound?.user?.role === 'admin' ? 'Dashboard' : 'Profile' }
                                             </Dropdown.Item>
                                             {userFound?.user?.role !== 'admin' && <Dropdown.Item onClick={() => profileHandler('work')}>Work</Dropdown.Item>}
-                                            {/* {userFound?.user?.role === 'reviewer' && <Dropdown.Item onClick={() => navigate('/reviewer/card-details')}>Card Details</Dropdown.Item>} */}
+                                            {userFound?.user?.role === 'reviewer' && <Dropdown.Item onClick={() => navigate('/reviewer/card-details')}>Card Details</Dropdown.Item>}
                                             <Dropdown.Item onClick={() => profileHandler('logout')}>Logout</Dropdown.Item>
                                         </Dropdown.Menu>
                                     </Dropdown> :

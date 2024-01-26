@@ -49,7 +49,7 @@ const Payment = () => {
             setLoader(false)
             successNotify("Card Save Successfully!")
             
-            window.location.href = res.data.oauthLink
+            window.location.href = res.data.oauthLink.url
 
         }).catch(() => {
             errorNotify("Error in saving")

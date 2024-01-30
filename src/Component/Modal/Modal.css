@@ -1,0 +1,47 @@
+.success .modal-content, .error .modal-content{
+    border-radius: 25px;
+}
+
+.success .modal-body div, .error .modal-body div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 0;
+}
+
+.success .modal-body img{
+    width: 50px;
+    margin-bottom: 15px;
+}
+
+.success .modal-body svg, .error .modal-body svg{
+    color: red;
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.success .modal-body h2, .error .modal-body h2{
+    font-weight: 600;
+}
+
+.success .modal-body p, .error .modal-body p{
+    color: #484C52;
+    text-align: center;
+    font-weight: 500;
+}
+
+.error .modal-body{
+    text-align: center;
+    padding: 50px 0;
+}
+
+.success .close_btn {
+    font-size: 25px !important;
+    display: flex;
+    justify-content: end;
+    margin-bottom: 0 !important;
+    margin-left: auto;
+    color: #000 !important;
+    cursor: pointer;
+}

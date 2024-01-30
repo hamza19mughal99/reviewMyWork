@@ -16,11 +16,12 @@ const CardDetails = () => {
         <div className='contract_payment'>
             <Container>
                 <div className='contract_payment_main'>
-                    <h2>Card Details</h2>
-                    <p>To get Work Reviewed Payment please add your card details here <br />
-                        (Your Details will be confidentails to everyone)</p>
-
+                    <h2 className='mb-3'>ACCOUNT ONBOARDING DETAILS</h2>
                     <h6>You will get <b>45$</b> per work reviewed approved by Admin</h6>
+                    <p>You need to make a Stripe Onboarding Partner account with Admin so that they can transfer<br />
+                        your amount to your Stripe
+                        save and securely. Make sure add proper and correct details.</p>
+
 
                     <Row className="justify-content-center py-5">
                         <Col md={10}>

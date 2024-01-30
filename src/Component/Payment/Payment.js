@@ -21,38 +21,38 @@ const Payment = () => {
         e.preventDefault();
         setLoader(true)
 
-        if (!stripe || !elements) {
-            setLoader(false)
-            return;
-        }
+        // if (!stripe || !elements) {
+        //     setLoader(false)
+        //     return;
+        // }
 
-        const cardElement = elements.getElement(CardElement)
-        const cardDetail = await stripe.createToken(cardElement)
+        // const cardElement = elements.getElement(CardElement)
+        // const cardDetail = await stripe.createToken(cardElement)
 
-        if (cardDetail.error) {
-            setLoader(false)
-            errorNotify(cardDetail.error.message)
-            return
-        }
+        // if (cardDetail.error) {
+        //     setLoader(false)
+        //     errorNotify(cardDetail.error.message)
+        //     return
+        // }
 
-        const cardObj = {
-            card: cardDetail?.token?.card,
-            id: cardDetail?.token?.id
-        }
+        // const cardObj = {
+        //     card: cardDetail?.token?.card,
+        //     id: cardDetail?.token?.id
+        // }
 
         let data = {
-            token: JSON.stringify(cardObj),
+            // token: JSON.stringify(cardObj),
             reviewerId: userFound?.user?._id
         }
 
         axios.put(`reviewer/card-save`, data).then((res) => {
             setLoader(false)
-            successNotify("Card Save Successfully!")
+            // successNotify("Card Save Successfully!")
             
             window.location.href = res.data.oauthLink.url
 
         }).catch(() => {
-            errorNotify("Error in saving")
+            errorNotify("Error in creating")
         })
     }
 
@@ -65,7 +65,7 @@ const Payment = () => {
         // </div>
         <Form onSubmit={planSubmitHandler}>
             <Form.Group>
-                <CardElement
+                {/* <CardElement
                     className={"mb-3 card_div"}
                     options={{
                         hidePostalCode: true,
@@ -82,12 +82,12 @@ const Payment = () => {
                             },
                         },
                     }}
-                />
-                <div className='d-flex justify-content-end'>
+                /> */}
+                <div className='d-flex justify-content-center'>
                     <BlackButton type="submit">
                         {loader ? <Spinner animation='border' size='sm' /> :
                             <>
-                                Save Details
+                                Click Here to Create Stripe Account
                                 <img src='/images/btn_arrow_img.png' alt='' />
                             </>
                         }

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { errorNotify } from "../../Util/Toast";
 
 export const ArtistGet = () => async (dispatch) => {
     try {
@@ -16,9 +17,12 @@ export const ArtistGet = () => async (dispatch) => {
     }
 
     catch (e) {
+        if (e?.code === "ERR_NETWORK") {
+            errorNotify("Network Error");
+        }
         dispatch({
             type: "ARTIST_GET_FAILED",
-            payload: e.response.data.message,
+            payload: e?.response?.data?.message,
             success: false,
         });
     }
@@ -40,9 +44,12 @@ export const ReviewerGet = () => async (dispatch) => {
     }
 
     catch (e) {
+        if (e?.code === "ERR_NETWORK") {
+            errorNotify("Network Error");
+        }
         dispatch({
             type: "REVIEWER_GET_FAILED",
-            payload: e.response.data.message,
+            payload: e?.response?.data?.message,
             success: false,
         });
     }
@@ -64,9 +71,12 @@ export const UserUpdate = (d) => async (dispatch) => {
     }
 
     catch (e) {
+        if (e?.code === "ERR_NETWORK") {
+            errorNotify("Network Error");
+        }
         dispatch({
             type: "USER_UPDATE_FAILED",
-            payload: e.response.data.message,
+            payload: e?.response?.data?.message,
             success: false,
         });
     }
@@ -88,9 +98,12 @@ export const DashboardGetData = () => async (dispatch) => {
     }
 
     catch (e) {
+        if (e?.code === "ERR_NETWORK") {
+            errorNotify("Network Error");
+        }
         dispatch({
             type: "DASHBOARD_GET_FAILED",
-            payload: e.response.data.message,
+            payload: e?.response?.data?.message,
             success: false,
         });
     }
@@ -112,9 +125,12 @@ export const AllPaymentGetData = () => async (dispatch) => {
     }
 
     catch (e) {
+        if (e?.code === "ERR_NETWORK") {
+            errorNotify("Network Error");
+        }
         dispatch({
             type: "ALL_PAYMENT_GET_FAILED",
-            payload: e.response.data.message,
+            payload: e?.response?.data?.message,
             success: false,
         });
     }
@@ -136,9 +152,12 @@ export const ProfessionGet = () => async (dispatch) => {
     }
 
     catch (e) {
+        if (e?.code === "ERR_NETWORK") {
+            errorNotify("Network Error");
+        }
         dispatch({
             type: "PROFESSION_GET_FAILED",
-            payload: e.response.data.message,
+            payload: e?.response?.data?.message,
             success: false,
         });
     }
@@ -160,9 +179,12 @@ export const PlanGet = () => async (dispatch) => {
     }
 
     catch (e) {
+        if (e?.code === "ERR_NETWORK") {
+            errorNotify("Network Error");
+        }
         dispatch({
             type: "PLAN_GET_FAILED",
-            payload: e.response.data.message,
+            payload: e?.response?.data?.message,
             success: false,
         });
     }

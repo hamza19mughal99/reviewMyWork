@@ -1,4 +1,5 @@
 import axios from "axios";
+import { errorNotify } from "../../Util/Toast";
 
 export const ReviewerGetAllWork = (getProfession) => async (dispatch) => {
     try {
@@ -15,9 +16,12 @@ export const ReviewerGetAllWork = (getProfession) => async (dispatch) => {
         });
     }
     catch (e) {
+        if (e?.code === "ERR_NETWORK") {
+            errorNotify("Network Error");
+        }
         dispatch({
             type: "REVIEWER_GET_ALL_WORK_FAILED",
-            payload: e.response.data.message,
+            payload: e?.response?.data?.message,
             success: false,
         });
     }
@@ -38,9 +42,12 @@ export const GiveReview = (d) => async (dispatch) => {
         });
     }
     catch (e) {
+        if (e?.code === "ERR_NETWORK") {
+            errorNotify("Network Error");
+        }
         dispatch({
             type: "GIVE_REVIEW_FAILED",
-            payload: e.response.data.message,
+            payload: e?.response?.data?.message,
             success: false,
         });
     }
@@ -61,9 +68,12 @@ export const ReviewGetWork = (id) => async (dispatch) => {
         });
     }
     catch (e) {
+        if (e?.code === "ERR_NETWORK") {
+            errorNotify("Network Error");
+        }
         dispatch({
             type: "REVIEW_GET_WORK_FAILED",
-            payload: e.response.data.message,
+            payload: e?.response?.data?.message,
             success: false,
         });
     }
@@ -84,9 +94,12 @@ export const ReviewGetAllWork = () => async (dispatch) => {
         });
     }
     catch (e) {
+        if (e?.code === "ERR_NETWORK") {
+            errorNotify("Network Error");
+        }
         dispatch({
             type: "GET_ALL_WORK_FAILED",
-            payload: e.response.data.message,
+            payload: e?.response?.data?.message,
             success: false,
         });
     }

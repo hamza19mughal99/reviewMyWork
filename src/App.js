@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./Component/Header/Header";
 import Home from "./Container/Pages/Home/Home";
 import Footer from "./Component/Footer/Footer";
@@ -15,9 +15,11 @@ import ArtistLayout from "./Layout/ArtistLayout";
 import ReviewerLayout from "./Layout/ReviewerLayout";
 import AdminLayout from "./Layout/AdminLayout";
 import NotFound from "./Container/Pages/NotFound/NotFound";
+import NoInternetModal from "./Component/Modal/NoInternetModal";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
@@ -25,6 +27,27 @@ function ScrollToTop() {
 }
 
 const App = () => {
+
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+  useEffect(() => {
+    function onlineHandler() {
+      setIsOnline(true);
+    }
+
+    function offlineHandler() {
+      setIsOnline(false);
+    }
+
+    window.addEventListener("online", onlineHandler);
+    window.addEventListener("offline", offlineHandler);
+
+
+    return () => {
+      window.removeEventListener("online", onlineHandler);
+      window.removeEventListener("offline", offlineHandler);
+    };
+  }, []);
 
   const artistRoutes = artistRoute.map((a, i) => (
     <Route key={a.path} path={"/artist"} element={<ArtistLayout />}>
@@ -46,6 +69,8 @@ const App = () => {
 
   return (
     <div>
+      {!isOnline && <NoInternetModal />}
+
       <ToastContainer
         position="top-right"
         autoClose={3000}

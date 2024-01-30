@@ -1,4 +1,5 @@
 import axios from "axios";
+import { errorNotify } from "../../Util/Toast";
 
 export const AuthLogin = (inputData) => async (dispatch) => {
     try {
@@ -14,12 +15,20 @@ export const AuthLogin = (inputData) => async (dispatch) => {
             success: true,
         });
 
-        localStorage.setItem("user", JSON.stringify(data));
+        if (data) {
+            localStorage.setItem("user", JSON.stringify(data));
+        }
     }
     catch (e) {
+        if (e?.code === "ERR_NETWORK") {
+            errorNotify("Network Error");
+        }
+        if (e?.code === "ERR_NETWORK") {
+            errorNotify("Network Error");
+        }
         dispatch({
             type: "LOGIN_FAILED",
-            payload: e.response.data.message,
+            payload: e?.response?.data?.message,
             success: false,
         });
     }
@@ -41,9 +50,12 @@ export const AuthRegister = (d) => async (dispatch) => {
     }
 
     catch (e) {
+        if (e?.code === "ERR_NETWORK") {
+            errorNotify("Network Error");
+        }
         dispatch({
             type: "REGISTER_FAILED",
-            payload: e.response.data.message,
+            payload: e?.response?.data?.message,
             success: false,
         });
     }
@@ -66,9 +78,12 @@ export const EditProfile = (inputData) => async (dispatch) => {
         localStorage.setItem("user", JSON.stringify(data));
     }
     catch (e) {
+        if (e?.code === "ERR_NETWORK") {
+            errorNotify("Network Error");
+        }
         dispatch({
             type: "EDIT_PROFILE_FAILED",
-            payload: e.response.data.message,
+            payload: e?.response?.data?.message,
             success: false,
         });
     }
@@ -89,9 +104,12 @@ export const EditPassword = (inputData) => async (dispatch) => {
         });
     }
     catch (e) {
+        if (e?.code === "ERR_NETWORK") {
+            errorNotify("Network Error");
+        }
         dispatch({
             type: "EDIT_PASSWORD_FAILED",
-            payload: e.response.data.message,
+            payload: e?.response?.data?.message,
             success: false,
         });
     }

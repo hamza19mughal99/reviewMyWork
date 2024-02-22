@@ -167,3 +167,26 @@ export const PlanGet = () => async (dispatch) => {
         });
     }
 };
+
+export const getWorks = () => async (dispatch) => {
+    try {
+        dispatch({
+            type: "GET_WORKS_REQUEST",
+        });
+
+        const { data } = await axios.get("get-all-works");
+
+        dispatch({
+            type: "GET_WORKS_SUCCESS",
+            payload: data,
+            success: true,
+        });
+    }
+    catch (e) {
+        dispatch({
+            type: "GET_WORKS_FAILED",
+            payload: e.response.data.message,
+            success: false,
+        });
+    }
+};

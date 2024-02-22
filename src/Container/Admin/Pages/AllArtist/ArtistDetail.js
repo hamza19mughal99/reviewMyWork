@@ -15,6 +15,7 @@ const ArtistDetail = () => {
   const { id } = useParams()
 
   const [getUserData, setGetUserData] = useState({})
+  const [getUserWork, setGetUserWork] = useState([])
 
   const { loading, getUserUpdateData, error } = useSelector((state) => state.userGetData)
   const { loading: getLoading, getArtistData } = useSelector((state) => state.artistGetData)
@@ -25,8 +26,9 @@ const ArtistDetail = () => {
 
   useEffect(() => {
     if (getArtistData) {
-      let getUser = getArtistData?.users?.filter((u) => u._id === id)
-      setGetUserData(getUser[0])
+      let getUser = getArtistData?.users?.find((u) => u.user._id === id)
+      setGetUserData(getUser.user)
+      setGetUserWork(getUser?.work)
     }
   }, [getArtistData])
 
@@ -46,6 +48,8 @@ const ArtistDetail = () => {
     let data = { id }
     dispatch(UserUpdate(data))
   }
+
+  console.log(getUserWork)
 
   return (
     <div style={{ backgroundColor: "#eff0f0a1" }}>

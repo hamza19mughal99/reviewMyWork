@@ -1,23 +1,44 @@
 import { Container } from '@mui/material';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import MuiDataTable from '../../../../Component/MuiDataTables/MuiDataTables';
 import BlackButton from '../../../../Component/Button/BlackButton';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { ReviewerGet } from '../../../../Redux/Action/admin';
+import { getWorks } from '../../../../Redux/Action/admin';
 import Loader from '../../../../Util/Loader';
 import Select from 'react-select';
 import { Form } from 'react-bootstrap';
+import moment from 'moment';
+import './AllWork.css';
 
 const AllWorks = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [tab, setTab] = useState("all")
 
-  const { loading, getReviewerData } = useSelector((state) => state.reviewerData)
+  const { loading, getAllWorksData } = useSelector((state) => state.getWorksData)
 
   useEffect(() => {
-    dispatch(ReviewerGet())
+    dispatch(getWorks())
   }, [])
+
+  const calculateDate = (plan, createdDate) => {
+    let currentDate = new Date();
+    let parsedCreatedDate = new Date(createdDate);
+
+    if (plan === "Regular Express (72 hrs)" || plan === "Detailed Express (72 hrs)") {
+      parsedCreatedDate.setDate(parsedCreatedDate.getDate() + 3);
+    }
+    else if (plan === "Regular (3 weeks)" || plan === "Detailed (3 weeks)") {
+      parsedCreatedDate.setDate(parsedCreatedDate.getDate() + 21);
+    }
+
+    if (currentDate > parsedCreatedDate) {
+      return { date: moment(parsedCreatedDate).format('L'), isDue: 'yes' };
+    } else {
+      return { date: moment(parsedCreatedDate).format('L'), isDue: 'no' };
+    }
+  }
 
   const dashboardCols = [
     {
@@ -26,16 +47,16 @@ const AllWorks = () => {
         display: false,
       },
     },
-    { name: 'fullName', label: "Full Name" },
-    { name: "email", label: "Email" },
+    { name: 'fileName', label: "File Name" },
     {
-      name: "profession", label: 'Profession',
+      name: "planType", label: 'Plan',
       options: {
         customBodyRender: (value) => {
           return (
             <>
               {
-                value && <div className='yes_div'>{value?.professionName}</div>
+                value ? <div>{value}</div> :
+                  <div> - </div>
               }
             </>
           );
@@ -43,15 +64,59 @@ const AllWorks = () => {
       },
     },
     {
-      name: "isActive", label: 'is Approve',
+      name: "isReviewed", label: 'Reviewed',
       options: {
         customBodyRender: (value) => {
           return (
             <>
               {
-                value ?
-                  <div className='yes_div'>Yes</div> :
-                  <div className='no_div'>No</div>
+                value ? <div className='yes_div'>Yes</div> :
+                  <div className='no_div'> No </div>
+              }
+            </>
+          );
+        },
+      },
+    },
+    {
+      name: "createdAt", label: 'Created Date',
+      options: {
+        customBodyRender: (value) => {
+          return (
+            <div> {moment(value).format('L')} </div>
+          );
+        },
+      },
+    },
+    {
+      name: "planType", label: 'Due',
+      options: {
+        customBodyRender: (value, tableMeta) => {
+          return (
+            <>
+              {
+                tableMeta.rowData[3] ?
+                  <div>
+                    -
+                  </div> :
+                  <div style={calculateDate(value, tableMeta.rowData[4]).isDue === "no" ? { color: "green" } : { color: "red" }}>
+                    {calculateDate(value, tableMeta.rowData[4]).date}
+                  </div>
+              }
+            </>
+          );
+        },
+      },
+    },
+    {
+      name: "paymentGiven", label: 'Payment Done',
+      options: {
+        customBodyRender: (value) => {
+          return (
+            <>
+              {
+                value === "approved" ? <div className='yes_div'>Yes</div> :
+                  <div className='no_div'> No </div>
               }
             </>
           );
@@ -73,37 +138,61 @@ const AllWorks = () => {
     },
   ];
 
-  const options = [{ value: "Artist", label: "Artist" },
-  { value: "Writer", label: "Writer" },
-  { value: "Composer", label: "Composer" }]
+  let WorkAllData;
+  if (tab === "all") {
+    WorkAllData = getAllWorksData?.data?.map((w) => {
+      return {
+        _id: w._id,
+        fileName: w?.fileName,
+        fileType: w?.fileType,
+        isReviewed: w?.isReviewed,
+        createdAt: w?.createdAt,
+        planType: w?.artist?.planType?.planName,
+        paymentGiven: w?.workStatus
+      }
+    })
+  }
+  else if (tab === "reviewed") {
+    WorkAllData = getAllWorksData?.data?.filter((d) => d.isReviewed === true).map((w) => {
+      return {
+        _id: w._id,
+        fileName: w?.fileName,
+        fileType: w?.fileType,
+        isReviewed: w?.isReviewed,
+        createdAt: w?.createdAt,
+        planType: w?.artist?.planType?.planName,
+        paymentGiven: w?.workStatus
+      }
+    })
+  }
+  else if (tab === "waiting") {
+    WorkAllData = getAllWorksData?.data?.filter((d) => d.isReviewed === false).map((w) => {
+      return {
+        _id: w._id,
+        fileName: w?.fileName,
+        fileType: w?.fileType,
+        isReviewed: w?.isReviewed,
+        createdAt: w?.createdAt,
+        planType: w?.artist?.planType?.planName,
+        paymentGiven: w?.workStatus
+      }
+    })
+  }
 
   return (
     <div className='reviewer_work_page'>
       <Container>
         <h1>All Works</h1>
 
-        <div className='filteration mt-4'>
-          <div>
-            <Form.Label>Start Date</Form.Label>
-            <Form.Control type="date" />
-          </div>
-          <div>
-            <Form.Label>End Date</Form.Label>
-            <Form.Control type="date" />
-          </div>
-          <div>
-            <Form.Label>Profession</Form.Label>
-            <Select options={options} placeholder="select profession"
-              className='profession_bg' />
-          </div>
-          <div>
-            <button>Filter</button>
-          </div>
+        <div className='work_tabs'>
+          <button className={tab === "all" && "active"} onClick={() => setTab("all")}>All</button>
+          <button className={tab === "reviewed" && "active"} onClick={() => setTab("reviewed")}>Reviewed</button>
+          <button className={tab === "waiting" && "active"} onClick={() => setTab("waiting")}>Waiting for Review</button>
         </div>
 
         {
           loading ? <Loader /> :
-            <MuiDataTable data={getReviewerData?.users} columns={dashboardCols} />
+            <MuiDataTable data={WorkAllData} columns={dashboardCols} />
         }
       </Container>
     </div>

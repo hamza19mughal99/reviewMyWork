@@ -96,9 +96,9 @@ const Login = () => {
                             <h1>Log In</h1>
 
                             <Form onSubmit={submitHandler}>
-                                <Input label="Email Address" type="email" name='email'
+                                <Input isRequired={true} label="Email Address" type="email" name='email'
                                     placeholder="Enter email Address" value={login.email} onChange={inputHandler} />
-                                <Input label="Password" type="password" name="password"
+                                <Input isRequired={true} label="Password" type="password" name="password"
                                     placeholder="Enter Password" value={login.password} onChange={inputHandler} />
                                 {/* <h6>Forgot Password?</h6> */}
 

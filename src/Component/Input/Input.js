@@ -2,10 +2,10 @@ import React from 'react'
 import './Input.css';
 import { Form } from 'react-bootstrap';
 
-const Input = ({ type, value, name, onChange, placeholder, label, rows, disable }) => {
+const Input = ({ type, value, name, onChange, placeholder, label, rows, disable, isRequired }) => {
     return (
         <Form.Group className="mb-3 input_main">
-            <Form.Label>{label}</Form.Label>
+            <Form.Label>{label} {isRequired ? <span className='req_field'>*</span> : null} </Form.Label>
             {
                 type === "textarea" ? <Form.Control as="textarea" rows={rows}
                     value={value} name={name}

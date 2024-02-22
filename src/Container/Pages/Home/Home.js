@@ -2,6 +2,7 @@ import React from 'react';
 import './Home.css';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { errorNotify } from '../../../Util/Toast';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -11,6 +12,9 @@ const Home = () => {
         if (loginUser) {
             if (loginUser.user.role === 'artist') {
                 navigate("/artist/form-submit")
+            }
+            else{
+                errorNotify("You are already loggedIn")
             }
         }
         else {
@@ -22,6 +26,9 @@ const Home = () => {
         if (loginUser) {
             if (loginUser.user.role === 'reviewer') {
                 navigate("/reviewer/work")
+            }
+            else{
+                errorNotify("You are already loggedIn")
             }
         }
         else {

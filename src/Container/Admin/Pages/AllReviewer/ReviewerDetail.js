@@ -15,6 +15,7 @@ const ReviewerDetail = () => {
   const { id } = useParams()
 
   const [getUserData, setGetUserData] = useState({})
+  const [getUserWork, setGetUserWork] = useState([])
 
   const { loading, getUserUpdateData, error } = useSelector((state) => state.userGetData)
   const { loading: getLoading, getReviewerData } = useSelector((state) => state.reviewerData)
@@ -25,8 +26,9 @@ const ReviewerDetail = () => {
 
   useEffect(() => {
     if (getReviewerData) {
-      let getUser = getReviewerData?.users?.filter((u) => u._id === id)
-      setGetUserData(getUser[0])
+      let getUser = getReviewerData?.users?.find((u) => u.user._id === id)
+      setGetUserData(getUser.user)
+      setGetUserWork(getUser?.work)
     }
   }, [getReviewerData])
 

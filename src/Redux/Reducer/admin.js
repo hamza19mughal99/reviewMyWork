@@ -186,3 +186,29 @@ export const PlanGetReducer = (state = {}, action) => {
             return state
     }
 }
+
+export const getWorksReducer = (state = {}, action) => {
+    switch (action.type) {
+        case "GET_WORKS_REQUEST":
+            return {
+                loading: true,
+                error: false
+            }
+        case "GET_WORKS_SUCCESS":
+            return {
+                ...state,
+                loading: false,
+                getAllWorksData: action.payload,
+                error: false
+            }
+        case "GET_WORKS_FAILED":
+            return {
+                ...state,
+                loading: false,
+                getAllWorksData: null,
+                error: action.payload
+            }
+        default:
+            return state
+    }
+}

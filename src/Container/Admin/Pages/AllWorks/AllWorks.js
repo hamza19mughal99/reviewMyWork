@@ -41,7 +41,7 @@ const AllWorks = () => {
   }
 
   const detailHandler = (id, artistId) => {
-    navigate(`/admin/all-work/work/${id}?getId=${artistId}`)
+    navigate(`/admin/all-works/work/${id}?getId=${artistId}`)
   }
 
   const dashboardCols = [

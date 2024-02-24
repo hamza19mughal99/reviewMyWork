@@ -83,10 +83,11 @@ const Review = () => {
       return;
     }
 
-    else if (userFound?.user?.reviewByDay === 0) {
-      errorNotify("You can only review 3 per day.")
+    else if (submitWork?.score > 10 || submitWork?.score <= 0) {
+      errorNotify("Score must be greater and less/equal to 10")
       return;
     }
+
 
     let data = {
       impression: submitWork?.impression,

@@ -34,11 +34,11 @@ export const adminRoute = [
     },
     {
         component: <ReviewWorkDetail />,
-        path: "/admin/all-review/work/:id"
+        path: "/admin/all-reviewers/work/:id"
     },
     {
         component: <AllWorkDetail />,
-        path: "/admin/all-work/work/:id"
+        path: "/admin/all-works/work/:id"
     },
     {
         component: <AllReviewer />,
@@ -69,11 +69,6 @@ export const adminSideBarItems = [
         title: "Dashboard",
     },
     {
-        path: "/admin/profile",
-        icon: "/images/create_page.png",
-        title: "Profile",
-    },
-    {
         path: "/admin/all-artist",
         icon: "/images/blog_icon.png",
         title: "All Artist",
@@ -84,18 +79,23 @@ export const adminSideBarItems = [
         title: "All Reviewers",
     },
     {
-        path: "/admin/payment",
-        icon: "/images/files_icon.png",
-        title: "All Payments",
-    },
-    {
         path: "/admin/all-works",
         icon: "/images/files_icon.png",
         title: "All Works",
     },
     {
-        path: "/admin/reviewer-payment",
+        path: "/admin/payment",
         icon: "/images/files_icon.png",
-        title: "Reviewer Payment",
-    }
+        title: "All Payments",
+    },
+    {
+        path: "/admin/profile",
+        icon: "/images/create_page.png",
+        title: "Profile",
+    },
+    // {
+    //     path: "/admin/reviewer-payment",
+    //     icon: "/images/files_icon.png",
+    //     title: "Reviewer Payment",
+    // }
 ];

@@ -53,7 +53,7 @@ const ReviewerDetail = () => {
 
   const downloadPdf = (getId) => {
     console.log(getId)
-    navigate(`/admin/all-review/work/${getId}?getId=${id}`);
+    navigate(`/admin/all-reviewers/work/${getId}?getId=${id}`);
   }
 
   const dashboardCols = [

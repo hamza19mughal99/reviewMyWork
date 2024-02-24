@@ -1,7 +1,10 @@
 import AllArtist from "../Pages/AllArtist/AllArtist";
 import ArtistDetail from "../Pages/AllArtist/ArtistDetail";
+import WorkDetail from "../Pages/AllArtist/WorkDetail";
 import AllReviewer from "../Pages/AllReviewer/AllReviewer";
+import ReviewWorkDetail from "../Pages/AllReviewer/ReviewWorkDetail";
 import ReviewerDetail from "../Pages/AllReviewer/ReviewerDetail";
+import AllWorkDetail from "../Pages/AllWorks/AllWorkDetail";
 import AllWorks from "../Pages/AllWorks/AllWorks";
 import Dashboad from "../Pages/Dashboard/Dashboad";
 import Payment from "../Pages/Payment/Payment";
@@ -24,6 +27,18 @@ export const adminRoute = [
     {
         component: <ArtistDetail />,
         path: "/admin/all-artist/artist/:id"
+    },
+    {
+        component: <WorkDetail />,
+        path: "/admin/all-artist/work/:id"
+    },
+    {
+        component: <ReviewWorkDetail />,
+        path: "/admin/all-review/work/:id"
+    },
+    {
+        component: <AllWorkDetail />,
+        path: "/admin/all-work/work/:id"
     },
     {
         component: <AllReviewer />,

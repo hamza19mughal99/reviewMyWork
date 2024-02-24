@@ -74,6 +74,31 @@ export const EditProfile = (inputData) => async (dispatch) => {
     }
 };
 
+export const LoggedInUser = (inputData) => async (dispatch) => {
+    try {
+        dispatch({
+            type: "LOGGED_IN_REQUEST",
+        });
+
+        const { data } = await axios.post("auth/get-current-user", {email: inputData});
+
+        dispatch({
+            type: "LOGGED_IN_SUCCESS",
+            payload: data,
+            success: true,
+        });
+
+        localStorage.setItem("user", JSON.stringify(data));
+    }
+    catch (e) {
+        dispatch({
+            type: "LOGGED_IN_FAILED",
+            payload: e.response.data.message,
+            success: false,
+        });
+    }
+};
+
 export const EditPassword = (inputData) => async (dispatch) => {
     try {
         dispatch({

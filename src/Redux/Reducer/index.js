@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { LoginReducer, RegisterReducer, editPasswordReducer, editProfileReducer } from "./auth";
+import { LoggedInUserReducer, LoginReducer, RegisterReducer, editPasswordReducer, editProfileReducer } from "./auth";
 import {
     AllPaymentGetDataReducer, ArtistGetReducer, DashboardGetReducer, PlanGetReducer,
     ProfessionGetReducer, ReviewerGetReducer, UserUpdatedReducer, getWorksReducer
@@ -12,9 +12,9 @@ const rootReducer = combineReducers({
     //AUTH
     loginData: LoginReducer,
     registerData: RegisterReducer,
-
     getEditProfile: editProfileReducer,
     getEditPassword: editPasswordReducer,
+    getCurrentUserData: LoggedInUserReducer,
 
     //ADMIN
     artistGetData: ArtistGetReducer,

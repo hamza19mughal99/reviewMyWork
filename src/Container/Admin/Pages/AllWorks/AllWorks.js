@@ -40,9 +40,19 @@ const AllWorks = () => {
     }
   }
 
+  const detailHandler = (id, artistId) => {
+    navigate(`/admin/all-works/work/${id}?getId=${artistId}`)
+  }
+
   const dashboardCols = [
     {
       name: "_id",
+      options: {
+        display: false,
+      },
+    },
+    {
+      name: "artistId",
       options: {
         display: false,
       },
@@ -92,15 +102,16 @@ const AllWorks = () => {
       name: "planType", label: 'Due',
       options: {
         customBodyRender: (value, tableMeta) => {
+          console.log(tableMeta.rowData)
           return (
             <>
               {
-                tableMeta.rowData[3] ?
+                tableMeta.rowData[4] ?
                   <div>
                     -
                   </div> :
-                  <div style={calculateDate(value, tableMeta.rowData[4]).isDue === "no" ? { color: "green" } : { color: "red" }}>
-                    {calculateDate(value, tableMeta.rowData[4]).date}
+                  <div style={calculateDate(value, tableMeta.rowData[5]).isDue === "no" ? { color: "green" } : { color: "red" }}>
+                    {calculateDate(value, tableMeta.rowData[5]).date}
                   </div>
               }
             </>
@@ -129,7 +140,7 @@ const AllWorks = () => {
         customBodyRender: (_value, tableMeta) => {
           return (
             <div style={{ display: "flex", alignItems: "center", gap: '10px' }}>
-              <BlackButton style={{ fontSize: "15px", padding: "6px 25px", borderRadius: "100px" }} onClick={() => navigate(`/admin/all-reviewers/reviewer/${tableMeta.rowData[0]}`)}> Detail
+              <BlackButton style={{ fontSize: "15px", padding: "6px 25px", borderRadius: "100px" }} onClick={() => detailHandler(tableMeta.rowData[0], tableMeta.rowData[1])}> Detail
               </BlackButton>
             </div>
           );
@@ -143,6 +154,7 @@ const AllWorks = () => {
     WorkAllData = getAllWorksData?.data?.map((w) => {
       return {
         _id: w._id,
+        artistId: w?.artist?._id,
         fileName: w?.fileName,
         fileType: w?.fileType,
         isReviewed: w?.isReviewed,
@@ -156,6 +168,7 @@ const AllWorks = () => {
     WorkAllData = getAllWorksData?.data?.filter((d) => d.isReviewed === true).map((w) => {
       return {
         _id: w._id,
+        artistId: w?.artist?._id,
         fileName: w?.fileName,
         fileType: w?.fileType,
         isReviewed: w?.isReviewed,
@@ -169,6 +182,7 @@ const AllWorks = () => {
     WorkAllData = getAllWorksData?.data?.filter((d) => d.isReviewed === false).map((w) => {
       return {
         _id: w._id,
+        artistId: w?.artist?._id,
         fileName: w?.fileName,
         fileType: w?.fileType,
         isReviewed: w?.isReviewed,

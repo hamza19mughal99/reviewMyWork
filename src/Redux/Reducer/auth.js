@@ -94,6 +94,38 @@ export const editProfileReducer = (state = {}, action) => {
     }
 }
 
+export const LoggedInUserReducer = (state = {}, action) => {
+    switch (action.type) {
+        case "LOGGED_IN_REQUEST":
+            return {
+                loading: true,
+                error: false
+            }
+        case "LOGGED_IN_SUCCESS":
+            return {
+                ...state,
+                loading: false,
+                getCurrentUser: action.payload,
+                error: false
+            }
+        case "LOGGED_IN_FAILED":
+            return {
+                ...state,
+                loading: false,
+                getCurrentUser: null,
+                error: action.payload
+            }
+        case "LOGGED_IN_RESET":
+            return {
+                ...state,
+                getCurrentUser: null,
+                error: null
+            }
+        default:
+            return state
+    }
+}
+
 export const editPasswordReducer = (state = {}, action) => {
     switch (action.type) {
         case "EDIT_PASSWORD_REQUEST":

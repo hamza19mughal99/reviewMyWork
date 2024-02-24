@@ -27,13 +27,23 @@ const Review = () => {
     comment: ''
   })
 
+  const [impressionWord, setImpressionWord] = useState(0)
+  const [attributesWord, setattributesWord] = useState(0)
+  const [observationWord, setobservationWord] = useState(0)
+  const [worldWord, setworldWord] = useState(0)
+  const [commentWord, setcommentWord] = useState(0)
+
   const userFound = JSON.parse(localStorage.getItem('user'))
   const { loading, reviewerGetAllWorkData } = useSelector((state) => state.getNotReviewWork)
   const { loading: postLoading, giveReviewData } = useSelector((state) => state.reviewCreate)
 
   useEffect(() => {
     if (giveReviewData) {
+      const updatedUserFound = { ...userFound, user: { ...userFound.user, reviewRemain: giveReviewData.reviewRemain } };
+      localStorage.setItem('user', JSON.stringify(updatedUserFound));
+
       successNotify(giveReviewData?.message)
+
       dispatch({ type: "GIVE_REVIEW_RESET" })
       navigate('/reviewer/thankyou')
     }
@@ -64,6 +74,21 @@ const Review = () => {
       return
     }
 
+    else if (submitWork?.impression.length < 100 ||
+      submitWork?.attributes.length < 100 ||
+      submitWork?.obsevation.length < 100 ||
+      submitWork?.world.length < 100 ||
+      submitWork?.comment.length < 100) {
+      errorNotify("All fields value must be minimum 100 words")
+      return;
+    }
+
+    else if (submitWork?.score > 10 || submitWork?.score <= 0) {
+      errorNotify("Score must be greater and less/equal to 10")
+      return;
+    }
+
+
     let data = {
       impression: submitWork?.impression,
       attributes: submitWork?.attributes,
@@ -76,7 +101,6 @@ const Review = () => {
     }
 
     dispatch(GiveReview(data))
-
   }
 
   return (
@@ -114,39 +138,64 @@ const Review = () => {
                 <Input type={"textarea"}
                   label={"What is your first impression of the work"} rows={3}
                   value={submitWork.impression}
-                  onChange={(e) => setSubmitWork({
-                    ...submitWork,
-                    impression: e.target.value
-                  })}
+                  onChange={(e) => {
+                    setSubmitWork({
+                      ...submitWork,
+                      impression: e.target.value
+                    })
+                    setImpressionWord(e.target.value.length)
+                  }}
                 />
+                <p style={impressionWord < 100 ? { color: "red", textAlign: "end" } : { color: "green", textAlign: "end" }}>
+                  100/{impressionWord}
+                </p>
               </div>
               <div>
                 <Input type={"textarea"} label={"What was your impression of the sequencing attribtutes"}
                   rows={3}
                   value={submitWork.attributes}
-                  onChange={(e) => setSubmitWork({
-                    ...submitWork,
-                    attributes: e.target.value
-                  })}
+                  onChange={(e) => {
+                    setSubmitWork({
+                      ...submitWork,
+                      attributes: e.target.value
+                    })
+                    setattributesWord(e.target.value.length)
+                  }}
                 />
+                <p style={attributesWord < 100 ? { color: "red", textAlign: "end" } : { color: "green", textAlign: "end" }}>
+                  100/{attributesWord}
+                </p>
               </div>
               <div>
                 <Input type={"textarea"} label={"How did the work develop through your obsevation?"} rows={3}
                   value={submitWork.obsevation}
-                  onChange={(e) => setSubmitWork({
-                    ...submitWork,
-                    obsevation: e.target.value
-                  })}
+                  onChange={(e) => {
+                    setSubmitWork({
+                      ...submitWork,
+                      obsevation: e.target.value
+                    })
+                    setobservationWord(e.target.value.length)
+                  }}
                 />
+                <p style={observationWord < 100 ? { color: "red", textAlign: "end" } : { color: "green", textAlign: "end" }}>
+                  100/{observationWord}
+                </p>
               </div>
               <div>
                 <Input type={"textarea"} label={"Is this work ready for release in to the world"} rows={3}
                   value={submitWork.world}
-                  onChange={(e) => setSubmitWork({
-                    ...submitWork,
-                    world: e.target.value
-                  })}
+                  onChange={(e) => {
+                    setSubmitWork({
+                      ...submitWork,
+                      world: e.target.value
+                    })
+                    setworldWord(e.target.value.length)
+                  }
+                  }
                 />
+                <p style={worldWord < 100 ? { color: "red", textAlign: "end" } : { color: "green", textAlign: "end" }}>
+                  100/{worldWord}
+                </p>
               </div>
               <div className='d-flex justify-content-center text-center'>
                 <Input type={"number"} label={"score (out of 10)"}
@@ -160,11 +209,17 @@ const Review = () => {
               <div>
                 <Input type={"textarea"} label={"Any other comments"} rows={3}
                   value={submitWork.comment}
-                  onChange={(e) => setSubmitWork({
-                    ...submitWork,
-                    comment: e.target.value
-                  })}
+                  onChange={(e) => {
+                    setSubmitWork({
+                      ...submitWork,
+                      comment: e.target.value
+                    })
+                    setcommentWord(e.target.value?.length)
+                  }}
                 />
+                <p style={commentWord < 100 ? { color: "red", textAlign: "end" } : { color: "green", textAlign: "end" }}>
+                  100/{commentWord}
+                </p>
               </div>
               <div className='d-flex justify-content-center'>
                 {

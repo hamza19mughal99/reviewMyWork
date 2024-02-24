@@ -9,6 +9,7 @@ import { ReviewGetWork, ReviewerGetAllWork } from '../../../../Redux/Action/revi
 import { errorNotify } from '../../../../Util/Toast';
 import Loader from '../../../../Util/Loader';
 import moment from 'moment';
+import { LoggedInUser } from '../../../../Redux/Action/auth';
 
 const Work = () => {
   const navigate = useNavigate();
@@ -16,13 +17,18 @@ const Work = () => {
 
   const { loading, reviewerGetAllWorkData } = useSelector((state) => state.getNotReviewWork)
   const { loading: getLoading, reviewerGetWorkData } = useSelector((state) => state.reviewGetData)
-  const userFound = JSON.parse(localStorage.getItem('user'))
+  const { getCurrentUser } = useSelector((state) => state.getCurrentUserData)
 
+  console.log(getCurrentUser)
+  
+  const userFound = JSON.parse(localStorage.getItem('user'))
+  
   useEffect(() => {
     dispatch(ReviewerGetAllWork(userFound?.user?.profession?.professionName))
     dispatch(ReviewGetWork(userFound?.user?._id))
+    dispatch(LoggedInUser(userFound?.user?.email))
   }, [])
-
+  
   const dashboardCols = [
     {
       name: "_id",
@@ -48,7 +54,7 @@ const Work = () => {
       },
     },
   ];
-
+  
   const data = reviewerGetWorkData?.data?.map((a) => {
     return {
       _id: a?._id,
@@ -58,7 +64,15 @@ const Work = () => {
       isReviewed: a?.isReviewed
     }
   })
-
+  
+  const reviewWorkHandler = () => {
+    if(getCurrentUser?.user.reviewByDay === 0){
+      errorNotify("Your daily review limit is over!");
+      return;
+    }
+    navigate(`/reviewer/review/${reviewerGetAllWorkData[0]?._id}`)
+  }
+  
   return (
     <div className='reviewer_work_page'>
       <Container>
@@ -67,7 +81,7 @@ const Work = () => {
         {
           reviewerGetAllWorkData?.length > 0 ?
             <div className='d-flex justify-content-center my-3'>
-              <WhiteButton disable={loading} onClick={() => navigate(`/reviewer/review/${reviewerGetAllWorkData[0]?._id}`)}> Review A Work
+              <WhiteButton disable={loading} onClick={reviewWorkHandler}> Review A Work
                 <img src='/images/btn_arrow_img.png' alt='' /></WhiteButton>
             </div> :
             <div className='d-flex justify-content-center my-3'>

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AllPaymentGetData } from '../../../../Redux/Action/admin';
 import Loader from '../../../../Util/Loader';
 import './Payment.css';
+import moment from 'moment';
 
 const Payment = () => {
   const dispatch = useDispatch();
@@ -42,6 +43,16 @@ const Payment = () => {
       },
     },
     {
+      name: "createdAt", label: 'Date',
+      options: {
+        customBodyRender: (value) => {
+          return (
+            <div>{moment(value).format('L')}</div>
+          );
+        },
+      },
+    },
+    {
       name: "amountType", label: 'Amount Type',
       options: {
         customBodyRender: (value) => {
@@ -63,9 +74,10 @@ const Payment = () => {
     return {
       userEmail: p?.user?.email,
       fullName: p?.user?.fullName,
-      paymentAmount: p?.paymentAmount,
+      paymentAmount: `$${p?.paymentAmount}`,
       amountType: p?.amountType,
-      planType: p?.user?.planType?.planName
+      planType: p?.user?.planType?.planName,
+      createdAt: p?.createdAt
     }
   })
 
@@ -77,7 +89,7 @@ const Payment = () => {
             <h1>All Payments</h1>
             <div className='d-flex align-items-center justify-content-end mb-3' style={{ gap: "10px" }}>
               <div className='payment_given'>
-                <h4>Earning:</h4>
+                <h4>Earned:</h4>
                 <h3>$ {getPaymentData?.allPayment?.earning}</h3>
               </div>
               <div className='payment_taken'>

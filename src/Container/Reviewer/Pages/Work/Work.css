@@ -11,3 +11,13 @@
     margin-bottom: 20px;
     color: #000;
 }
+
+.review_left h3{
+    text-align: end;
+    margin: 40px 0;
+    font-size: 25px;
+}
+
+.review_left h3 span{
+    font-weight: 800;
+}

@@ -9,7 +9,7 @@ import moment from 'moment/moment';
 import { cloudUrl } from '../../../../Util/Helper';
 import { ReviewGetWork } from '../../../../Redux/Action/reviewer';
 
-const ReviewWorkDetail = () => {
+const WorkDetail = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
     const location = useLocation();
@@ -146,4 +146,4 @@ const ReviewWorkDetail = () => {
     )
 }
 
-export default ReviewWorkDetail
+export default WorkDetail;

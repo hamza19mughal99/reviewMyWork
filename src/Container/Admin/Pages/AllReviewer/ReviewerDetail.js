@@ -52,7 +52,6 @@ const ReviewerDetail = () => {
   }
 
   const downloadPdf = (getId) => {
-    console.log(getId)
     navigate(`/admin/all-reviewers/work/${getId}?getId=${id}`);
   }
 

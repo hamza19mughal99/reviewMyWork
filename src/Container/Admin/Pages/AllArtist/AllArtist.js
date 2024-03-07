@@ -25,8 +25,13 @@ const AllArtist = () => {
     dispatch(ArtistGet())
   }, [])
 
-  useEffect(() => {
-    setFilter(getArtistData?.users)
+  useEffect(() => {    
+    let getOnlyUser = getArtistData?.users?.map((u) => {
+      return {
+        ...u.user
+      }
+    })
+    setFilter(getOnlyUser)
   }, [getArtistData])
 
   const resetHandler = () => {

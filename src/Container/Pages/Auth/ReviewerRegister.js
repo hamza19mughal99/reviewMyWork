@@ -97,6 +97,15 @@ const ReviewerRegister = () => {
             return
         }
 
+        let isHttp = previousWork?.every((v) => {
+            return v?.links?.startsWith("http://") || v?.links?.startsWith("https://")
+        });
+
+        if (!isHttp) {
+            errorNotify("The website must be correct")
+            return;
+        }
+
         let data = {
             ...register,
             profession: profession.value,
@@ -163,12 +172,12 @@ const ReviewerRegister = () => {
                             <h1>Become A Reviewer</h1>
 
                             <Form onSubmit={submitHandler}>
-                                <Input type="text" label="Full Name" name='fullName' value={register.fullName} onChange={inputHandler} />
-                                <Input type="email" label="Email Address" name='email' value={register.email} onChange={inputHandler} />
-                                <Input type="password" label="Password" name="password" value={register.password} onChange={inputHandler} />
+                                <Input isRequired={true} type="text" label="Full Name" name='fullName' value={register.fullName} onChange={inputHandler} />
+                                <Input isRequired={true} type="email" label="Email Address" name='email' value={register.email} onChange={inputHandler} />
+                                <Input isRequired={true} type="password" label="Password" name="password" value={register.password} onChange={inputHandler} />
 
                                 <Form.Group className="mb-3">
-                                    <Form.Label>Link to your previous work <br />
+                                    <Form.Label>Link to your previous work <span className='req_field'>*</span> <br />
                                         <span>IMPORTANT: Make sure all your link works</span>
                                     </Form.Label>
                                     {previousWork.map((work, index) => (
@@ -181,12 +190,12 @@ const ReviewerRegister = () => {
                                 </Form.Group>
 
                                 <div className="mb-3">
-                                    <Form.Label>Select Profession</Form.Label>
+                                    <Form.Label>Select Profession <span className='req_field'>*</span></Form.Label>
                                     <Select options={professionOptions} placeholder="select profession"
                                         className='profession_bg' onChange={(v) => setProfession(v)} />
                                 </div>
 
-                                <Input type="textarea" rows={3} label="In a few words tell us about yourself"
+                                <Input isRequired={true} type="textarea" rows={3} label="In a few words tell us about yourself"
                                     name='about' value={register.about} onChange={inputHandler}
                                 />
 

@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import { LoginReducer, RegisterReducer, editPasswordReducer, editProfileReducer } from "./auth";
+import { LoggedInUserReducer, LoginReducer, RegisterReducer, editPasswordReducer, editProfileReducer } from "./auth";
 import {
     AllPaymentGetDataReducer, ArtistGetReducer, DashboardGetReducer, PlanGetReducer,
-    ProfessionGetReducer, ReviewerGetReducer, UserUpdatedReducer
+    ProfessionGetReducer, ReviewerGetReducer, UserUpdatedReducer, getWorksReducer
 } from "./admin";
 import { ArtistGetWorkReducer, ArtistWorkReducer, OneTimePaymentReducer, SubsPaymentReducer } from "./artist";
 import { GetAllWorkReducer, GiveReviewReducer, ReviewGetWorkReducer, ReviewerGetAllWorkReducer } from "./reviewer";
@@ -12,9 +12,9 @@ const rootReducer = combineReducers({
     //AUTH
     loginData: LoginReducer,
     registerData: RegisterReducer,
-
     getEditProfile: editProfileReducer,
     getEditPassword: editPasswordReducer,
+    getCurrentUserData: LoggedInUserReducer,
 
     //ADMIN
     artistGetData: ArtistGetReducer,
@@ -25,6 +25,8 @@ const rootReducer = combineReducers({
     getAllPaymentData: AllPaymentGetDataReducer,
     getAllProfessionData: ProfessionGetReducer,
     getAllPlanData: PlanGetReducer,
+    getWorksData: getWorksReducer,
+
 
     //ARTIST
     postArtistWork: ArtistWorkReducer,

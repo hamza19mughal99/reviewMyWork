@@ -14,3 +14,7 @@
     margin-bottom: 3px;
     font-weight: 600;
 }
+
+.req_field{
+    color: red !important;
+}

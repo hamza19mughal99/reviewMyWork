@@ -124,12 +124,17 @@ const SubmitForm = () => {
                 return
             }
 
+            let isHttp = workForm.fileUrl?.startsWith("http://") || workForm.fileUrl?.startsWith("https://")
+            if (!isHttp) {
+                errorNotify("The File url must be correct")
+                return;
+            }
+
             const artistData = new FormData();
             artistData.append("artistId", userFound.user._id)
             artistData.append("fileName", workForm.fileName)
             artistData.append("profession", userFound?.user?.profession?.professionName)
             artistData.append("fileDetailed", fileDetailed)
-            // formData.append("mpFile", '')
             artistData.append("fileUrl", workForm.fileUrl)
             artistData.append("fileType", fileType)
 
@@ -142,7 +147,7 @@ const SubmitForm = () => {
         </Modal.Header>
         <Modal.Body className='loginModal'>
             <h5>Your Work has been Created!!</h5>
-            <p>Thank you for submitting your work. The status of work is <span>Pending</span>
+            <p>Thank you for submitting your work. The status of work is <span>Pending </span>
                 Once you done your <span>payment</span>. One of our team members will review your work
                 and assign it for review.</p>
 

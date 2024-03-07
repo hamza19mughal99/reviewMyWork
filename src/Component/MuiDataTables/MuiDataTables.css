@@ -11,6 +11,7 @@
     color: white !important;
     font-size: 16px !important;
     border-right: 1px solid lightgrey;
+    padding: 10px 2px !important;
 }
 
 .MuiTablePagination-selectLabel.css-pdct74-MuiTablePagination-selectLabel,
@@ -32,6 +33,7 @@
 
 .MuiTableCell-body{
     font-size: 16px !important;
+    padding: 15px 7px !important;
 }
 
 .tss-bd2lw8-MUIDataTableHeadCell-sortActive{

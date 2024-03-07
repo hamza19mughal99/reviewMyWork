@@ -21,6 +21,8 @@ const AllReviewer = () => {
 
   const { loading, getReviewerData } = useSelector((state) => state.reviewerData)
 
+  console.log(getReviewerData)
+
   useEffect(() => {
     dispatch(ReviewerGet())
   }, [])
@@ -30,7 +32,14 @@ const AllReviewer = () => {
   }
 
   useEffect(() => {
-    setFilter(getReviewerData?.users)
+
+    let getOnlyUser = getReviewerData?.users?.map((u) => {
+      return {
+        ...u.user
+      }
+    })
+
+    setFilter(getOnlyUser)
   }, [getReviewerData])
 
   const dashboardCols = [

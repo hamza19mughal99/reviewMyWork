@@ -9,7 +9,8 @@ import store from "./Redux/Store";
 import axios from "axios";
 
 // axios.defaults.baseURL = "http://localhost:4000/api/"
-axios.defaults.baseURL = "https://rmw-backend.azurewebsites.net/api/"
+// axios.defaults.baseURL = "https://rmw-backend.azurewebsites.net/api/"
+axios.defaults.baseURL = "https://reviewmyworkbackend.azurewebsites.net/api/"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

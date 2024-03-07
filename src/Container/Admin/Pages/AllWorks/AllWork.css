@@ -1,0 +1,22 @@
+.work_tabs{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.work_tabs button{
+    border: 1px solid #002746d9;
+    background-color: #002746d9 !important;
+    padding: 8px 25px;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+.work_tabs button.active{
+    background-color: transparent !important;
+    border: 1px solid #002746d9;
+    color: #002746d9;
+}

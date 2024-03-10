@@ -44,9 +44,7 @@ const Payment = () => {
                         }
                         <span>{p.amount}$</span>
 
-                        {/* http://localhost:4000/ */}
-                        {/* https://rmw-backend.azurewebsites.net/ */}
-                        <form action={`https://rmw-backend.azurewebsites.net/api/subscription/payment/onetime?planId=${p?._id}`} method="POST">
+                        <form action={`https://reviewmyworkbackend.azurewebsites.net/api/subscription/payment/onetime?planId=${p?._id}`} method="POST">
                           <div className='buy_btn'>
                             <BlackButton type={"submit"}>
                               Buy

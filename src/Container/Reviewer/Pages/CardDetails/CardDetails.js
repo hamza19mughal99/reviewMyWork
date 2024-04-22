@@ -10,7 +10,7 @@ const CardDetails = () => {
 
     const { state } = useLocation()
 
-    const stripePromise = loadStripe('pk_test_51O5VwCKJke2Y2VQTWSZcH4R0qz8mLzWtxJz6p4OV6gqxcDzyM85iZbZynkkKjFXjhLH2PPEi5KIA0TQqBEnnTTpx00JI8WHm7B');
+    const stripePromise = loadStripe('pk_live_51O5VwCKJke2Y2VQTnuQlQiCDZsTENShWp1onxUJq9OAaMZdh11CdOI0KXAIsW1GANAHKQpDRfvrEtsTKC7YKgyx000yilpmxm4');
 
     return (
         <div className='contract_payment'>

@@ -10,6 +10,7 @@ import { AuthRegister } from '../../../Redux/Action/auth';
 import { useNavigate } from 'react-router-dom';
 import SpinLoader from '../../../Util/SpinLoader';
 import { ProfessionGet } from '../../../Redux/Action/admin';
+import { MdDelete } from "react-icons/md";
 
 const ArtistRegister = () => {
     const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const ArtistRegister = () => {
         fullName: '',
         email: "",
         password: "",
+        c_password: "",
         about: ""
     })
     const [profession, setProfession] = useState(null)
@@ -50,6 +52,7 @@ const ArtistRegister = () => {
                 fullName: '',
                 email: "",
                 password: "",
+                c_password: "",
                 about: ""
             })
             setProfession({})
@@ -89,14 +92,43 @@ const ArtistRegister = () => {
 
         let emptyPreviousWork = previousWork.some((v) => v.links.length === 0)
 
-        if (register.fullName.length === 0 || register.email.length === 0 || register.password.length === 0
-            || register.about.length === 0 || !profession || emptyPreviousWork) {
-            errorNotify("Please filled up all fields")
+        if (register.fullName.length === 0 || register.email.length === 0 || register.password.length === 0 || register.c_password.length === 0 || register.about.length === 0 || !profession || emptyPreviousWork) {
+
+            let errorMessage = "Please fill up empty fields: ";
+
+            if (register.fullName.length === 0) {
+                errorMessage += "Full Name, ";
+            }
+            if (register.email.length === 0) {
+                errorMessage += "Email, ";
+            }
+            if (register.password.length === 0) {
+                errorMessage += "Password, ";
+            }
+            if (register.c_password.length === 0) {
+                errorMessage += "Confirm Password, ";
+            }
+            if (register.about.length === 0) {
+                errorMessage += "About, ";
+            }
+            if (!profession) {
+                errorMessage += "Profession, ";
+            }
+            if (emptyPreviousWork) {
+                errorMessage += "Previous Work, ";
+            }
+            errorMessage = errorMessage.slice(0, -2);
+            errorNotify(errorMessage);
+            return;
+        }
+
+        if (register.password !== register.c_password) {
+            errorNotify("Password and Confirm Password must be same");
             return
         }
 
         let isHttp = previousWork?.every((v) => {
-            return v?.links?.startsWith("http://") || v?.links?.startsWith("https://")
+            return v?.links?.startsWith("http://") || v?.links?.startsWith("https://") || v?.links?.startsWith("www.")
         });
 
         if (!isHttp) {
@@ -125,13 +157,18 @@ const ArtistRegister = () => {
         setPreviousWork(updatedWork);
     };
 
+    const deleteInputHandler = (i) => {
+        const updatedWork = [...previousWork];
+        updatedWork.splice(i, 1);
+        setPreviousWork(updatedWork);
+    }
+
     return (
         <div style={{ backgroundColor: "#eff0f0a1" }}>
             <Container fluid>
                 <Row>
                     <Col md={6} className='p-0'>
                         <div className='signup_left'>
-                            {/* <img src='/images/artist_signup.png' alt='' /> */}
                         </div>
                     </Col>
 
@@ -143,16 +180,24 @@ const ArtistRegister = () => {
                                 <Input isRequired={true} type="text" label="Full Name" name='fullName' value={register.fullName} onChange={inputHandler} />
                                 <Input isRequired={true} type="email" label="Email Address" name='email' value={register.email} onChange={inputHandler} />
                                 <Input isRequired={true} type="password" label="Password" name="password" value={register.password} onChange={inputHandler} />
+                                <Input isRequired={true} type="password" label="Confirm Password" name="c_password" value={register.c_password} onChange={inputHandler} />
 
                                 <Form.Group className="mb-3">
                                     <Form.Label>Link to your previous work <span className='req_field'>*</span> <br />
                                         <span>IMPORTANT: Make sure all your link works</span>
                                     </Form.Label>
                                     {previousWork.map((work, index) => (
-                                        <Form.Control type="text" className='mb-1'
-                                            value={work.links}
-                                            onChange={(event) => handleInputChange(index, event)}
-                                        />
+                                        <div className='work_link'>
+                                            <Form.Control type="text" className='mb-1'
+                                                placeholder='example: www.site.com  or https://site.com'
+                                                value={work.links}
+                                                onChange={(event) => handleInputChange(index, event)}
+                                            />
+                                            {
+                                                previousWork.length !== 1 &&
+                                                <MdDelete onClick={() => deleteInputHandler(index)} />
+                                            }
+                                        </div>
                                     ))}
                                     <p onClick={handleAddMore}>+ Add More</p>
                                 </Form.Group>

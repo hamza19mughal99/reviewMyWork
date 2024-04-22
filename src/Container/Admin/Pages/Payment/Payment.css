@@ -45,3 +45,28 @@
     font-weight: 600;
     color: red;
 }
+
+.payment_box{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 10px 10px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+    .payment_box{
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+
+    .payment_box .payment_given{
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .payment_box .payment_taken{
+        width: 100%;
+        justify-content: space-between;
+    }
+}

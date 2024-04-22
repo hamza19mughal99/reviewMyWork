@@ -95,6 +95,7 @@
     font-size: 19px;
     border-bottom: 1px solid lightgray;
     padding-bottom: 10px;
+    font-weight: 600;
 }
 
 .data_questions h5 span, .data_questions p span{
@@ -105,4 +106,30 @@
     height: 30vh;
     text-align: center;
     font-weight: 800;
+}
+
+@media (max-width: 767px) {
+    .reviewed_data {
+        display: flex;
+        gap: 15px;
+        flex-direction: column;
+    }
+
+    .reviewed_data.mx-5{
+        margin: auto !important;
+        margin-top: 20px !important;
+    }
+
+    .live_video{
+        margin: 5px 0;
+    }
+
+    .layout_content .mt-5{
+        margin-top: 0 !important;
+    }
+
+    .data_questions.mx-5{
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
 }

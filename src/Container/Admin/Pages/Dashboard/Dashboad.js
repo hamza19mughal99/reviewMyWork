@@ -12,8 +12,6 @@ const Dashboad = () => {
     const dispatch = useDispatch();
     const { loading, getDashData } = useSelector((state) => state.getDashboardData)
 
-    console.log(getDashData)
-
     useEffect(() => {
         dispatch(DashboardGetData())
     }, [])

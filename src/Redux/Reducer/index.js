@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import { LoggedInUserReducer, LoginReducer, RegisterReducer, editPasswordReducer, editProfileReducer } from "./auth";
+import { ForgetPasswordReducer, LoggedInUserReducer, LoginReducer, RegisterReducer, changePasswordReducer, editPasswordReducer, editProfileReducer } from "./auth";
 import {
     AllPaymentGetDataReducer, ArtistGetReducer, DashboardGetReducer, PlanGetReducer,
-    ProfessionGetReducer, ReviewerGetReducer, UserUpdatedReducer, getWorksReducer
+    ProfessionCreateReducer,
+    ProfessionDeleteReducer,
+    ProfessionGetReducer, ProfessionUpdateReducer, ReviewerGetReducer, UserUpdatedReducer, getWorksReducer
 } from "./admin";
 import { ArtistGetWorkReducer, ArtistWorkReducer, OneTimePaymentReducer, SubsPaymentReducer } from "./artist";
 import { GetAllWorkReducer, GiveReviewReducer, ReviewGetWorkReducer, ReviewerGetAllWorkReducer } from "./reviewer";
@@ -12,6 +14,8 @@ const rootReducer = combineReducers({
     //AUTH
     loginData: LoginReducer,
     registerData: RegisterReducer,
+    forgetPasswordData: ForgetPasswordReducer,
+    changePasswordData: changePasswordReducer,
     getEditProfile: editProfileReducer,
     getEditPassword: editPasswordReducer,
     getCurrentUserData: LoggedInUserReducer,
@@ -24,6 +28,10 @@ const rootReducer = combineReducers({
     getDashboardData: DashboardGetReducer,
     getAllPaymentData: AllPaymentGetDataReducer,
     getAllProfessionData: ProfessionGetReducer,
+    professionCreateData: ProfessionCreateReducer,
+    professionDeleteData: ProfessionDeleteReducer,
+    professionUpdateData: ProfessionUpdateReducer,
+
     getAllPlanData: PlanGetReducer,
     getWorksData: getWorksReducer,
 

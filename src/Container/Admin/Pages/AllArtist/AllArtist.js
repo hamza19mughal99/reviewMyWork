@@ -94,25 +94,28 @@ const AllArtist = () => {
 
   const handleFilter = () => {
     const filteredData = getArtistData.users.filter((user) => {
-      const userCreatedAt = new Date(user.createdAt).getTime();
+      const userCreatedAt = new Date(user?.user?.createdAt).getTime();
 
       const isDateInRange =
         (!startDate || userCreatedAt >= new Date(startDate).getTime()) &&
         (!endDate || userCreatedAt <= new Date(endDate).getTime());
 
       const isProfessionMatch =
-        !selectedProfession || user.profession.professionName === selectedProfession.value;
+        !selectedProfession || user?.user?.profession?.professionName === selectedProfession.value;
 
       return isDateInRange && isProfessionMatch;
     });
 
-    setFilter(filteredData)
+    let getOnlyUser = filteredData?.map((u) => {
+      return {
+        ...u.user
+      }
+    })
+    setFilter(getOnlyUser)
 
   };
 
-  const options = [{ value: "Artist", label: "Artist" },
-  { value: "Writer", label: "Writer" },
-  { value: "Composer", label: "Composer" }]
+  const options = [{ value: "Composer", label: "Composer" }]
 
   return (
     <div className='reviewer_work_page'>

@@ -196,8 +196,6 @@ const AllWorks = () => {
     })
   }
 
-  console.log(getAllWorksData?.data)
-
   return (
     <div className='reviewer_work_page'>
       <Container>

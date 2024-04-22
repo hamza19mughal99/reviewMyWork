@@ -26,21 +26,69 @@ const Payment = () => {
               {
                 getPlanData?.PlanGet?.map((p, i) => {
                   return (
-                    <Col md={5}>
+                    <Col md={6}>
                       <div className='package_main'>
                         <h5>{p.planName}</h5>
                         {
-                          i === 0 && <p style={{textAlign: "left", marginTop: "10px"}}>Your work will be reviewed within 3 weeks in this package.</p>
+                          p.planName === "Quick Peek" &&
+                          <div>
+                            <p>Get a quick pro look at your art. We'll chat about your style, colors, and what your piece is saying. Perfect if you're just looking for a fast hint on how to level up.</p>
+                            <p>What You Get:</p>
+                            <ul>
+                              <li>Quick check on one piece</li>
+                              <li>Advice on style, color, and vibe</li>
+                              <li>Tips to make it pop</li>
+                              <li>Back to you in 14-20 days</li>
+                            </ul>
+                          </div>
                         }
                         {
-                          i === 1 && <p style={{textAlign: "left", marginTop: "10px"}}>Your work will be reviewed within 3 days in this package.</p>
+                          p.planName === "Comprehensive Review" &&
+                          <div>
+                            <p>Deep Dive <br />
+                              Ready to really dig into your art? We'll break down everything from your technique to the feels your art gives off. Get ready for some serious growth.
+                            </p>
+                            <p>What You Get:</p>
+
+                            <ul>
+                              <li>Full breakdown of one piece</li>
+                              <li>Deep talk on technique and feels</li>
+                              <li>Personal growth plan</li>
+                              <li>Back to you in 14-20 days</li>
+                            </ul>
+                          </div>
                         }
                         {
-                          i === 2 && <p style={{textAlign: "left", marginTop: "10px"}}>Your work will be reviewed within 3 weeks with detailed comment
-                            in this package.</p>
+                          p.planName === "Express Review" &&
+                          <div>
+                            <p>Speedy Feedback <br />
+                              In a hurry? Get the quick lowdown on your artwork. We keep it short and sweet but pack it with enough punch to push your art forward, fast.
+                            </p>
+                            <p>What You Get:</p>
+
+                            <ul>
+                              <li>Fast feedback on one piece</li>
+                              <li>Quick hits on style and vibe</li>
+                              <li>Speedy tips for improvement</li>
+                              <li>Back to you in 3-5 days</li>
+                            </ul>
+                          </div>
                         }
                         {
-                          i === 3 && <p style={{textAlign: "left", marginTop: "10px"}}>Your work will be reviewed within 3 days with detailed comment in this package.</p>
+                          p.planName === "Express Comprehensive Review" &&
+                          <div> 
+                            <p>Rapid Deep Dive  <br /> 
+                            Need those in-depth insights but like, yesterday? We got you. Get the full analysis, only faster, so you can make big moves without the wait.
+                            </p>
+                            <p>What You Get:</p>
+
+                            <ul>
+                              <li>Quick, thorough look at one piece</li>
+                              <li>Fast, deep feedback on all the things</li>
+                              <li>Your next steps, pronto</li>
+                              <li>Back to you in 3-5 days</li>
+                            </ul>
+                          </div>
                         }
                         <span>{p.amount}$</span>
 

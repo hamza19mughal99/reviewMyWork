@@ -163,6 +163,87 @@ export const ProfessionGet = () => async (dispatch) => {
     }
 };
 
+export const ProfessionCreate = (d) => async (dispatch) => {
+    try {
+        dispatch({
+            type: "PROFESSION_CREATE_REQUEST",
+        });
+
+        const { data } = await axios.post("profession-create", d);
+
+        dispatch({
+            type: "PROFESSION_CREATE_SUCCESS",
+            payload: data,
+            success: true,
+        });
+    }
+
+    catch (e) {
+        if (e?.code === "ERR_NETWORK") {
+            errorNotify("Network Error");
+        }
+        dispatch({
+            type: "PROFESSION_CREATE_FAILED",
+            payload: e?.response?.data?.message,
+            success: false,
+        });
+    }
+};
+
+export const ProfessionDelete = (d) => async (dispatch) => {
+    try {
+        dispatch({
+            type: "PROFESSION_DELETE_REQUEST",
+        });
+
+        const { data } = await axios.delete(`profession-delete/${d}`);
+
+        dispatch({
+            type: "PROFESSION_DELETE_SUCCESS",
+            payload: data,
+            success: true,
+        });
+    }
+
+    catch (e) {
+        if (e?.code === "ERR_NETWORK") {
+            errorNotify("Network Error");
+        }
+        dispatch({
+            type: "PROFESSION_DELETE_FAILED",
+            payload: e?.response?.data?.message,
+            success: false,
+        });
+    }
+};
+
+export const ProfessionUpdate = (id, d) => async (dispatch) => {
+    try {
+        dispatch({
+            type: "PROFESSION_UPDATE_REQUEST",
+        });
+
+        const { data } = await axios.put(`profession-edit/${id}`, d);
+
+        dispatch({
+            type: "PROFESSION_UPDATE_SUCCESS",
+            payload: data,
+            success: true,
+        });
+    }
+
+    catch (e) {
+        if (e?.code === "ERR_NETWORK") {
+            errorNotify("Network Error");
+        }
+        dispatch({
+            type: "PROFESSION_UPDATE_FAILED",
+            payload: e?.response?.data?.message,
+            success: false,
+        });
+    }
+};
+
 export const PlanGet = () => async (dispatch) => {
     try {
         dispatch({

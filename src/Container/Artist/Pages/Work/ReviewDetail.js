@@ -15,6 +15,8 @@ const ReviewDetail = () => {
     const dispatch = useDispatch();
     const componentRef = useRef();
     const [workDetail, setWorkDetail] = useState({})
+    const [planType, setPlanType] = useState('')
+    const [questions, setQuestions] = useState([])
 
     const pagestyle = "@page { size: 2.5in 4in }"
 
@@ -27,8 +29,48 @@ const ReviewDetail = () => {
 
     useEffect(() => {
         if (artistGetWorkData) {
-            const findWork = artistGetWorkData?.data?.find((d) => d._id === id)
-            setWorkDetail(findWork)
+            const getWork = artistGetWorkData?.data?.find((d) => d._id === id)
+            setWorkDetail(getWork)
+            setPlanType(getWork.artist.planType.planName)
+
+            if (getWork.artist.planType.planName === "Quick Peek") {
+                setQuestions([
+                    'First Impressions: What feelings or ideas does the music evoke when you first listen to it? Which musical element most contributes to this?',
+                    'Melody and Harmony Analysis: How do the melody and harmony work together? Is there a balance between tension and release?',
+                    'Rhythmic Structure: How does the rhythm contribute to the overall feel and flow of the piece? Are there any particularly effective uses of rhythm or tempo changes?',
+                    'Originality and Creativity: What aspects of the composition are most unique or creative? How does the composer’s personal style shine through?',
+                    'Areas for Growth: Can you suggest specific areas for improvement or exploration in future compositions?',
+                    'Encouraging Insight: What is the most exciting or compelling aspect of this composition? Encourage continued creativity and exploration.'
+                ])
+            }
+            else if (getWork.artist.planType.planName === 'Comprehensive Review') {
+                setQuestions([
+                    'Technical Proficiency: Assess the composer’s technical execution in terms of melody, harmony, rhythm, and dynamics. Where do their strengths lie, and what suggests areas for growth?',
+                    'Thematic Depth: Explore the themes or stories behind the music. How effectively are they communicated? What underlying messages or emotions are conveyed?',
+                    'Emotional Engagement: Describe the emotional journey of the piece. How does it connect with and impact the listener?',
+                    'Innovation and Influence: Identify elements that show innovation or a unique approach. How do these aspects enhance the overall composition?',
+                    'Contextual Placement: Consider the piece’s place within its musical genre or the broader musical tradition. How does it contribute to, challenge, or expand on existing musical narratives?',
+                    'Personalized Advancement Plan: Offer a detailed plan or suggestions for the composer’s technical and creative development, based on your analysis.'
+                ])
+            }
+            else if (getWork.artist.planType.planName === 'Express Review') {
+                setQuestions([
+                    'Immediate Highlight: What element of the music stands out immediately, and why?',
+                    'Core Strengths Brief: What are the key strengths of the composition, such as melody, harmony, rhythm, or dynamics?',
+                    'Swift Improvement Suggestions: Offer one or two quick, actionable suggestions for improvement.',
+                    "Motivational Note: Provide a brief word of encouragement that acknowledges the composer's effort and potential."
+                ])
+            }
+            else if (getWork.artist.planType.planName === "Express Comprehensive Review") {
+                setQuestions([
+                    "Immediate Technical and Creative Impressions: Share your initial thoughts on both the technical and creative aspects of the composition. What stands out?",
+                    "Concept and Communication: How clearly and effectively is the main idea or emotion of the piece communicated?",
+                    "Emotional and Intellectual Connection: Describe your immediate emotional or intellectual response to the piece. How does the composition achieve this connection?",
+                    "Distinctive Features: Identify the most compelling or innovative feature of the composition.",
+                    "Focused Development Advice: Provide focused advice for the composer’s next steps in both technical skill and creative expression.",
+                    "Quick Encouragement and Forward Steps: End with positive reinforcement and suggest a specific direction for the composer's next project."
+                ])
+            }
         }
     }, [artistGetWorkData])
 
@@ -88,28 +130,37 @@ const ReviewDetail = () => {
 
                         {
                             workDetail.isReviewed ?
-                                <div className='data_questions'>
+                                <div className='data_questions mx-5'>
                                     <Row>
                                         <Col md={6} className='mb-2'>
-                                            <h5><span>Q1-</span> What is your first impression of the work?</h5>
-                                            <p><span>Ans - </span> {workDetail?.reviewedData?.impression}</p>
+                                            <h5><span>Q1-</span> {questions[0]}</h5>
+                                            <p><span>Ans - </span> {workDetail?.reviewedData?.question1}</p>
                                         </Col>
                                         <Col md={6} className='mb-2'>
-                                            <h5><span>Q2-</span> What was your impression of the sequencing attribtutes?</h5>
-                                            <p><span>Ans - </span> {workDetail?.reviewedData?.attributes}</p>
+                                            <h5><span>Q2-</span> {questions[1]}</h5>
+                                            <p><span>Ans - </span> {workDetail?.reviewedData?.question2}</p>
                                         </Col>
                                         <Col md={6} className='mb-2'>
-                                            <h5><span>Q3-</span> How did the work develop through your obsevation?</h5>
-                                            <p><span>Ans - </span> {workDetail?.reviewedData?.obsevation}</p>
+                                            <h5><span>Q3-</span> {questions[2]}</h5>
+                                            <p><span>Ans - </span> {workDetail?.reviewedData?.question3}</p>
                                         </Col>
                                         <Col md={6} className='mb-2'>
-                                            <h5><span>Q4-</span> Is this work ready for release in to the world?</h5>
-                                            <p><span>Ans - </span> {workDetail?.reviewedData?.world}</p>
+                                            <h5><span>Q4-</span> {questions[3]}</h5>
+                                            <p><span>Ans - </span> {workDetail?.reviewedData?.question4}</p>
                                         </Col>
-                                        <Col md={6} className='mb-2'>
-                                            <h5><span>Q5-</span> Any other comments?</h5>
-                                            <p><span>Ans - </span> {workDetail?.reviewedData?.comment}</p>
-                                        </Col>
+                                        {
+                                            planType !== 'Express Review' &&
+                                            <>
+                                                <Col md={6} className='mb-2'>
+                                                    <h5><span>Q5-</span> {questions[4]}</h5>
+                                                    <p><span>Ans - </span> {workDetail?.reviewedData?.question5}</p>
+                                                </Col>
+                                                <Col md={6} className='mb-2'>
+                                                    <h5><span>Q6-</span> {questions[5]}</h5>
+                                                    <p><span>Ans - </span> {workDetail?.reviewedData?.question6}</p>
+                                                </Col>
+                                            </>
+                                        }
                                     </Row>
                                 </div> :
                                 <div className='data_questions'>

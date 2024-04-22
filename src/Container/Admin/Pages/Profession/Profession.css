@@ -1,0 +1,106 @@
+.profession_box {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid lightgrey;
+}
+
+.profession_box h2 {
+    font-size: 23px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #d3d3d359;
+    margin-bottom: 20px;
+    display: grid;
+}
+
+.profession_box div {
+    display: flex;
+    gap: 10px;
+}
+
+.profession_box div button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 7px 25px;
+    border-radius: 10px;
+}
+
+.profession_box h2 span {
+    font-weight: 700;
+}
+
+.profession_box div button:last-child {
+    background-color: red;
+}
+
+.create_profession {
+    text-align: end;
+}
+
+.create_profession button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 40px;
+    border: none;
+    font-weight: 500;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.profession_modal form div {
+    display: flex;
+    flex-direction: column;
+}
+
+.profession_modal form div input {
+    border: 1px solid lightgrey;
+    padding: 6px;
+    border-radius: 5px;
+}
+
+.profession_modal form div input:focus-visible {
+    outline: none;
+}
+
+.profession_modal form div label {
+    font-weight: 600;
+}
+
+.profession_modal form div button {
+    padding: 7px 12px;
+    margin-top: 10px;
+    width: fit-content;
+    margin-left: auto;
+}
+
+.delete_modal .modal-body{
+    padding: 50px 20px;
+}
+
+.delete_modal h6{
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.delete_modal .modal-body div div{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.delete_modal .modal-body div div button{
+    background-color: green;
+    color: #fff;
+    border: none;
+    padding: 5px 30px;
+    font-weight: 500;
+    border-radius: 100px;
+}
+
+.delete_modal .modal-body div div button:last-child{
+    background-color: red;
+}

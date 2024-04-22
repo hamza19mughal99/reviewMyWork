@@ -20,7 +20,7 @@
 }
 
 .payment_main p {
-    text-align: center;
+    /* text-align: center; */
     color: #000;
     font-weight: 500;
 }
@@ -40,7 +40,7 @@
     font-size: 25px;
     font-weight: 700;
     color: #000;
-    margin-bottom: 0;
+    margin-bottom: 10px;
 }
 
 .package_main span{

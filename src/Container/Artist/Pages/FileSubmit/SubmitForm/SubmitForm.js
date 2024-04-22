@@ -124,9 +124,9 @@ const SubmitForm = () => {
                 return
             }
 
-            let isHttp = workForm.fileUrl?.startsWith("http://") || workForm.fileUrl?.startsWith("https://")
+            let isHttp = workForm.fileUrl?.startsWith("http://") || workForm.fileUrl?.startsWith("https://") || workForm.fileUrl.startsWith("www.")
             if (!isHttp) {
-                errorNotify("The File url must be correct")
+                errorNotify("The File url must be www.site.com")
                 return;
             }
 
@@ -147,9 +147,8 @@ const SubmitForm = () => {
         </Modal.Header>
         <Modal.Body className='loginModal'>
             <h5>Your Work has been Created!!</h5>
-            <p>Thank you for submitting your work. The status of work is <span>Pending </span>
-                Once you done your <span>payment</span>. One of our team members will review your work
-                and assign it for review.</p>
+            <p>Thank you for submiting your work. The status of this work is <span> PENDING</span>.
+                Please complete <span>PAYMENT</span> for processing and review.</p>
 
             <div className='d-flex justify-content-center mt-5'>
                 <BlackButton onClick={() => navigate('/artist/payment')}>
@@ -195,10 +194,6 @@ const SubmitForm = () => {
                                 <div className='signup_form submit_work' style={{ height: "auto" }}>
                                     <h1 className='text-center'>Submit Work Form ( {userFound?.user?.profession?.professionName} )</h1>
 
-                                    <p> All of our reviewers are
-                                        individuals who are working in the field. We would like to
-                                        give them ample time for a review</p>
-
                                     <Form onSubmit={submitHandler}>
                                         <Row>
                                             <Col md={12}>
@@ -227,15 +222,15 @@ const SubmitForm = () => {
                                                 fileType === 'fileLink' ?
                                                     <Col md={12}>
                                                         <Input type="file" label="Upload File (PDF, MP3, MP4, PNG, or TXT)"
-                                                            accept=".pdf, .mp3, .mp4, .png, .txt" onChange={handleFileSelect} />
+                                                            accept=".pdf, .mp3, .mp4, .png, .txt" onChange={handleFileSelect} isRequired />
                                                     </Col> :
                                                     <Col md={12}>
-                                                        <Input type="text" label="Work File Url (Live link should be working perfectly)" name='fileUrl'
-                                                            value={workForm.fileUrl} onChange={inputHandler} />
+                                                        <Input type="text" label="Work File Url (www.site.com || https://site.com)" name='fileUrl'
+                                                            value={workForm.fileUrl} onChange={inputHandler} isRequired />
                                                     </Col>
                                             }
                                             <Col md={12}>
-                                                <Input type="text" label="Work File Name" name='fileName' value={workForm.fileName} onChange={inputHandler} />
+                                                <Input type="text" isRequired label="Work File Name" name='fileName' value={workForm.fileName} onChange={inputHandler} />
                                             </Col>
                                         </Row>
                                         <div className='d-flex justify-content-end'>

@@ -8,6 +8,8 @@ import AllWorkDetail from "../Pages/AllWorks/AllWorkDetail";
 import AllWorks from "../Pages/AllWorks/AllWorks";
 import Dashboad from "../Pages/Dashboard/Dashboad";
 import Payment from "../Pages/Payment/Payment";
+import Pricing from "../Pages/Pricing/Pricing";
+import Profession from "../Pages/Profession/Profession";
 import Profile from "../Pages/Profile/Profile";
 import ReviewedWork from "../Pages/ReviewedWork/ReviewedWork";
 
@@ -59,6 +61,18 @@ export const adminRoute = [
     {
         component: <Payment />,
         path: "/admin/payment"
+    },
+    {
+        component: <Profession />,
+        path: "/admin/profession"
+    },
+    {
+        component: <Profession />,
+        path: "/admin/profession"
+    },
+    {
+        component: <Pricing />,
+        path: "/admin/pricing"
     }
 ]
 
@@ -88,10 +102,20 @@ export const adminSideBarItems = [
         icon: "/images/files_icon.png",
         title: "All Payments",
     },
+    // {
+    //     path: "/admin/profile",
+    //     icon: "/images/create_page.png",
+    //     title: "Profile",
+    // },
     {
-        path: "/admin/profile",
+        path: "/admin/profession",
         icon: "/images/create_page.png",
-        title: "Profile",
+        title: "Profession",
+    },
+    {
+        path: "/admin/pricing",
+        icon: "/images/create_page.png",
+        title: "Pricing",
     },
     // {
     //     path: "/admin/reviewer-payment",

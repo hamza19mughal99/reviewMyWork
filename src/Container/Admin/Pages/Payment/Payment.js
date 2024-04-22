@@ -87,7 +87,7 @@ const Payment = () => {
         loading ? <Loader /> :
           <Container>
             <h1>All Payments</h1>
-            <div className='d-flex align-items-center justify-content-end mb-3' style={{ gap: "10px" }}>
+            <div className='payment_box'>
               <div className='payment_given'>
                 <h4>Earned:</h4>
                 <h3>$ {getPaymentData?.allPayment?.earning}</h3>

@@ -62,6 +62,70 @@ export const RegisterReducer = (state = {}, action) => {
     }
 }
 
+export const ForgetPasswordReducer = (state = {}, action) => {
+    switch (action.type) {
+        case "FORGET_PASSWORD_REQUEST":
+            return {
+                loading: true,
+                error: false
+            }
+        case "FORGET_PASSWORD_SUCCESS":
+            return {
+                ...state,
+                loading: false,
+                getForgetPasswordData: action.payload,
+                error: false
+            }
+        case "FORGET_PASSWORD_FAILED":
+            return {
+                ...state,
+                loading: false,
+                getForgetPasswordData: null,
+                error: action.payload
+            }
+        case "FORGET_PASSWORD_RESET":
+            return {
+                ...state,
+                getForgetPasswordData: null,
+                error: null
+            }
+        default:
+            return state
+    }
+}
+
+export const changePasswordReducer = (state = {}, action) => {
+    switch (action.type) {
+        case "CHANGE_PASSWORD_REQUEST":
+            return {
+                loading: true,
+                error: false
+            }
+        case "CHANGE_PASSWORD_SUCCESS":
+            return {
+                ...state,
+                loading: false,
+                getChangePasswordData: action.payload,
+                error: false
+            }
+        case "CHANGE_PASSWORD_FAILED":
+            return {
+                ...state,
+                loading: false,
+                getChangePasswordData: null,
+                error: action.payload
+            }
+        case "CHANGE_PASSWORD_RESET":
+            return {
+                ...state,
+                getChangePasswordData: null,
+                error: null
+            }
+        default:
+            return state
+    }
+}
+
 export const editProfileReducer = (state = {}, action) => {
     switch (action.type) {
         case "EDIT_PROFILE_REQUEST":

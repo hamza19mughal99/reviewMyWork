@@ -20,3 +20,9 @@
     border: 1px solid #002746d9;
     color: #002746d9;
 }
+
+@media (max-width: 767px) {
+    .work_tabs{
+        flex-wrap: wrap;
+    }
+}

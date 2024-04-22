@@ -57,3 +57,10 @@ table>tbody>tr>td {
 table>tbody>tr>td:last-child{
     border-right: none;
 }
+
+@media (max-width: 767px) {
+    .tss-gm6zfk-MUIDataTableHeadCell-fixedHeader{
+        padding: 10px 10px !important;
+        min-width: 160px !important;
+    }
+}

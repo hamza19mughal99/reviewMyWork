@@ -16,7 +16,7 @@ const Header = () => {
         if (p === 'profile') {
             if (userFound?.user?.role === 'artist') navigate('/artist/profile')
             else if (userFound?.user?.role === 'reviewer') navigate('/reviewer/profile')
-            else if (userFound?.user?.role === 'admin') navigate('/admin/dashboard')
+            else if (userFound?.user?.role === 'admin') navigate('/admin/profile')
         }
         else if (p === 'work') {
             if (userFound?.user?.role === 'artist') navigate('/artist/work')
@@ -29,10 +29,12 @@ const Header = () => {
         }
     }
 
+    const whiteHeader = ["/", "/about", "/services", "/contact", "/faqs", "/privacy-policy", "/terms-use", "/submission-guidelines", "/submission-agreement", "/testimonials", "/copyright"]
+
     return (
         <>
             {
-                pathname === "/" ?
+                whiteHeader.includes(pathname) ?
                     <div className='header_main'>
                         <Container fluid>
                             <img src='/images/main_logo.png' alt='' onClick={() => navigate("/")} className='main_logo' />
@@ -47,6 +49,7 @@ const Header = () => {
                                             <Dropdown.Item onClick={() => profileHandler('profile')}>
                                                 {userFound?.user?.role === 'admin' ? 'Dashboard' : 'Profile'}
                                             </Dropdown.Item>
+                                            {userFound?.user?.role === 'admin' && <Dropdown.Item onClick={() => profileHandler('profile')}>Profile</Dropdown.Item>}
                                             {userFound?.user?.role !== 'admin' && <Dropdown.Item onClick={() => profileHandler('work')}>Work</Dropdown.Item>}
                                             {userFound?.user?.role === 'reviewer' && <Dropdown.Item onClick={() => navigate('/reviewer/card-details')}>Account Details</Dropdown.Item>}
                                             <Dropdown.Item onClick={() => profileHandler('logout')}>Logout</Dropdown.Item>
@@ -74,6 +77,7 @@ const Header = () => {
                                                 {userFound?.user?.role === 'admin' ? 'Dashboard' : 'Profile'}
                                             </Dropdown.Item>
                                             {userFound?.user?.role !== 'admin' && <Dropdown.Item onClick={() => profileHandler('work')}>Work</Dropdown.Item>}
+                                            {userFound?.user?.role === 'admin' && <Dropdown.Item onClick={() => profileHandler('profile')}>Profile</Dropdown.Item>}
                                             {userFound?.user?.role === 'reviewer' && <Dropdown.Item onClick={() => navigate('/reviewer/card-details')}>Account Details</Dropdown.Item>}
                                             {/* {userFound?.user?.role === 'reviewer' && <Dropdown.Item onClick={() => navigate('/reviewer/card-details')}>Card Details</Dropdown.Item>} */}
                                             <Dropdown.Item onClick={() => profileHandler('logout')}>Logout</Dropdown.Item>

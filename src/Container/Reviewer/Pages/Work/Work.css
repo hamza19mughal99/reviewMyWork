@@ -21,3 +21,15 @@
 .review_left h3 span{
     font-weight: 800;
 }
+
+@media (max-width: 767px) {
+    .reviewer_work_page{
+        padding: 10px 0;
+    }
+
+    .filteration{
+        align-items: normal !important;
+        flex-direction: column !important;
+        margin-bottom: 30px !important;
+    }
+}

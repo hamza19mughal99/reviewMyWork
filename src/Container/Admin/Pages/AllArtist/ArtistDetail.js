@@ -91,7 +91,7 @@ const ArtistDetail = () => {
       }
     },
     {
-      name: "isReviewed", label: 'isReviewed',
+      name: "isReviewed", label: 'Reviewed',
       options: {
         customBodyRender: (value, tableMeta) => {
           return (

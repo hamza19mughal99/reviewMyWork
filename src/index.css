@@ -40,3 +40,61 @@ img{
   font-size: 14px;
   font-weight: 600;
 }
+
+.main_description_wrapper{
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  padding: 25px;
+  margin: 50px 0;
+  border-radius: 15px;
+}
+
+.main_description_wrapper p{
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.main_description_wrapper h6{
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.main_description_wrapper ul{
+  list-style-type: circle;
+  margin-bottom: 0;
+}
+
+.main_description_wrapper .accordion-button{
+  font-weight: 600 !important;
+  color: #000 !important;
+}
+
+.main_description_wrapper .accordion-button, .main_description_wrapper .accordion-button:not(.collapsed){
+  background-color: #d3d3d34a;
+}
+
+.main_description_wrapper .accordion-button:focus{
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.wrapper_pricing_box{
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  height: 100%;
+}
+
+.main_description_wrapper h5{
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.wrapper_pricing_box ul li span, .main_description_wrapper p span{
+  font-weight: 700;
+}
+
+.wrapper_pricing_box ul li{
+  margin-bottom: 10px;
+}

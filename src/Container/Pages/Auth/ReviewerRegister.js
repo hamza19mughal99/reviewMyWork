@@ -12,6 +12,7 @@ import { TiTick } from "react-icons/ti";
 import Select from 'react-select'
 import SpinLoader from '../../../Util/SpinLoader';
 import { ProfessionGet } from '../../../Redux/Action/admin';
+import { MdDelete } from "react-icons/md";
 
 const ReviewerRegister = () => {
 
@@ -21,6 +22,7 @@ const ReviewerRegister = () => {
         fullName: '',
         email: "",
         password: "",
+        c_password: "",
         about: ""
     })
     const [previousWork, setPreviousWork] = useState([{
@@ -56,8 +58,10 @@ const ReviewerRegister = () => {
                 fullName: '',
                 email: "",
                 password: "",
+                c_password: "",
                 about: ""
             })
+            setProfession({})
             setPreviousWork([{
                 links: ''
             }])
@@ -91,14 +95,44 @@ const ReviewerRegister = () => {
 
         let emptyPreviousWork = previousWork.some((v) => v.links.length === 0)
 
-        if (register.fullName.length === 0 || register.email.length === 0 || register.password.length === 0
-            || register.about.length === 0 || !profession || emptyPreviousWork) {
-            errorNotify("Please filled up all fields")
+        if (register.fullName.length === 0 || register.email.length === 0 || register.password.length === 0 ||
+            register.c_password.length === 0 || register.about.length === 0 || !profession || emptyPreviousWork) {
+
+            let errorMessage = "Please fill up empty fields: ";
+
+            if (register.fullName.length === 0) {
+                errorMessage += "Full Name, ";
+            }
+            if (register.email.length === 0) {
+                errorMessage += "Email, ";
+            }
+            if (register.password.length === 0) {
+                errorMessage += "Password, ";
+            }
+            if (register.c_password.length === 0) {
+                errorMessage += "Confirm Password, ";
+            }
+            if (register.about.length === 0) {
+                errorMessage += "About, ";
+            }
+            if (!profession) {
+                errorMessage += "Profession, ";
+            }
+            if (emptyPreviousWork) {
+                errorMessage += "Previous Work, ";
+            }
+            errorMessage = errorMessage.slice(0, -2);
+            errorNotify(errorMessage);
+            return;
+        }
+
+        if (register.password !== register.c_password) {
+            errorNotify("Password and Confirm Password must be same");
             return
         }
 
         let isHttp = previousWork?.every((v) => {
-            return v?.links?.startsWith("http://") || v?.links?.startsWith("https://")
+            return v?.links?.startsWith("http://") || v?.links?.startsWith("https://") || v?.links?.startsWith("www.")
         });
 
         if (!isHttp) {
@@ -125,6 +159,12 @@ const ReviewerRegister = () => {
         updatedWork[index].links = event.target.value;
         setPreviousWork(updatedWork);
     };
+
+    const deleteInputHandler = (i) => {
+        const updatedWork = [...previousWork];
+        updatedWork.splice(i, 1);
+        setPreviousWork(updatedWork);
+    }
 
     const backHandler = () => {
         dispatch({ type: 'REGISTER_RESET' })
@@ -162,9 +202,7 @@ const ReviewerRegister = () => {
             <Container fluid>
                 <Row>
                     <Col md={6} className='p-0'>
-                        <div className='signup_left'>
-                            {/* <img src='/images/artist_signup.png' alt='' /> */}
-                        </div>
+                        <div className='signup_left'></div>
                     </Col>
 
                     <Col md={6} className='p-0'>
@@ -175,16 +213,24 @@ const ReviewerRegister = () => {
                                 <Input isRequired={true} type="text" label="Full Name" name='fullName' value={register.fullName} onChange={inputHandler} />
                                 <Input isRequired={true} type="email" label="Email Address" name='email' value={register.email} onChange={inputHandler} />
                                 <Input isRequired={true} type="password" label="Password" name="password" value={register.password} onChange={inputHandler} />
+                                <Input isRequired={true} type="password" label="Confirm Password" name="c_password" value={register.c_password} onChange={inputHandler} />
 
                                 <Form.Group className="mb-3">
                                     <Form.Label>Link to your previous work <span className='req_field'>*</span> <br />
                                         <span>IMPORTANT: Make sure all your link works</span>
                                     </Form.Label>
                                     {previousWork.map((work, index) => (
-                                        <Form.Control type="text" className='mb-1'
-                                            value={work.links}
-                                            onChange={(event) => handleInputChange(index, event)}
-                                        />
+                                        <div className='work_link'>
+                                            <Form.Control type="text" className='mb-1'
+                                                value={work.links}
+                                                placeholder='example: www.site.com  or https://site.com'
+                                                onChange={(event) => handleInputChange(index, event)}
+                                            />
+                                            {
+                                                previousWork.length !== 1 &&
+                                                <MdDelete onClick={() => deleteInputHandler(index)} />
+                                            }
+                                        </div>
                                     ))}
                                     <p onClick={handleAddMore}>+ Add More</p>
                                 </Form.Group>

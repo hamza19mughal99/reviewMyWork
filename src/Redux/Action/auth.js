@@ -23,9 +23,6 @@ export const AuthLogin = (inputData) => async (dispatch) => {
         if (e?.code === "ERR_NETWORK") {
             errorNotify("Network Error");
         }
-        if (e?.code === "ERR_NETWORK") {
-            errorNotify("Network Error");
-        }
         dispatch({
             type: "LOGIN_FAILED",
             payload: e?.response?.data?.message,
@@ -55,6 +52,60 @@ export const AuthRegister = (d) => async (dispatch) => {
         }
         dispatch({
             type: "REGISTER_FAILED",
+            payload: e?.response?.data?.message,
+            success: false,
+        });
+    }
+};
+
+export const ForgotPassword = (d) => async (dispatch) => {
+    try {
+        dispatch({
+            type: "FORGET_PASSWORD_REQUEST",
+        });
+
+        const { data } = await axios.post("auth/forgot-password", d);
+
+        dispatch({
+            type: "FORGET_PASSWORD_SUCCESS",
+            payload: data,
+            success: true,
+        });
+    }
+
+    catch (e) {
+        if (e?.code === "ERR_NETWORK") {
+            errorNotify("Network Error");
+        }
+        dispatch({
+            type: "FORGET_PASSWORD_FAILED",
+            payload: e?.response?.data?.message,
+            success: false,
+        });
+    }
+};
+
+export const UpdatePassword = (d) => async (dispatch) => {
+    try {
+        dispatch({
+            type: "CHANGE_PASSWORD_REQUEST",
+        });
+
+        const { data } = await axios.post("auth/change-password", d);
+
+        dispatch({
+            type: "CHANGE_PASSWORD_SUCCESS",
+            payload: data,
+            success: true,
+        });
+    }
+
+    catch (e) {
+        if (e?.code === "ERR_NETWORK") {
+            errorNotify("Network Error");
+        }
+        dispatch({
+            type: "CHANGE_PASSWORD_FAILED",
             payload: e?.response?.data?.message,
             success: false,
         });
@@ -95,7 +146,7 @@ export const LoggedInUser = (inputData) => async (dispatch) => {
             type: "LOGGED_IN_REQUEST",
         });
 
-        const { data } = await axios.post("auth/get-current-user", {email: inputData});
+        const { data } = await axios.post("auth/get-current-user", { email: inputData });
 
         dispatch({
             type: "LOGGED_IN_SUCCESS",

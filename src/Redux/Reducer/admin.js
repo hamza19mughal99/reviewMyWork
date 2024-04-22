@@ -161,6 +161,105 @@ export const ProfessionGetReducer = (state = {}, action) => {
     }
 }
 
+export const ProfessionCreateReducer = (state = {}, action) => {
+    switch (action.type) {
+        case "PROFESSION_CREATE_REQUEST":
+            return {
+                loading: true,
+                error: false
+            }
+        case "PROFESSION_CREATE_SUCCESS":
+            return {
+                ...state,
+                loading: false,
+                createProfessionData: action.payload,
+                error: false
+            }
+        case "PROFESSION_CREATE_FAILED":
+            return {
+                ...state,
+                loading: false,
+                createProfessionData: null,
+                error: action.payload
+            }
+        case "PROFESSION_CREATE_RESET":
+            return {
+                ...state,
+                loading: false,
+                createProfessionData: null,
+                error: null
+            }
+        default:
+            return state
+    }
+}
+
+export const ProfessionDeleteReducer = (state = {}, action) => {
+    switch (action.type) {
+        case "PROFESSION_DELETE_REQUEST":
+            return {
+                loading: true,
+                error: false
+            }
+        case "PROFESSION_DELETE_SUCCESS":
+            return {
+                ...state,
+                loading: false,
+                deleteProfessionData: action.payload,
+                error: false
+            }
+        case "PROFESSION_DELETE_FAILED":
+            return {
+                ...state,
+                loading: false,
+                deleteProfessionData: null,
+                error: action.payload
+            }
+        case "PROFESSION_DELETE_RESET":
+            return {
+                ...state,
+                loading: false,
+                deleteProfessionData: null,
+                error: null
+            }
+        default:
+            return state
+    }
+}
+
+export const ProfessionUpdateReducer = (state = {}, action) => {
+    switch (action.type) {
+        case "PROFESSION_UPDATE_REQUEST":
+            return {
+                loading: true,
+                error: false
+            }
+        case "PROFESSION_UPDATE_SUCCESS":
+            return {
+                ...state,
+                loading: false,
+                updateProfessionData: action.payload,
+                error: false
+            }
+        case "PROFESSION_UPDATE_FAILED":
+            return {
+                ...state,
+                loading: false,
+                updateProfessionData: null,
+                error: action.payload
+            }
+        case "PROFESSION_UPDATE_RESET":
+            return {
+                ...state,
+                loading: false,
+                updateProfessionData: null,
+                error: null
+            }
+        default:
+            return state
+    }
+}
+
 export const PlanGetReducer = (state = {}, action) => {
     switch (action.type) {
         case "PLAN_GET_REQUEST":

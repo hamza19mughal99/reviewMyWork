@@ -62,6 +62,7 @@ const MuiDataTable = ({ data, columns, title, page, rowsPerPage = 5, count, text
                 data={sortedData}
                 columns={columns}
                 options={options}
+                responsive
             />
         </div>
     );

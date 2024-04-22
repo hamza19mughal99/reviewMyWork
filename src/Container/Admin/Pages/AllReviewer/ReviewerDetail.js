@@ -126,7 +126,7 @@ const ReviewerDetail = () => {
                     <Input disable={true} type="text" label="Full Name" name='fullName' value={getUserData.fullName} />
                     <Input disable={true} type="email" label="Email Address" name='email' value={getUserData.email} />
 
-                    <Form.Group className="mb-3">
+                    <Form.Group className="mb-3 input_main">
                       <Form.Label>Link to your previous work <br />
                       </Form.Label>
                       {getUserData?.previousWork?.map((work, index) => (

@@ -153,3 +153,22 @@
     margin-top: 80px;
     margin-bottom: 130px;
 }
+
+@media (max-width: 767px) {
+    .banner_main{
+        height: 70vh;
+    }
+
+    .home_boxes {
+        margin-top: 70px;
+        margin-bottom: 50px;
+    }
+
+    .box_main{
+        position: static;
+    }
+
+    .home_boxes .row{
+        gap: 60px 0;
+    }
+}

@@ -17,7 +17,7 @@
 
 .signup_form .form-label {
     font-family: 'Open Sans', sans-serif;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
     margin-bottom: 3px;
     font-weight: 600;
 }
@@ -70,9 +70,52 @@
 }
 
 .signup_form h6 {
-    text-align: end;
     font-size: 15px;
     font-weight: 600;
     text-decoration: underline;
     cursor: pointer;
+    width: fit-content;
+    margin-left: auto;
+}
+
+.signup_form h5{
+    text-align: center;
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.work_link{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.work_link svg{
+    cursor: pointer;
+    font-size: 22px;
+    color: #ef3838;
+}
+
+@media (max-width: 767px) {
+    .signup_left {
+        display: none;
+    }
+
+    .signup_form {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 30px 10px;
+        min-height: 87vh;
+    }
+
+    .signup_form form {
+        width: 100%;
+    }
+
+    .signup_form .input_main{
+        width: 100% !important;
+    }
 }

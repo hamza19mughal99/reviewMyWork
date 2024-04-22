@@ -47,6 +47,7 @@ const Auth = () => {
                     <Col md={6} className='p-0'>
                         <div className='signup_form'>
                             <div style={{ display: "flex", flexDirection: "column", gap: "20px", alignItems: "center" }}>
+                                <h5>Please Sign up or Login to <br /> access the website</h5>
                                 <BlackButton style={{ width: "200px", justifyContent: "space-between" }} onClick={signUpHandler}>
                                     Sign up
                                     <img src='/images/btn_arrow_img.png' alt='' />

@@ -75,3 +75,9 @@
 .dashboard_box.make_blue svg {
     color: #002746d9;
 }
+
+@media (max-width: 767px) {
+    .main_dashboard {
+        margin: 0 !important;
+    }
+}

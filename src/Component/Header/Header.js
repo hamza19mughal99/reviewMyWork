@@ -13,6 +13,9 @@ const Header = () => {
     const userFound = JSON.parse(localStorage.getItem('user'))
 
     const profileHandler = (p) => {
+        if (p === 'dashboard') {
+            navigate("/admin/dashboard")
+        }
         if (p === 'profile') {
             if (userFound?.user?.role === 'artist') navigate('/artist/profile')
             else if (userFound?.user?.role === 'reviewer') navigate('/reviewer/profile')
@@ -46,7 +49,7 @@ const Header = () => {
                                         </Dropdown.Toggle>
 
                                         <Dropdown.Menu>
-                                            <Dropdown.Item onClick={() => profileHandler('profile')}>
+                                            <Dropdown.Item onClick={() => profileHandler(userFound?.user?.role === "admin" ? 'dashboard' : 'profile')}>
                                                 {userFound?.user?.role === 'admin' ? 'Dashboard' : 'Profile'}
                                             </Dropdown.Item>
                                             {userFound?.user?.role === 'admin' && <Dropdown.Item onClick={() => profileHandler('profile')}>Profile</Dropdown.Item>}
@@ -73,7 +76,7 @@ const Header = () => {
                                         </Dropdown.Toggle>
 
                                         <Dropdown.Menu>
-                                            <Dropdown.Item onClick={() => profileHandler('profile')}>
+                                            <Dropdown.Item onClick={() => profileHandler(userFound?.user?.role === "admin" ? 'dashboard' : 'profile')}>
                                                 {userFound?.user?.role === 'admin' ? 'Dashboard' : 'Profile'}
                                             </Dropdown.Item>
                                             {userFound?.user?.role !== 'admin' && <Dropdown.Item onClick={() => profileHandler('work')}>Work</Dropdown.Item>}

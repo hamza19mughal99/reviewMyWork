@@ -8,6 +8,7 @@ import {
 } from "./admin";
 import { ArtistGetWorkReducer, ArtistWorkReducer, OneTimePaymentReducer, SubsPaymentReducer } from "./artist";
 import { GetAllWorkReducer, GiveReviewReducer, ReviewGetWorkReducer, ReviewerGetAllWorkReducer } from "./reviewer";
+import { EditAboutGetReducer, EditAboutPostReducer, EditAgreementGetReducer, EditAgreementPostReducer, EditContactGetReducer, EditContactPostReducer, EditCopyRightGetReducer, EditCopyRightPostReducer, EditFaqGetReducer, EditFaqPostReducer, EditHomeGetReducer, EditHomePostReducer, EditPrivacyGetReducer, EditPrivacyPostReducer, EditServiceGetReducer, EditServiceUpdateReducer, EditSubmissionGetReducer, EditSubmissionPostReducer, EditTermsGetReducer, EditTermsPostReducer, EditTestimonialGetReducer, EditTestimonialPostReducer } from "./EditPages";
 
 const rootReducer = combineReducers({
 
@@ -35,7 +36,6 @@ const rootReducer = combineReducers({
     getAllPlanData: PlanGetReducer,
     getWorksData: getWorksReducer,
 
-
     //ARTIST
     postArtistWork: ArtistWorkReducer,
     getArtistWork: ArtistGetWorkReducer,
@@ -45,7 +45,41 @@ const rootReducer = combineReducers({
     //REVIEWER
     getNotReviewWork: ReviewerGetAllWorkReducer,
     reviewCreate: GiveReviewReducer,
-    reviewGetData: ReviewGetWorkReducer
+    reviewGetData: ReviewGetWorkReducer,
+
+    //EDIT PAGES
+    getEditHome: EditHomeGetReducer,
+    updateEditHome: EditHomePostReducer,
+
+    getEditAbout: EditAboutGetReducer,
+    updateEditAbout: EditAboutPostReducer,
+
+    getAgreementEdit: EditAgreementGetReducer,
+    updateAgreementEdit: EditAgreementPostReducer,
+
+    getContactEdit: EditContactGetReducer,
+    updateContactEdit: EditContactPostReducer,
+
+    getCopyRightEdit: EditCopyRightGetReducer,
+    updateCopyRightEdit: EditCopyRightPostReducer,
+
+    getPrivacyEdit: EditPrivacyGetReducer,
+    updatePrivacyEdit: EditPrivacyPostReducer,
+
+    getSubmissionEdit: EditSubmissionGetReducer,
+    updateSubmissionEdit: EditSubmissionPostReducer,
+
+    getTermsEdit: EditTermsGetReducer,
+    updateTermsEdit: EditTermsPostReducer,
+
+    getTestimonialEdit: EditTestimonialGetReducer,
+    updateTestimonialEdit: EditTestimonialPostReducer,
+
+    getFaqEdit: EditFaqGetReducer,
+    updateFaqEdit: EditFaqPostReducer,
+
+    getServiceEdit: EditServiceGetReducer,
+    updateServiceEdit: EditServiceUpdateReducer
 })
 
 export default rootReducer;

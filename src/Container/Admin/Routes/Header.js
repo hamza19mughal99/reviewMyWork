@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
+import Accordion from '@mui/material/Accordion';
+import AccordionActions from '@mui/material/AccordionActions';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Button from '@mui/material/Button';
 import "./Header.css";
+import { adminEditSidebarItems } from "./Routes";
 
 const Header = ({ sideBarItems, children }) => {
     const { pathname } = useLocation();
@@ -63,6 +70,36 @@ const Header = ({ sideBarItems, children }) => {
                                 )
                             })
                         }
+                    </div>
+                    <div className="dropdown_url">
+                        <Accordion>
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1-content"
+                                id="panel1-header"
+                            >
+                                Edit Content
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <div className="user_sidebar sub_dropdown_sidebar">
+                                    <div>
+                                        {
+                                            adminEditSidebarItems.map((ad) => {
+                                                return (
+                                                    <ul className="nav_list">
+                                                        <li className={`${classes(ad.path)}`}>
+                                                            <Link to={ad.path}>
+                                                                <span>{ad.title}</span>
+                                                            </Link>
+                                                        </li>
+                                                    </ul>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                </div>
+                            </AccordionDetails>
+                        </Accordion>
                     </div>
                 </div>
                 <div className="layout_content">{children}</div>

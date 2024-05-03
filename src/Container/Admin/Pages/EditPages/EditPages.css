@@ -1,0 +1,68 @@
+.main_content_edit h1{
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.main_content_edit{
+    padding: 50px 0;
+}
+
+.main_home_content_edit{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    background-color: #fff;
+    padding: 25px 35px;
+    border-radius: 15px;
+    border: 1px solid lightgrey;
+    margin: 0 50px;
+}
+
+.main_home_content_edit div label{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.main_home_content_edit div textarea{
+    border: 1px solid lightgrey;
+    padding: 6px;
+    border-radius: 5px;
+    resize: none;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.main_home_content_edit div img{
+    width: 130px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.main_home_content_edit div input{
+    border: 1px solid lightgrey;
+    padding: 8px;
+    margin-bottom: 7px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.main_home_content_edit div textarea:focus-visible{
+    outline: none;
+}
+
+.main_home_content_edit div input:focus-visible {
+    outline: none;
+}
+
+.main_home_content_edit h6{
+    font-size: 21px;
+    font-weight: 700;
+    margin-top: 12px;
+}
+
+.main_home_content_edit .ques_ans_div ul{
+    list-style-type: decimal;
+}

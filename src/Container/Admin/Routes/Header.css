@@ -26,7 +26,7 @@
 
 .user_sidebar .nav_list li {
     margin-bottom: 0px;
-    padding: 10px 5px 10px 15px;
+    padding: 7px 5px 6px 15px;
 }
 
 .user_sidebar .nav_list li.nav_active {
@@ -49,8 +49,8 @@
 }
 
 .user_sidebar {
-    padding: 40px 0 0 0px;
-    margin-left: 20px
+    padding: 10px 0 0 0px;
+    margin-left: 13px;
 }
 
 .user_sidebar .nav_list .nav_active a span {
@@ -95,6 +95,44 @@
 
 .sidebar_mob_view{
     display: none;
+}
+
+/* .dropdown_url{
+    padding-top: 10px;
+} */
+
+.dropdown_url .MuiAccordion-root{
+    color: #fff !important;
+    margin-bottom: 0 !important;
+    padding: 2px 0px 10px 18px !important;
+    background-color: transparent !important;
+}
+
+.dropdown_url .MuiSvgIcon-root{
+    color: #fff;
+}
+
+.dropdown_url .MuiAccordionSummary-content{
+    font-size: 17px;
+    margin: 0 !important;
+} 
+
+.dropdown_url .MuiAccordionDetails-root{
+    padding: 10px 0 10px 16px;
+}
+
+.dropdown_url .Mui-expanded{
+    min-height: auto !important;
+    margin-top: 5px !important;
+}
+
+.dropdown_url .MuiButtonBase-root{
+    padding: 0 10px !important;
+}
+
+.user_sidebar.sub_dropdown_sidebar{
+    padding-top: 0 !important;
+    margin-left: 5px !important;
 }
 
 @media (max-width: 767px) {

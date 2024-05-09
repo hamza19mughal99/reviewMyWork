@@ -22,6 +22,8 @@ import Payment from "../Pages/Payment/Payment";
 import Pricing from "../Pages/Pricing/Pricing";
 import Profession from "../Pages/Profession/Profession";
 import Profile from "../Pages/Profile/Profile";
+import AddQuestions from "../Pages/QuestionSets/AddQuestions";
+import QuestionSets from "../Pages/QuestionSets/QuestionSets";
 import ReviewedWork from "../Pages/ReviewedWork/ReviewedWork";
 
 export const adminRoute = [
@@ -128,6 +130,14 @@ export const adminRoute = [
     {
         component: <ServicePage />,
         path: "/admin/edit-service"
+    },
+    {
+        component: <QuestionSets />,
+        path: "/admin/question-sets"
+    },
+    {
+        component: <AddQuestions />,
+        path: "/admin/question-sets/add-questions/:id"
     }
 ]
 
@@ -171,6 +181,11 @@ export const adminSideBarItems = [
         path: "/admin/pricing",
         icon: "/images/create_page.png",
         title: "Pricing",
+    },
+    {
+        path: "/admin/question-sets",
+        icon: "/images/create_page.png",
+        title: "Question Sets",
     },
     // {
     //     path: "/admin/reviewer-payment",

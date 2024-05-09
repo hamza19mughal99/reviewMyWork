@@ -17,6 +17,13 @@
     text-align: center;
 }
 
+.home_main .banner_main h1{
+    max-width: 510px;
+    margin: 0 auto;
+    font-size: 45px;
+    font-weight: 600;
+}
+
 .banner_main h1 span {
     font-weight: 800;
 }

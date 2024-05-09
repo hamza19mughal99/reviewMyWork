@@ -34,20 +34,20 @@ const Profession = () => {
     useEffect(() => {
         if (updateProfessionData?.status === 1) {
             successNotify("Update Successfully!")
+            dispatch(ProfessionGet())
             dispatch({ type: "PROFESSION_UPDATE_RESET" })
             setShow2(false)
             setName('')
-            dispatch(ProfessionGet())
         }
     }, [updateProfessionData])
 
     useEffect(() => {
         if (deleteProfessionData?.status === 1) {
             successNotify("Created Successfully!")
+            dispatch(ProfessionGet())
             setId('')
             dispatch({ type: "PROFESSION_DELETE_RESET" })
             setDeleteModal(false)
-            dispatch(ProfessionGet())
         }
     }, [deleteProfessionData])
 
@@ -126,7 +126,7 @@ const Profession = () => {
             <div>
                 <h6>Are you sure you want to delete?</h6>
                 <div>
-                    <button onClick={deleteHandler}> {deleteLoading ? <Spinner /> : 'Yes'}</button>
+                    <button onClick={deleteHandler}> {deleteLoading ? <Spinner animation='border' size='sm' /> : 'Yes'}</button>
                     <button onClick={() => setDeleteModal(false)}>No</button>
                 </div>
             </div>

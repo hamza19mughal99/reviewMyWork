@@ -28,7 +28,7 @@ const ArtistRegister = () => {
     }]);
 
     const { loading, getRegisterData, error } = useSelector((state) => state.registerData)
-    const { getProfessionData } = useSelector((state) => state.getAllProfessionData)
+    const { loading: professionLoading, getProfessionData } = useSelector((state) => state.getAllProfessionData)
 
     const loginUser = JSON.parse(localStorage.getItem("user"));
 
@@ -204,7 +204,7 @@ const ArtistRegister = () => {
 
                                 <div className="mb-3">
                                     <Form.Label>Select Profession <span className='req_field'>*</span></Form.Label>
-                                    <Select options={professionOptions} placeholder="select profession"
+                                    <Select options={professionOptions} placeholder="select profession" isLoading={professionLoading}
                                         className='profession_bg' onChange={(v) => setProfession(v)} />
                                 </div>
 

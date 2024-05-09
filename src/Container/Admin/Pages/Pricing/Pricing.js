@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Modal, Form, Spinner } from "react-bootstrap";
-import { AllPaymentGetData, ProfessionCreate, ProfessionDelete, ProfessionGet, ProfessionUpdate } from '../../../../Redux/Action/admin';
+import { PlanCreate, PlanDelete, PlanGet, PlanUpdate } from '../../../../Redux/Action/admin';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../../../../Util/Loader';
 import { errorNotify, successNotify } from '../../../../Util/Toast';
@@ -14,85 +14,89 @@ const Pricing = () => {
     const [deleteModal, setDeleteModal] = useState(false)
     const [id, setId] = useState('')
     const [name, setName] = useState('')
+    const [price, setPrice] = useState('')
 
-    const { loading, getPaymentData } = useSelector((state) => state.getAllPaymentData)
+    const { loading, getPlanData } = useSelector((state) => state.getAllPlanData)
 
-    const { getProfessionData } = useSelector((state) => state.getAllProfessionData)
-    const { loading: createLoading, createProfessionData } = useSelector((state) => state.professionCreateData)
-    const { loading: updateLoading, updateProfessionData } = useSelector((state) => state.professionUpdateData)
-    const { loading: deleteLoading, deleteProfessionData } = useSelector((state) => state.professionDeleteData)
-
-    console.log(getPaymentData)
+    const { loading: createLoading, createPlanData } = useSelector((state) => state.postPlanData)
+    const { loading: updateLoading, updatePlanData } = useSelector((state) => state.planUpdatedData)
+    const { loading: deleteLoading, deletedPlanData } = useSelector((state) => state.PlanDeletedData)
 
     useEffect(() => {
-        if (createProfessionData?.status === 1) {
+        if (createPlanData?.status === 1) {
             successNotify("Created Successfully!")
-            dispatch({ type: "PROFESSION_CREATE_RESET" })
+            dispatch({ type: "PLAN_CREATE_RESET" })
             setShow(false)
             setName('')
-            dispatch(ProfessionGet())
+            setPrice('')
+            dispatch(PlanGet())
         }
-    }, [createProfessionData])
-
-    useEffect(() => {
-        if (updateProfessionData?.status === 1) {
+        if (updatePlanData?.status === 1) {
             successNotify("Update Successfully!")
-            dispatch({ type: "PROFESSION_UPDATE_RESET" })
+            dispatch({ type: "PLAN_UPDATE_RESET" })
             setShow2(false)
             setName('')
-            dispatch(ProfessionGet())
-        }
-    }, [updateProfessionData])
-
-    useEffect(() => {
-        if (deleteProfessionData?.status === 1) {
-            successNotify("Created Successfully!")
+            setPrice('')
             setId('')
-            dispatch({ type: "PROFESSION_DELETE_RESET" })
-            setDeleteModal(false)
-            dispatch(ProfessionGet())
+            dispatch(PlanGet())
         }
-    }, [deleteProfessionData])
+        if (deletedPlanData?.status === 1) {
+            successNotify("Deleted Successfully!")
+            setId('')
+            dispatch({ type: "PLAN_DELETE_RESET" })
+            setDeleteModal(false)
+            dispatch(PlanGet())
+        }
+    }, [createPlanData, updatePlanData, deletedPlanData])
 
     useEffect(() => {
-        dispatch(AllPaymentGetData())
+        dispatch(PlanGet())
     }, [])
 
     const professionHandler = (action) => {
-        if (name.length === 0) {
+        if (name.length === 0 || price.length === 0) {
             errorNotify("Please filled up fields")
             return;
         }
 
+        if (parseInt(price) < 1) {
+            errorNotify("Price must be greater than 0")
+            return;
+        }
+
+        let data = {
+            planName: name,
+            amount: parseInt(price)
+        }
+
         if (action === 'CREATE') {
-            let data = {
-                professionName: name
-            }
-            dispatch(ProfessionCreate(data))
+            dispatch(PlanCreate(data))
         }
 
         if (action === 'EDIT') {
-            let data = {
-                professionName: name
-            }
-            dispatch(ProfessionUpdate(id, data))
+            dispatch(PlanUpdate(id, data))
         }
-
     }
 
     const deleteHandler = () => {
-        dispatch(ProfessionDelete(id))
+        dispatch(PlanDelete(id))
     }
 
     const modal = <Modal centered show={show} onHide={() => setShow(false)} className='profession_modal'>
         <Modal.Header closeButton>
-            <Modal.Title>Create Profession</Modal.Title>
+            <Modal.Title>Create New Plan</Modal.Title>
         </Modal.Header>
         <Modal.Body>
             <Form>
                 <div>
-                    <label>Profession Name</label>
-                    <input placeholder='Enter Profession Name' value={name} onChange={(e) => setName(e.target.value)} />
+                    <div className='mb-3'>
+                        <label>Plan Name</label>
+                        <input placeholder='Enter Plan Name' value={name} onChange={(e) => setName(e.target.value)} />
+                    </div>
+                    <div>
+                        <label>Plan Price</label>
+                        <input placeholder='Enter Plan Price' type='number' value={price} onChange={(e) => setPrice(e.target.value)} />
+                    </div>
                     {
                         createLoading ? <div style={{ display: "flex", alignItems: "end" }}> <SpinLoader /> </div> :
                             <BlackButton type="button" onClick={() => professionHandler('CREATE')}>
@@ -111,8 +115,14 @@ const Pricing = () => {
         <Modal.Body>
             <Form>
                 <div>
-                    <label>Profession Name</label>
-                    <input placeholder='Enter Profession Name' value={name} onChange={(e) => setName(e.target.value)} />
+                    <div className='mb-3'>
+                        <label>Plan Name</label>
+                        <input placeholder='Enter Plan Name' value={name} onChange={(e) => setName(e.target.value)} />
+                    </div>
+                    <div>
+                        <label>Plan Price</label>
+                        <input placeholder='Enter Plan Price' type='number' value={price} onChange={(e) => setPrice(e.target.value)} />
+                    </div>
                     {
                         updateLoading ? <div style={{ display: "flex", alignItems: "end" }}> <SpinLoader /> </div> :
                             <BlackButton type="button" onClick={() => professionHandler('EDIT')}>
@@ -129,7 +139,7 @@ const Pricing = () => {
             <div>
                 <h6>Are you sure you want to delete?</h6>
                 <div>
-                    <button onClick={deleteHandler}> {deleteLoading ? <Spinner /> : 'Yes'}</button>
+                    <button onClick={deleteHandler}> {deleteLoading ? <Spinner animation='border' size='sm' /> : 'Yes'}</button>
                     <button onClick={() => setDeleteModal(false)}>No</button>
                 </div>
             </div>
@@ -139,7 +149,8 @@ const Pricing = () => {
     const showEdit = (data) => {
         setShow2(true)
         setId(data._id)
-        setName(data.professionName)
+        setName(data.planName)
+        setPrice(data.amount)
     }
 
     return (
@@ -148,26 +159,26 @@ const Pricing = () => {
             {modal2}
             {modal3}
             <Container>
-                <h1>Pricing</h1>
+                <h1>Service Plans</h1>
 
                 <div className='create_profession'>
                     <button onClick={() => {
                         setShow(true)
                         setId('')
                         setName('')
-                    }}>Create New Service</button>
+                    }}>Create New Plan</button>
                 </div>
 
                 {
                     loading ? <Loader /> :
                         <Row style={{ gap: "10px 0" }}>
                             {
-                                getProfessionData?.ProfessionGet?.map((p) => {
+                                getPlanData?.PlanGet?.map((p) => {
                                     return (
                                         <Col md={4}>
                                             <div className='profession_box'>
-                                                <h2>Service Name: <span> {p.professionName} </span></h2>
-                                                <h2>Service Amount: <span> 50$ </span></h2>
+                                                <h2>Plan Name: <span> {p.planName} </span></h2>
+                                                <h2>Plan Price: <span> {p.amount}$ </span></h2>
                                                 <div>
                                                     <button onClick={() => showEdit(p)}>Edit</button>
                                                     <button onClick={() => {

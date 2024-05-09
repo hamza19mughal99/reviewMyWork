@@ -286,6 +286,105 @@ export const PlanGetReducer = (state = {}, action) => {
     }
 }
 
+export const PlanCreateReducer = (state = {}, action) => {
+    switch (action.type) {
+        case "PLAN_CREATE_REQUEST":
+            return {
+                loading: true,
+                error: false
+            }
+        case "PLAN_CREATE_SUCCESS":
+            return {
+                ...state,
+                loading: false,
+                createPlanData: action.payload,
+                error: false
+            }
+        case "PLAN_CREATE_FAILED":
+            return {
+                ...state,
+                loading: false,
+                createPlanData: null,
+                error: action.payload
+            }
+        case "PLAN_CREATE_RESET":
+            return {
+                ...state,
+                loading: false,
+                createPlanData: null,
+                error: null
+            }
+        default:
+            return state
+    }
+}
+
+export const PlanDeleteReducer = (state = {}, action) => {
+    switch (action.type) {
+        case "PLAN_DELETE_REQUEST":
+            return {
+                loading: true,
+                error: false
+            }
+        case "PLAN_DELETE_SUCCESS":
+            return {
+                ...state,
+                loading: false,
+                deletedPlanData: action.payload,
+                error: false
+            }
+        case "PLAN_DELETE_FAILED":
+            return {
+                ...state,
+                loading: false,
+                deletedPlanData: null,
+                error: action.payload
+            }
+        case "PLAN_DELETE_RESET":
+            return {
+                ...state,
+                loading: false,
+                deletedPlanData: null,
+                error: null
+            }
+        default:
+            return state
+    }
+}
+
+export const PlanUpdateReducer = (state = {}, action) => {
+    switch (action.type) {
+        case "PLAN_UPDATE_REQUEST":
+            return {
+                loading: true,
+                error: false
+            }
+        case "PLAN_UPDATE_SUCCESS":
+            return {
+                ...state,
+                loading: false,
+                updatePlanData: action.payload,
+                error: false
+            }
+        case "PLAN_UPDATE_FAILED":
+            return {
+                ...state,
+                loading: false,
+                updatePlanData: null,
+                error: action.payload
+            }
+        case "PLAN_UPDATE_RESET":
+            return {
+                ...state,
+                loading: false,
+                updatePlanData: null,
+                error: null
+            }
+        default:
+            return state
+    }
+}
+
 export const getWorksReducer = (state = {}, action) => {
     switch (action.type) {
         case "GET_WORKS_REQUEST":
@@ -306,6 +405,138 @@ export const getWorksReducer = (state = {}, action) => {
                 loading: false,
                 getAllWorksData: null,
                 error: action.payload
+            }
+        default:
+            return state
+    }
+}
+
+export const QuestionCreateReducer = (state = {}, action) => {
+    switch (action.type) {
+        case "QUESTION_CREATE_REQUEST":
+            return {
+                loading: true,
+                error: false
+            }
+        case "QUESTION_CREATE_SUCCESS":
+            return {
+                ...state,
+                loading: false,
+                createQuestionData: action.payload,
+                error: false
+            }
+        case "QUESTION_CREATE_FAILED":
+            return {
+                ...state,
+                loading: false,
+                createQuestionData: null,
+                error: action.payload
+            }
+        case "QUESTION_CREATE_RESET":
+            return {
+                ...state,
+                loading: false,
+                createQuestionData: null,
+                error: null
+            }
+        default:
+            return state
+    }
+}
+
+export const QuestionSetGetReducer = (state = {}, action) => {
+    switch (action.type) {
+        case "QUESTION_SET_GET_REQUEST":
+            return {
+                loading: true,
+                error: false
+            }
+        case "QUESTION_SET_GET_SUCCESS":
+            return {
+                ...state,
+                loading: false,
+                questionSetGetData: action.payload,
+                error: false
+            }
+        case "QUESTION_SET_GET_FAILED":
+            return {
+                ...state,
+                loading: false,
+                questionSetGetData: null,
+                error: action.payload
+            }
+        case "QUESTION_SET_GET_RESET":
+            return {
+                ...state,
+                loading: false,
+                questionSetGetData: null,
+                error: null
+            }
+        default:
+            return state
+    }
+}
+
+export const QuestionUpdateReducer = (state = {}, action) => {
+    switch (action.type) {
+        case "QUESTION_UPDATE_REQUEST":
+            return {
+                loading: true,
+                error: false
+            }
+        case "QUESTION_UPDATE_SUCCESS":
+            return {
+                ...state,
+                loading: false,
+                questionUpdateData: action.payload,
+                error: false
+            }
+        case "QUESTION_UPDATE_FAILED":
+            return {
+                ...state,
+                loading: false,
+                questionUpdateData: null,
+                error: action.payload
+            }
+        case "QUESTION_UPDATE_RESET":
+            return {
+                ...state,
+                loading: false,
+                questionUpdateData: null,
+                error: null
+            }
+        default:
+            return state
+    }
+}
+
+export const getQuestionsByIdReducer = (state = {}, action) => {
+    switch (action.type) {
+        case "GET_QUESTIONS_BY_ID_REQUEST":
+            return {
+                loading: true,
+                error: false
+            }
+        case "GET_QUESTIONS_BY_ID_SUCCESS":
+            return {
+                ...state,
+                loading: false,
+                questionGetByIdData: action.payload,
+                error: false
+            }
+        case "GET_QUESTIONS_BY_ID_FAILED":
+            return {
+                ...state,
+                loading: false,
+                questionGetByIdData: null,
+                error: action.payload
+            }
+        case "GET_QUESTIONS_BY_ID_RESET":
+            return {
+                ...state,
+                loading: false,
+                questionGetByIdData: null,
+                error: null
             }
         default:
             return state

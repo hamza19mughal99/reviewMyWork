@@ -4,7 +4,7 @@ import MuiDataTable from '../../../../Component/MuiDataTables/MuiDataTables';
 import BlackButton from '../../../../Component/Button/BlackButton';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { ArtistGet } from '../../../../Redux/Action/admin';
+import { ArtistGet, ProfessionGet } from '../../../../Redux/Action/admin';
 import Loader from '../../../../Util/Loader';
 import { Form } from 'react-bootstrap';
 import Select from 'react-select';
@@ -20,12 +20,14 @@ const AllArtist = () => {
   const [filter, setFilter] = useState([])
 
   const { loading, getArtistData } = useSelector((state) => state.artistGetData)
+  const { loading: optionLoading, getProfessionData } = useSelector((state) => state.getAllProfessionData)
 
   useEffect(() => {
     dispatch(ArtistGet())
+    dispatch(ProfessionGet())
   }, [])
 
-  useEffect(() => {    
+  useEffect(() => {
     let getOnlyUser = getArtistData?.users?.map((u) => {
       return {
         ...u.user
@@ -115,7 +117,12 @@ const AllArtist = () => {
 
   };
 
-  const options = [{ value: "Composer", label: "Composer" }]
+  const options = getProfessionData?.ProfessionGet?.map((p) => {
+    return {
+      value: p._id,
+      label: p.professionName
+    }
+  })
 
   return (
     <div className='reviewer_work_page'>
@@ -143,6 +150,7 @@ const AllArtist = () => {
             <Form.Label>Profession</Form.Label>
             <Select
               options={options}
+              isLoading={optionLoading}
               placeholder="Select profession"
               className='profession_bg'
               value={selectedProfession}

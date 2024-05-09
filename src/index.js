@@ -12,6 +12,8 @@ import axios from "axios";
 //LOCAL
 axios.defaults.baseURL = "http://localhost:4000/api/"
 
+// axios.defaults.baseURL = "https://reviewmyworkbackend-staging.azurewebsites.net/api/"
+
 //LIVE
 // axios.defaults.baseURL = "https://reviewmyworkbackend.azurewebsites.net/api/"
 

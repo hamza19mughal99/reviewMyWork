@@ -54,7 +54,7 @@ const Work = () => {
         customBodyRender: (value, tableMeta) => {
           return (
             <div>
-              {value === 'approved' ? <span style={{ color: "green" }}> {value} </span> : <span style={{ color: "yellow" }}>{value}</span>}
+              {value === 'approved' ? <span style={{ color: "green" }}> {value} </span> : <span style={{ color: "rgb(176 176 56)" }}>{value}</span>}
             </div>
           );
         },

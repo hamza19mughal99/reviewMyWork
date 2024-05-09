@@ -78,7 +78,7 @@ const Header = ({ sideBarItems, children }) => {
                                 aria-controls="panel1-content"
                                 id="panel1-header"
                             >
-                                Edit Content
+                                Edit Pages
                             </AccordionSummary>
                             <AccordionDetails>
                                 <div className="user_sidebar sub_dropdown_sidebar">

@@ -1,10 +1,11 @@
 import { combineReducers } from "redux";
 import { ForgetPasswordReducer, LoggedInUserReducer, LoginReducer, RegisterReducer, changePasswordReducer, editPasswordReducer, editProfileReducer } from "./auth";
 import {
-    AllPaymentGetDataReducer, ArtistGetReducer, DashboardGetReducer, PlanGetReducer,
+    AllPaymentGetDataReducer, ArtistGetReducer, DashboardGetReducer, PlanCreateReducer, PlanDeleteReducer, PlanGetReducer,
+    PlanUpdateReducer,
     ProfessionCreateReducer,
     ProfessionDeleteReducer,
-    ProfessionGetReducer, ProfessionUpdateReducer, ReviewerGetReducer, UserUpdatedReducer, getWorksReducer
+    ProfessionGetReducer, ProfessionUpdateReducer, QuestionCreateReducer, QuestionSetGetReducer, QuestionUpdateReducer, ReviewerGetReducer, UserUpdatedReducer, getQuestionsByIdReducer, getWorksReducer
 } from "./admin";
 import { ArtistGetWorkReducer, ArtistWorkReducer, OneTimePaymentReducer, SubsPaymentReducer } from "./artist";
 import { GetAllWorkReducer, GiveReviewReducer, ReviewGetWorkReducer, ReviewerGetAllWorkReducer } from "./reviewer";
@@ -34,6 +35,9 @@ const rootReducer = combineReducers({
     professionUpdateData: ProfessionUpdateReducer,
 
     getAllPlanData: PlanGetReducer,
+    postPlanData: PlanCreateReducer,
+    PlanDeletedData: PlanDeleteReducer,
+    planUpdatedData: PlanUpdateReducer,
     getWorksData: getWorksReducer,
 
     //ARTIST
@@ -79,7 +83,14 @@ const rootReducer = combineReducers({
     updateFaqEdit: EditFaqPostReducer,
 
     getServiceEdit: EditServiceGetReducer,
-    updateServiceEdit: EditServiceUpdateReducer
+    updateServiceEdit: EditServiceUpdateReducer,
+
+    //QUESTIONS
+
+    questionCreateData: QuestionCreateReducer,
+    getQuestionSetData: QuestionSetGetReducer,
+    updateQuestionsData: QuestionUpdateReducer,
+    getDataQuestionsById: getQuestionsByIdReducer
 })
 
 export default rootReducer;
